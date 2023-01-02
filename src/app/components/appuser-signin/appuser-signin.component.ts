@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./appuser-signin.component.css']
 })
 export class AppuserSigninComponent {
+  signingInAppUserForm: any;
 
+  seConnecter() {
+
+  }
 }
