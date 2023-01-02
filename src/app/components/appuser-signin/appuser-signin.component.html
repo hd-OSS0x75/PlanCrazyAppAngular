@@ -1,1 +1,15 @@
-<p>appuser-signin works!</p>
+<h1>PlanCrazyApp</h1>
+
+<form [formGroup]="signingInAppUserForm" (ngSubmit)="seConnecter()">
+  <label for="email">Email : </label>
+  <input id="email" type="email" formControlName="email">
+  <p *ngIf="emailIsInvalid()">Rentrez un email valide.</p>
+  <p *ngIf="!emailIsInvalid()"></p>
+  <label for="password">Mot de passe : </label>
+  <input id="password" type="password" formControlName="password">
+  <p *ngIf="passwordIsInvalid()">Le mot de passe doit être saisi.</p>
+  <p *ngIf="!passwordIsInvalid()"></p>
+  <button type="submit" [disabled]="!signingInAppUserForm.valid">Se connecter</button>
+</form>
+
+<a routerLink="/signup">Vous n'avez pas de compte ? S'inscrire</a>

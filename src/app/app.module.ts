@@ -7,6 +7,8 @@ import { AppuserSignupComponent } from './components/appuser-signup/appuser-sign
 import { AppuserSigninComponent } from './components/appuser-signin/appuser-signin.component';
 import { AppuserProfileComponent } from './components/appuser-profile/appuser-profile.component';
 import { AppRoutingModule } from './app-routing.module';
+import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
