@@ -16,7 +16,7 @@ export class AppuserSigninComponent {
   }
 
   seConnecter() {
-    if (!this.signingInAppUserForm.valid) {
+    if (this.signingInAppUserForm.valid) {
       const data = {
         email: this.signingInAppUserForm.value.email,
         password: this.signingInAppUserForm.value.password
