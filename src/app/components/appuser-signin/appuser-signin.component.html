@@ -5,7 +5,7 @@
   <input id="email" type="email" formControlName="email">
   <label for="password">Mot de passe : </label>
   <input id="password" type="password" formControlName="password">
-<!--  <p *ngIf="signingInAppUserForm.valid">Complete the form to enable button.</p>-->
+  <p *ngIf="signingInAppUserForm.valid">Complete the form to enable button.</p>
   <button type="submit" [disabled]="!signingInAppUserForm.valid">Se connecter</button>
 </form>
 
