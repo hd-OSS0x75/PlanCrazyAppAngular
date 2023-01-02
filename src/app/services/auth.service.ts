@@ -10,6 +10,7 @@ export class AuthService {
 
   constructor(private sessionStorage: SessionStorageService) { }
 
+  //todo : save the user id in the session storage for further use
   //todo - security : change signature to an observable method, post url signin
   login(email: string, password: string) {
     const signinRequest = {email, password};
