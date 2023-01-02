@@ -36,6 +36,6 @@ export class AppuserSigninComponent {
   }
 
   passwordIsInvalid(): boolean {
-    return this.invalidField('password')
+    return this.invalidField('password');
   }
 }
