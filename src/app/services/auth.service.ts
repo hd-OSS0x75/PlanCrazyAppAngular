@@ -10,11 +10,11 @@ export class AuthService {
 
   constructor(private sessionStorage: SessionStorageService) { }
 
-  //todo : save the user id in the session storage for further use
   //todo - security : change signature to an observable method, post url signin
-  login(email: string, password: string) {
-    const signinRequest = {email, password};
+  login(email: string, password: string, userId: string) {
+    // const signinRequest = {email, password};
     this.sessionStorage.saveAppUserEmail(email);
     this.sessionStorage.savePassword(password);
+    this.sessionStorage.saveAppUserId(userId);
   }
 }
