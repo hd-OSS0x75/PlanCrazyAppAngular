@@ -39,6 +39,7 @@ export class AppuserSigninComponent {
               if (value['password'] == dataForm.password){
                 this.incorrectPassword = false;
                 this.authService.login(dataForm.email, dataForm.password, <string>value['appUserId']);
+                this.router.navigate(['/appUsers/profile']);
               } else {
                 console.log('Incorrect password'); // todo reactive, maybe do not print here as every value is tested
               }
@@ -52,7 +53,7 @@ export class AppuserSigninComponent {
         }
       });
 
-      this.router.navigate(['/appUsers/profile']);
+
     }
   }
 
