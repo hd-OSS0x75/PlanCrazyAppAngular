@@ -65,4 +65,14 @@ export class AppuserSigninComponent {
   passwordIsInvalid(): boolean {
     return this.invalidField('password');
   }
+
+  test() {
+    this.appUserService.get(this.sessionStorageService.getAppUserId())
+      .subscribe({
+        next: data => {
+          console.log(data);
+        },
+        error: err => {console.log(err);}
+      })
+  }
 }
