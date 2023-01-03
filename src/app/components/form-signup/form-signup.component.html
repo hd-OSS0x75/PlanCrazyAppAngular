@@ -1,0 +1,16 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <input id="nickname" type="text" formControlName="nickname" placeholder="Entrer son pseudo"><br>
+  <input id="firstName" type="text" formControlName="firstName" placeholder="Entrer son prénom"><br>
+  <input id="lastName" type="text" formControlName="lastName" placeholder="Entrer son nom"><br>
+  <input id="address" type="text" formControlName="address" placeholder="Entrer son adresse"><br>
+  <input id="postcode" type="text" formControlName="postcode" placeholder="Code postal"><br>
+  <input id="city" type="text" formControlName="city" placeholder="Ville"><br>
+  <input id="phoneNumber" type="text" formControlName="phoneNumber" placeholder="Entrer son numéro de téléphone"><br>
+  <input id="email" type="text" formControlName="email" placeholder="Entrer son email"><br>
+  <input id="password" type="text" formControlName="password" placeholder="Entrer son mot de passe"><br>
+  <input id="passwordConfirm" type="text" formControlName="passwordConfirm" placeholder="Confirmer son mot de passe"><br>
+
+<button type="submit">Créer son compte</button>
+</form>
+
+<p>Vous avez déjà un compte ? </p> <a routerLink="/signin">Se connecter</a>
