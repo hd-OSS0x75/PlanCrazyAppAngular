@@ -47,7 +47,7 @@ export class FormSignupComponent implements OnInit {
     };
     //TODO : faire une redirection vers l'accueil de l'utilisateur (calendrier)
     this.appUserService.addAppUser(newAppUser).subscribe({
-      next:()=>this.router.navigate(['/homepage']),
+      next:()=>this.router.navigate(['/profile']),
       error: (err)=>console.log(err)
     });
 

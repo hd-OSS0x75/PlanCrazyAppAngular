@@ -18,6 +18,10 @@ export class AuthService {
     return this.loggedIn.asObservable();
   }
 
+  isConnected() {
+    return this.sessionStorage.getAppUserId() ? true : false;
+  }
+
   constructor(private sessionStorage: SessionStorageService) { }
 
   //todo - security : change signature to an observable method, post url signin
