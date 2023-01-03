@@ -10,15 +10,24 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class AppuserProfileComponent implements OnInit {
   profileAppUserForm = new FormGroup({
-    nickname: new FormControl('', [Validators.required]),
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
-    address: new FormControl('', [Validators.required]),
-    postcode: new FormControl('', [Validators.required]),
-    city: new FormControl('', [Validators.required]),
-    phoneNumber: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required])
+    nickname: new FormControl({value: '', disabled: true},
+      [Validators.required]),
+    firstName: new FormControl({value: '', disabled: true},
+      [Validators.required]),
+    lastName: new FormControl({value: '', disabled: true},
+      [Validators.required]),
+    address: new FormControl({value: '', disabled: true},
+      [Validators.required]),
+    postcode: new FormControl({value: '', disabled: true},
+      [Validators.required]),
+    city: new FormControl({value: '', disabled: true},
+      [Validators.required]),
+    phoneNumber: new FormControl({value: '', disabled: true},
+      [Validators.required]),
+    email: new FormControl({value: '', disabled: true},
+      [Validators.required, Validators.email]),
+    password: new FormControl({value: '', disabled: true},
+      [Validators.required])
   });
 
   //todo : use proper TS model type of AppUser
@@ -109,12 +118,46 @@ export class AppuserProfileComponent implements OnInit {
   }
 
   seModifier() {
-
+    console.log(this.profileAppUserForm.value);//todo :
   }
-  //todo : faire en sorte que l'envoi ne soit possible qu'après modification d'au moins un champ
 
   changeModificationAbility() {
     this.allowModification = !this.allowModification;
-    console.log(this.allowModification);
+    this.updateFields();//todo : angular error, use the correct angular binding
+    this.changeFieldsDisplay();
   }
+
+  //todo : make it change the input values (maybe NgChange model ??). this doesn't do nothing
+  private updateFields() {
+    this.getAppUser(<string>this.sessionStorageService.getAppUserId());
+  }
+
+  private changeFieldsDisplay() {
+    if (this.allowModification == true) {
+      this.profileAppUserForm.get('nickname')?.enable();
+      this.profileAppUserForm.get('firstName')?.enable();
+      this.profileAppUserForm.get('lastName')?.enable();
+      this.profileAppUserForm.get('address')?.enable();
+      this.profileAppUserForm.get('postcode')?.enable();
+      this.profileAppUserForm.get('city')?.enable();
+      this.profileAppUserForm.get('phoneNumber')?.enable();
+      this.profileAppUserForm.get('email')?.enable();
+      this.profileAppUserForm.get('password')?.enable();
+    } else {
+      this.profileAppUserForm.get('nickname')?.disable();
+      this.profileAppUserForm.get('firstName')?.disable();
+      this.profileAppUserForm.get('lastName')?.disable();
+      this.profileAppUserForm.get('address')?.disable();
+      this.profileAppUserForm.get('postcode')?.disable();
+      this.profileAppUserForm.get('city')?.disable();
+      this.profileAppUserForm.get('phoneNumber')?.disable();
+      this.profileAppUserForm.get('email')?.disable();
+      this.profileAppUserForm.get('password')?.disable();
+    }
+  }
+
+  allowSendingModification(): boolean {
+    return this.allowModification && this.profileAppUserForm.dirty;
+  }
+
 }

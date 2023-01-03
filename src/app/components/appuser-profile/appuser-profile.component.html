@@ -41,9 +41,8 @@
   <p *ngIf="passwordIsInvalid()">Le mot de passe doit être saisi.</p>
   <p *ngIf="!passwordIsInvalid()"></p>
 
-  <button type="submit" [disabled]="!profileAppUserForm.valid && !allowModification">Valider les modifications</button> <---todo : faire en sorte que l'envoi ne soit possible qu'après modification d'au moins un champ--->
+  <button type="submit" [disabled]="!allowSendingModification()">Valider les modifications</button>
 </form>
 
-
-<button routerLink="/signup">Retour</button>
+<button routerLink="/appUsers/profile">Retour</button>
 <button (click)="changeModificationAbility()">Modifier</button>
