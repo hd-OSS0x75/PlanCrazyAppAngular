@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {SessionStorageService} from "../../services/session-storage.service";
 import {AppUserService} from "../../services/app-user.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AppUser} from "../../models/app-user";
 
 @Component({
   selector: 'app-appuser-profile',
@@ -30,15 +31,14 @@ export class AppuserProfileComponent implements OnInit {
       [Validators.required])
   });
 
-  //todo : use proper TS model type of AppUser
-  currentUserProfile = {
+  currentUserProfile: AppUser = {
     nickname: '',
     firstName: '',
     lastName: '',
     address: '',
-    postcode: '',
+    postcode: 0,
     city: '',
-    phoneNumber: '',
+    phoneNumber: 0,
     email: '',
     password: ''
   };
@@ -118,7 +118,7 @@ export class AppuserProfileComponent implements OnInit {
   }
 
   seModifier() {
-    console.log(this.profileAppUserForm.value);//todo :
+    console.log(this.profileAppUserForm.value);//todo : send this to backend
   }
 
   changeModificationAbility() {
@@ -132,7 +132,7 @@ export class AppuserProfileComponent implements OnInit {
   }
 
   private changeFieldsDisplay() {
-    if (this.allowModification == true) {
+    if (this.allowModification) {
       this.profileAppUserForm.get('nickname')?.enable();
       this.profileAppUserForm.get('firstName')?.enable();
       this.profileAppUserForm.get('lastName')?.enable();

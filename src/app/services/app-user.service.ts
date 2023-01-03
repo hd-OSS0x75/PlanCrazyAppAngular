@@ -19,12 +19,10 @@ export class AppUserService {
     return this.http.post(baseURL, newAppUSer);
   }
 
-  //todo : change any to proper TS model AppUser
-  getAll(): Observable<any[]>{
-    return this.http.get<any[]>(baseUrl);
+  getAll(): Observable<AppUser[]>{
+    return this.http.get<AppUser[]>(baseUrl);
   }
 
-  //todo : change any to proper TS model AppUser
   get(id: any): Observable<any> {
     return this.http.get(`${baseUrl}/${id}`);
   }
