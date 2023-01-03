@@ -31,6 +31,7 @@ export class AppuserSigninComponent {
         password: <string>this.signingInAppUserForm.value.password
       };
 
+      //TODO : faire une redirection vers l'accueil de l'utilisateur (calendrier)
       this.appUserService.getAll().subscribe({
         next: (data) => {
           data.forEach((value) => {
@@ -39,7 +40,7 @@ export class AppuserSigninComponent {
               if (value['password'] == dataForm.password){
                 this.incorrectPassword = false;
                 this.authService.login(dataForm.email, dataForm.password, <string>value['appUserId']);
-                this.router.navigate(['/appUsers/profile']);
+                this.router.navigate(['/profile']);
               } else {
                 console.log('Incorrect password'); // todo reactive, maybe do not print here as every value is tested
               }
