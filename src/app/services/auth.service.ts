@@ -7,6 +7,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class AuthService {
+  private isAppUserLoggedIn: boolean = false; //todo : define as Observable as done with Boris
 
   constructor(private sessionStorage: SessionStorageService) { }
 
@@ -16,5 +17,11 @@ export class AuthService {
     this.sessionStorage.saveAppUserEmail(email);
     this.sessionStorage.savePassword(password);
     this.sessionStorage.saveAppUserId(userId);
+    this.isAppUserLoggedIn = true;
+  }
+
+  logout() {
+    this.sessionStorage.clearSession();
+    this.isAppUserLoggedIn = false; //todo : define as Observable as done with Boris
   }
 }
