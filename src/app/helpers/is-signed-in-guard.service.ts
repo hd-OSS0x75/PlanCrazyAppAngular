@@ -12,6 +12,9 @@ export class IsSignedInGuardService implements CanActivate {
               private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if (this.authService.isLoggedIn){
+      return true;
+    }
     return this.router.navigate(['/homepage']);
   }
 }

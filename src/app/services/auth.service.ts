@@ -1,13 +1,22 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {SessionStorageService} from "./session-storage.service";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private isAppUserLoggedIn: boolean = false; //todo : define as Observable as done with Boris
+  // private appUserLoggedIn: boolean = false;
+  //
+  // isAppUserLoggedIn(){
+  //   return this.appUserLoggedIn;
+  // }
+  private loggedIn = new BehaviorSubject<boolean>(!!this.sessionStorage.getAppUserId());
+
+  get isLoggedIn(){
+    return this.loggedIn.asObservable();
+  }
 
   constructor(private sessionStorage: SessionStorageService) { }
 
@@ -17,11 +26,11 @@ export class AuthService {
     this.sessionStorage.saveAppUserEmail(email);
     this.sessionStorage.savePassword(password);
     this.sessionStorage.saveAppUserId(userId);
-    this.isAppUserLoggedIn = true;
+    this.loggedIn.next(true);
   }
 
   logout() {
     this.sessionStorage.clearSession();
-    this.isAppUserLoggedIn = false; //todo : define as Observable as done with Boris
+    this.loggedIn.next(false);
   }
 }
