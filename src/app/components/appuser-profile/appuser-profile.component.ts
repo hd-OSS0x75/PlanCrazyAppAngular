@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SessionStorageService} from "../../services/session-storage.service";
 import {AppUserService} from "../../services/app-user.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-appuser-profile',
@@ -8,6 +9,17 @@ import {AppUserService} from "../../services/app-user.service";
   styleUrls: ['./appuser-profile.component.css']
 })
 export class AppuserProfileComponent implements OnInit {
+  profileAppUserForm = new FormGroup({
+    nickname: new FormControl('', [Validators.required]),
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
+    address: new FormControl('', [Validators.required]),
+    postcode: new FormControl('', [Validators.required]),
+    city: new FormControl('', [Validators.required]),
+    phoneNumber: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required])
+  });
 
   //todo : use proper TS model type of AppUser
   currentUserProfile = {
@@ -44,9 +56,57 @@ export class AppuserProfileComponent implements OnInit {
           this.currentUserProfile['phoneNumber'] = value['phoneNumber'];
           this.currentUserProfile['email'] = value['email'];
           this.currentUserProfile['password'] = value['password'];
-          console.log(this.currentUserProfile);
         },
-        error: err => {console.log(err);}
+        error: err => {
+          console.log(err);
+        }
       })
+  }
+
+  private invalidField(field: string): boolean {
+    //todo : vérifier le @ts-ignore, pourquoi il veut un type string ou null ???
+    // @ts-ignore
+    return this.profileAppUserForm.controls[field].invalid && (this.profileAppUserForm.controls[field].dirty || this.profileAppUserForm.controls[field].touched);
+  }
+
+
+  nicknameIsInvalid(): boolean {
+    return this.invalidField('nickname');
+  }
+
+  firstNameIsInvalid(): boolean {
+    return this.invalidField('firstName');
+  }
+
+  lastNameIsInvalid(): boolean {
+    return this.invalidField('lastName');
+  }
+
+  addressIsInvalid(): boolean {
+    return this.invalidField('address');
+  }
+
+  postcodeIsInvalid(): boolean {
+    return this.invalidField('postcode');
+  }
+
+  cityIsInvalid(): boolean {
+    return this.invalidField('city');
+  }
+
+  phoneNumberIsInvalid(): boolean {
+    return this.invalidField('phoneNumber');
+  }
+
+  emailIsInvalid(): boolean {
+    return this.invalidField('email');
+  }
+
+  passwordIsInvalid(): boolean {
+    return this.invalidField('password');
+  }
+
+  seModifier() {
+
   }
 }
