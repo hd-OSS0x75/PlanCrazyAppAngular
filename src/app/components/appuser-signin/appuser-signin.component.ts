@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {SessionStorageService} from "../../services/session-storage.service";
 import {AuthService} from "../../services/auth.service";
 import {AppUserService} from "../../services/app-user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-appuser-signin',
@@ -19,7 +20,8 @@ export class AppuserSigninComponent {
 
   constructor(private sessionStorageService: SessionStorageService,
               private appUserService: AppUserService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private router: Router) {
   }
 
   seConnecter() {
@@ -36,12 +38,13 @@ export class AppuserSigninComponent {
               this.unexistingEmail = false;
               if (value['password'] == dataForm.password){
                 this.incorrectPassword = false;
-                this.authService.login(dataForm.email, dataForm.password);
+                this.authService.login(dataForm.email, dataForm.password, <string>value['appUserId']);
+                this.router.navigate(['/appUsers/profile']);
               } else {
-                console.log('Incorrect password'); // todo reactive, not here
+                console.log('Incorrect password'); // todo reactive, maybe do not print here as every value is tested
               }
             } else {
-              console.log("This email adress doesn't exists"); // todo reactive, not here
+              // console.log("This email adress doesn't exists"); // todo reactive, => do not print here as every value is tested
             }
           })
         },
@@ -49,6 +52,8 @@ export class AppuserSigninComponent {
           console.log(error);
         }
       });
+
+
     }
   }
 
@@ -64,5 +69,15 @@ export class AppuserSigninComponent {
 
   passwordIsInvalid(): boolean {
     return this.invalidField('password');
+  }
+
+  test() {
+    this.appUserService.get(this.sessionStorageService.getAppUserId())
+      .subscribe({
+        next: data => {
+          console.log(data);
+        },
+        error: err => {console.log(err);}
+      })
   }
 }
