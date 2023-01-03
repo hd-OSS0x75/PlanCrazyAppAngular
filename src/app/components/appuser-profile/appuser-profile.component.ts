@@ -34,6 +34,8 @@ export class AppuserProfileComponent implements OnInit {
     password: ''
   };
 
+  allowModification: boolean = false;
+
   constructor(private sessionStorageService: SessionStorageService,
               private appUserService: AppUserService) {
   }
@@ -66,7 +68,7 @@ export class AppuserProfileComponent implements OnInit {
   private invalidField(field: string): boolean {
     //todo : vérifier le @ts-ignore, pourquoi il veut un type string ou null ???
     // @ts-ignore
-    return this.profileAppUserForm.controls[field].invalid && (this.profileAppUserForm.controls[field].dirty || this.profileAppUserForm.controls[field].touched);
+    return this.profileAppUserForm.controls[field].invalid && !this.profileAppUserForm.controls[field].pristine && this.allowModification;
   }
 
 
@@ -108,5 +110,11 @@ export class AppuserProfileComponent implements OnInit {
 
   seModifier() {
 
+  }
+  //todo : faire en sorte que l'envoi ne soit possible qu'après modification d'au moins un champ
+
+  changeModificationAbility() {
+    this.allowModification = !this.allowModification;
+    console.log(this.allowModification);
   }
 }
