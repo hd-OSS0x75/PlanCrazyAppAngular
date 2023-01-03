@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {SessionStorageService} from "../../services/session-storage.service";
 import {AuthService} from "../../services/auth.service";
 import {AppUserService} from "../../services/app-user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-appuser-signin',
@@ -19,7 +20,8 @@ export class AppuserSigninComponent {
 
   constructor(private sessionStorageService: SessionStorageService,
               private appUserService: AppUserService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private router: Router) {
   }
 
   seConnecter() {
@@ -49,6 +51,8 @@ export class AppuserSigninComponent {
           console.log(error);
         }
       });
+
+      this.router.navigate(['/appUsers/profile']);
     }
   }
 
