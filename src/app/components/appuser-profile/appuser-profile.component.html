@@ -1,0 +1,48 @@
+<h1>PlanCrazyApp</h1>
+<h2>Mon profil</h2>
+
+
+<form [formGroup]="profileAppUserForm" (ngSubmit)="seModifier()">
+
+  <label for="nickname">Pseudo : </label>
+  <input id="nickname" type="email" formControlName="nickname" [(ngModel)]="currentUserProfile.nickname">
+  <p *ngIf="nicknameIsInvalid()">Rentrez un pseudo valide.</p>
+  <p *ngIf="!nicknameIsInvalid()"></p>
+  <label for="firstName">Prénom : </label>
+  <input id="firstName" type="text" formControlName="firstName" [(ngModel)]="currentUserProfile.firstName">
+  <p *ngIf="firstNameIsInvalid()">Rentrez un prénom valide.</p>
+  <p *ngIf="!firstNameIsInvalid()"></p>
+  <label for="lastName">Nom : </label>
+  <input id="lastName" type="text" formControlName="lastName" [(ngModel)]="currentUserProfile.lastName">
+  <p *ngIf="lastNameIsInvalid()">Rentrez un nom valide.</p>
+  <p *ngIf="!lastNameIsInvalid()"></p>
+  <label for="address">Adresse : </label>
+  <input id="address" type="text" formControlName="address" [(ngModel)]="currentUserProfile.address">
+  <p *ngIf="addressIsInvalid()">Rentrez une adresse valide.</p>
+  <p *ngIf="!addressIsInvalid()"></p>
+  <label for="postcode">Code-Postal : </label>
+  <input id="postcode" type="text" formControlName="postcode" [(ngModel)]="currentUserProfile.postcode">
+  <p *ngIf="postcodeIsInvalid()">Rentrez un code postal valide.</p>
+  <p *ngIf="!postcodeIsInvalid()"></p>
+  <label for="city">Ville : </label>
+  <input id="city" type="text" formControlName="city" [(ngModel)]="currentUserProfile.city">
+  <p *ngIf="cityIsInvalid()">La ville doit être saisie.</p>
+  <p *ngIf="!cityIsInvalid()"></p>
+  <label for="phoneNumber">Téléphone : </label>
+  <input id="phoneNumber" type="text" formControlName="phoneNumber" [(ngModel)]="currentUserProfile.phoneNumber">
+  <p *ngIf="phoneNumberIsInvalid()">Rentrez un numéro de téléphone valide.</p>
+  <p *ngIf="!phoneNumberIsInvalid()"></p>
+  <label for="email">Email : </label>
+  <input id="email" type="email" formControlName="email" [(ngModel)]="currentUserProfile.email">
+  <p *ngIf="emailIsInvalid()">Rentrez un email valide.</p>
+  <p *ngIf="!emailIsInvalid()"></p>
+  <label for="password">Mot de passe : </label>
+  <input id="password" type="password" formControlName="password" [(ngModel)]="currentUserProfile.password">
+  <p *ngIf="passwordIsInvalid()">Le mot de passe doit être saisi.</p>
+  <p *ngIf="!passwordIsInvalid()"></p>
+
+  <button type="submit" [disabled]="!allowSendingModification()">Valider les modifications</button>
+</form>
+
+<button routerLink="/appUsers/profile">Retour</button>
+<button (click)="changeModificationAbility()">Modifier</button>
