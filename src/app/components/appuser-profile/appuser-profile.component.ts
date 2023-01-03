@@ -123,11 +123,10 @@ export class AppuserProfileComponent implements OnInit {
 
   changeModificationAbility() {
     this.allowModification = !this.allowModification;
-    this.updateFields();//todo : angular error, use the correct angular binding
+    this.updateFields();
     this.changeFieldsDisplay();
   }
 
-  //todo : make it change the input values (maybe NgChange model ??). this doesn't do nothing
   private updateFields() {
     this.getAppUser(<string>this.sessionStorageService.getAppUserId());
   }
