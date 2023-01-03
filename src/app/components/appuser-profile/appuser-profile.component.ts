@@ -157,7 +157,7 @@ export class AppuserProfileComponent implements OnInit {
   }
 
   allowSendingModification(): boolean {
-    return this.allowModification && this.profileAppUserForm.dirty;
+    return this.allowModification && this.profileAppUserForm.dirty && !this.profileAppUserForm.invalid;
   }
 
 }
