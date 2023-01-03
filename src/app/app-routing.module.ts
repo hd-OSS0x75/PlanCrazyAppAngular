@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'homepage', component: HomepageComponent },
   { path: 'signin', component: AppuserSigninComponent},
   { path: 'signup', component: AppuserSignupComponent },
-  { path: 'appUsers/profile', component: AppuserProfileComponent, canActivate: [IsSignedInGuardService] },
+  { path: 'profile', component: AppuserProfileComponent, canActivate: [IsSignedInGuardService] },
 ];
 
 @NgModule({
