@@ -1,0 +1,33 @@
+.alert-danger {
+  color: #FF0000;
+  font-family: "Fira Code Medium", sans-serif;
+  font-size: 12px;
+}
+
+form {
+  padding: 0 450px;
+}
+
+input{
+  border: none;
+  width: 200px;
+}
+
+input, button {
+  font-family: "Fira Code Medium", sans-serif;
+}
+
+.annotation {
+  color: #FF0000;
+  font-size: 5px;
+  font-family: Arial, sans-serif;
+  text-align: right;
+}
+
+.btn-success {
+  background-color: #90B77D;
+}
+
+.seConnecter {
+  text-align: center;
+}

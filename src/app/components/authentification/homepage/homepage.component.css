@@ -1,0 +1,18 @@
+h1 {
+  text-align: center;
+  color: #42855B;
+  size: 64px;
+  text-shadow: #bbb9b9 1px 2px;
+}
+
+.btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.btn-success {
+  background-color: #90B77D;
+  margin: 0 10px;
+
+}
