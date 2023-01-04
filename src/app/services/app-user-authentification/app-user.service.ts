@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {AppUser} from "../models/app-user";
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {AppUser} from "../../models/app-user";
 
 //Ici on a l'URL de notre backend créé avec Spring
 const baseURL = 'http://localhost:8080/api/app-user';
@@ -16,5 +17,11 @@ export class AppUserService {
     return this.http.post(baseURL, newAppUSer);
   }
 
+  getAll(): Observable<AppUser[]>{
+    return this.http.get<AppUser[]>(baseURL);
+  }
 
+  get(id: any): Observable<any> {
+    return this.http.get(`${baseURL}/${id}`);
+  }
 }
