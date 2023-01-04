@@ -27,7 +27,7 @@ export class AuthService {
   //todo - security : change signature to an observable method, post url signin
   login(email: string, password: string, userId: string) {
     // const signinRequest = {email, password};
-    this.sessionStorage.saveAppUserEmail(email);
+    this.sessionStorage.saveAppUserEmail(email);//à priori en réception un userId et un token
     this.sessionStorage.savePassword(password);
     this.sessionStorage.saveAppUserId(userId);
     this.loggedIn.next(true);
