@@ -71,7 +71,7 @@ export class AppuserProfileComponent implements OnInit {
         error: err => {
           console.log(err);
         }
-      })
+      });
   }
 
   private invalidField(field: string): boolean {
