@@ -14,6 +14,7 @@ import { AppUserHomepageComponent } from './components/calendar/app-user-homepag
 import { AddTaskComponent } from './components/calendar/add-task/add-task.component';
 import { DetailsTaskComponent } from './components/calendar/details-task/details-task.component';
 import { UpdateTaskComponent } from './components/calendar/update-task/update-task.component';
+import { TaskComponent } from './components/calendar/task/task.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UpdateTaskComponent } from './components/calendar/update-task/update-ta
     AppUserHomepageComponent,
     AddTaskComponent,
     DetailsTaskComponent,
-    UpdateTaskComponent
+    UpdateTaskComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,

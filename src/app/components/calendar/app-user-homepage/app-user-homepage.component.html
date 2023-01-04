@@ -11,7 +11,11 @@
   Todo -> liste déroulante des prochaines tâches de la journée sélectionnée
 </p>
 
-<p>app-user-homepage works!</p>
+<ul>
+  <li *ngFor="let task of taskList">
+    <app-task taskId="{{task.taskId}}" taskTitle="{{task.taskTitle}}" startingHour="{{task.startingHour}}"  (deleteThisTaskEvent)="deleteTask($event)"></app-task>
+  </li>
+</ul>
 
 <button routerLink="/month">Journée complète</button>
 <button routerLink="/task/add">Nouvelle tâche</button>

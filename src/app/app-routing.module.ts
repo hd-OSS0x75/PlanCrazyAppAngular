@@ -18,8 +18,8 @@ const routes: Routes = [
   { path: 'profile', component: AppuserProfileComponent, canActivate: [IsSignedInGuardService] },
   { path: 'month', component: AppUserHomepageComponent, canActivate: [IsSignedInGuardService] },
   { path: 'task/add', component: AddTaskComponent, canActivate: [IsSignedInGuardService] },
-  { path: 'task/details', component: DetailsTaskComponent, canActivate: [IsSignedInGuardService] },
-  { path: 'task/update', component: UpdateTaskComponent, canActivate: [IsSignedInGuardService] },
+  { path: 'task/details/:id', component: DetailsTaskComponent, canActivate: [IsSignedInGuardService] },
+  { path: 'task/update/:id', component: UpdateTaskComponent, canActivate: [IsSignedInGuardService] },
 ];
 
 @NgModule({

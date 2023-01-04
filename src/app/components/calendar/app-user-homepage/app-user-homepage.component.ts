@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {SessionStorageService} from "../../../services/session-storage.service";
 import {AppUserService} from "../../../services/app-user.service";
+import {CalendarService} from "../../../services/calendar/calendar.service";
+import * as events from "events";
 
 @Component({
   selector: 'app-app-user-homepage',
@@ -9,12 +11,15 @@ import {AppUserService} from "../../../services/app-user.service";
 })
 export class AppUserHomepageComponent implements OnInit {
   nickname: string = 'Profil';
+  taskList: any[] = [];
 
   constructor(private sessionStorageService: SessionStorageService,
-              private appUserService: AppUserService) {}
+              private appUserService: AppUserService,
+              private calendarService: CalendarService) {}
 
   ngOnInit(): void {
     this.updateNickname(<string>this.sessionStorageService.getAppUserId());
+    this.getAppUserTasks();
   }
 
   private updateNickname(appUserId: string) {
@@ -27,5 +32,19 @@ export class AppUserHomepageComponent implements OnInit {
           console.log(err);
         }
       });
+  }
+
+  private getAppUserTasks() {
+    this.calendarService.getAll()
+      .subscribe({
+        next: value => {
+          this.taskList = value;
+        },
+        error: err => {console.log(err);}
+      });
+  }
+
+  deleteTask($event: string) {
+    console.log($event);
   }
 }
