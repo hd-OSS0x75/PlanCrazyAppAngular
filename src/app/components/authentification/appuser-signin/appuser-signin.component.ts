@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {SessionStorageService} from "../../services/session-storage.service";
-import {AuthService} from "../../services/auth.service";
-import {AppUserService} from "../../services/app-user.service";
+import {SessionStorageService} from "../../../services/security/session-storage.service";
+import {AuthService} from "../../../services/security/auth.service";
+import {AppUserService} from "../../../services/app-user-authentification/app-user.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -31,7 +31,6 @@ export class AppuserSigninComponent {
         password: <string>this.signingInAppUserForm.value.password
       };
 
-      //TODO : faire une redirection vers l'accueil de l'utilisateur (calendrier)
       this.appUserService.getAll().subscribe({
         next: (data) => {
           data.forEach((value) => {
@@ -40,7 +39,7 @@ export class AppuserSigninComponent {
               if (value['password'] == dataForm.password){
                 this.incorrectPassword = false;
                 this.authService.login(dataForm.email, dataForm.password, <string>value['appUserId']);
-                this.router.navigate(['/profile']);
+                this.router.navigate(['/month']);
               } else {
                 console.log('Incorrect password'); // todo reactive, maybe do not print here as every value is tested
               }
