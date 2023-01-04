@@ -5,6 +5,9 @@
 }
 
 form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 0 450px;
 }
 
@@ -17,6 +20,14 @@ input, button {
   font-family: "Fira Code Medium", sans-serif;
 }
 
+hr{
+  color: #90B77D;
+  height: 2px;
+  background-color: #90B77D;
+  width : 100%;
+  border: none;
+}
+
 .annotation {
   color: #FF0000;
   font-size: 5px;
@@ -26,6 +37,8 @@ input, button {
 
 .btn-success {
   background-color: #90B77D;
+  margin-top: 40px;
+  border-radius: 20px;
 }
 
 .seConnecter {

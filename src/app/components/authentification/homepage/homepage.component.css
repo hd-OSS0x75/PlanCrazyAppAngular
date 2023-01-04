@@ -13,6 +13,7 @@ h1 {
 
 .btn-success {
   background-color: #90B77D;
-  margin: 0 10px;
+  margin: 100px 10px;
+  border-radius: 20px;
 
 }

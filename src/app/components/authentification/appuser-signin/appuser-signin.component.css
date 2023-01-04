@@ -1,0 +1,23 @@
+h1 {
+  text-align: center;
+  color: #42855B;
+  size: 32px;
+  text-shadow: #bbb9b9 1px 2px;
+}
+
+.btn-success {
+  background-color: #90B77D;
+  border-radius: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 450px;
+}
+
+.inscription {
+  text-align: center;
+  margin-top: 30px;
+}
