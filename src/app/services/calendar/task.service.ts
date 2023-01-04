@@ -15,4 +15,8 @@ export class TaskService {
   getAll(): Observable<any[]>{
     return this.http.get<any[]>(baseURL);
   }
+
+  get(id: any): Observable<any> {
+    return this.http.get(`${baseURL}/${id}`);
+  }
 }

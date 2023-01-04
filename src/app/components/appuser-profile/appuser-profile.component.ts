@@ -49,6 +49,7 @@ export class AppuserProfileComponent implements OnInit {
               private appUserService: AppUserService) {
   }
 
+  //BLOC : fonctions à l'initialisation
   ngOnInit(): void {
     this.getAppUser(<string>this.sessionStorageService.getAppUserId());
   }
@@ -74,6 +75,8 @@ export class AppuserProfileComponent implements OnInit {
       });
   }
 
+
+  // BLOC : fonctions de validation des champs
   private invalidField(field: string): boolean {
     //todo : vérifier le @ts-ignore, pourquoi il veut un type string ou null ???
     // @ts-ignore
@@ -117,9 +120,10 @@ export class AppuserProfileComponent implements OnInit {
     return this.invalidField('password');
   }
 
-  seModifier() {
-    console.log(this.profileAppUserForm.value);//todo : send this to backend
-  }
+
+
+
+  // BLOC : gestion de l'évènement : l'utilisateur clique sur le bouton modifier
 
   changeModificationAbility() {
     this.allowModification = !this.allowModification;
@@ -155,8 +159,13 @@ export class AppuserProfileComponent implements OnInit {
     }
   }
 
+
+  // BLOC : l'utilisateur clique sur le bouton valider les modifications
   allowSendingModification(): boolean {
     return this.allowModification && this.profileAppUserForm.dirty && !this.profileAppUserForm.invalid;
   }
 
+  seModifier() {
+    console.log(this.profileAppUserForm.value);//todo : send this to backend
+  }
 }

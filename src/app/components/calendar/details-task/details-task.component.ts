@@ -1,23 +1,27 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SessionStorageService} from "../../../services/session-storage.service";
 import {AppUserService} from "../../../services/app-user.service";
 import {TaskService} from "../../../services/calendar/task.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-details-task',
   templateUrl: './details-task.component.html',
   styleUrls: ['./details-task.component.css']
 })
-export class DetailsTaskComponent {
+export class DetailsTaskComponent implements OnInit{
   nickname: string = 'Profil';
+  currentTask: any ={};
 
 
   constructor(private sessionStorageService: SessionStorageService,
               private appUserService: AppUserService,
+              private route: ActivatedRoute,
               private taskService: TaskService) {}
 
   ngOnInit(): void {
     this.updateNickname(<string>this.sessionStorageService.getAppUserId());
+    this.getTask(this.route.snapshot.params['id']);//todo : meilleure méthode ?
   }
 
   private updateNickname(appUserId: string) {
@@ -32,4 +36,10 @@ export class DetailsTaskComponent {
       });
   }
 
+  private getTask(id: string) {
+    this.taskService.get(id).subscribe({
+      next: value => {this.currentTask = value;},
+      error: err => {console.log(err);}
+    });
+  }
 }
