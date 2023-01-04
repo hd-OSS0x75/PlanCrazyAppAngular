@@ -5,6 +5,10 @@ import {AppuserSigninComponent} from "./components/appuser-signin/appuser-signin
 import {AppuserSignupComponent} from "./components/appuser-signup/appuser-signup.component";
 import {HomepageComponent} from "./components/homepage/homepage.component";
 import {IsSignedInGuardService} from "./helpers/is-signed-in-guard.service";
+import {AppUserHomepageComponent} from "./components/calendar/app-user-homepage/app-user-homepage.component";
+import {AddTaskComponent} from "./components/calendar/add-task/add-task.component";
+import {DetailsTaskComponent} from "./components/calendar/details-task/details-task.component";
+import {UpdateTaskComponent} from "./components/calendar/update-task/update-task.component";
 
 const routes: Routes = [
   { path  :'', redirectTo: 'homepage', pathMatch: 'full'},
@@ -12,6 +16,10 @@ const routes: Routes = [
   { path: 'signin', component: AppuserSigninComponent},
   { path: 'signup', component: AppuserSignupComponent },
   { path: 'profile', component: AppuserProfileComponent, canActivate: [IsSignedInGuardService] },
+  { path: 'month', component: AppUserHomepageComponent, canActivate: [IsSignedInGuardService] },
+  { path: 'task/add', component: AddTaskComponent, canActivate: [IsSignedInGuardService] },
+  { path: 'task/details', component: DetailsTaskComponent, canActivate: [IsSignedInGuardService] },
+  { path: 'task/update', component: UpdateTaskComponent, canActivate: [IsSignedInGuardService] },
 ];
 
 @NgModule({

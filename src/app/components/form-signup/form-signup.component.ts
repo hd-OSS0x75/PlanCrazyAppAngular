@@ -45,9 +45,9 @@ export class FormSignupComponent implements OnInit {
       email: this.signupForm.value.email,
       password: this.signupForm.value.password
     };
-    //TODO : faire une redirection vers l'accueil de l'utilisateur (calendrier)
+    //TODO : faire un login puis une redirection vers l'accueil de l'utilisateur (calendrier)
     this.appUserService.addAppUser(newAppUser).subscribe({
-      next:()=>this.router.navigate(['/profile']),
+      next:()=>this.router.navigate(['/signin']),
       error: (err)=>console.log(err)
     });
 
