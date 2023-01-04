@@ -31,29 +31,12 @@ export class AppuserSigninComponent {
         password: <string>this.signingInAppUserForm.value.password
       };
 
-      this.appUserService.getAll().subscribe({
-        next: (data) => {
-          data.forEach((value) => {
-            if (value['email'] == dataForm.email) {
-              this.unexistingEmail = false;
-              if (value['password'] == dataForm.password){
-                this.incorrectPassword = false;
-                this.authService.login(dataForm.email, dataForm.password, <string>value['appUserId']);
-                this.router.navigate(['/month']);
-              } else {
-                console.log('Incorrect password'); // todo reactive, maybe do not print here as every value is tested
-              }
-            } else {
-              // console.log("This email adress doesn't exists"); // todo reactive, => do not print here as every value is tested
-            }
-          })
-        },
-        error: (error) => {
-          console.log(error);
+      this.authService.login(dataForm.email, dataForm.password).subscribe(
+        {
+          next: value => {this.router.navigate(['/month']);;},
+          error: err => {console.log(err);}
         }
-      });
-
-
+      );
     }
   }
 
