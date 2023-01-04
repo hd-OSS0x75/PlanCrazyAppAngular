@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SessionStorageService} from "../../../services/session-storage.service";
 import {AppUserService} from "../../../services/app-user.service";
-import {CalendarService} from "../../../services/calendar/calendar.service";
+import {TaskService} from "../../../services/calendar/task.service";
 import * as events from "events";
 
 @Component({
@@ -15,7 +15,7 @@ export class AppUserHomepageComponent implements OnInit {
 
   constructor(private sessionStorageService: SessionStorageService,
               private appUserService: AppUserService,
-              private calendarService: CalendarService) {}
+              private taskService: TaskService) {}
 
   ngOnInit(): void {
     this.updateNickname(<string>this.sessionStorageService.getAppUserId());
@@ -35,7 +35,7 @@ export class AppUserHomepageComponent implements OnInit {
   }
 
   private getAppUserTasks() {
-    this.calendarService.getAll()
+    this.taskService.getAll()
       .subscribe({
         next: value => {
           this.taskList = value;

@@ -8,7 +8,7 @@ const baseURL = 'http://localhost:8080/api/task';
 @Injectable({
   providedIn: 'root'
 })
-export class CalendarService {
+export class TaskService {
 
   constructor(private http: HttpClient) { }
 
