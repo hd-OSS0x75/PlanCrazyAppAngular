@@ -9,33 +9,63 @@ h2 {
   border-style: none;
   background-color: #E3F3EC;
   text-align: center;
-  margin:30px 450px;
+  margin:30px auto;
   box-shadow: 8px 8px 12px #817C7C;
 }
+/*mobile first: min width */
+@media (min-width: 360px) {
+  form {
+    padding: 10px;
+  }
 
-label {
-  color: #817C7C;
+  label {
+    color: #817C7C;
+    width: 30%;
+    display: inline-block;
+  }
+
+  input {
+    height: 30px;
+    width: 60%;
+    border-radius: 10px;
+  }
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  padding: 0 450px;
+/*desktop */
+@media (min-width: 600px)  {
+  form {
+    margin: 0 100px;
+  }
+
+  label {
+    color: #817C7C;
+    width: 100px;
+    display: inline-block;
+    align-items: end;
+  }
+
+  input {
+    height: 30px;
+    width: 70%;
+    border-radius: 10px;
+  }
 }
 
-input {
-  height: 30px;
-  width: 300px;
+
+.btn-valider {
+  margin: 0px 25%;
+  border-radius: 10px;
+  width: 200px;
+  background-color: #90B77D;
 }
 
 .btn {
-  display: flex;
-  flex-direction: row;
-  align-content: space-around;
+  text-align: center;
 }
 
 .btn-success {
   background-color: #90B77D;
   border-radius: 20px;
   padding: 0 40px;
+  margin:  0 10px;
 }
