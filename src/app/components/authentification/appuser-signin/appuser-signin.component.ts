@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {SessionStorageService} from "../../services/session-storage.service";
-import {AuthService} from "../../services/auth.service";
-import {AppUserService} from "../../services/app-user.service";
+import {SessionStorageService} from "../../../services/security/session-storage.service";
+import {AuthService} from "../../../services/security/auth.service";
+import {AppUserService} from "../../../services/app-user-authentification/app-user.service";
 import {Router} from "@angular/router";
 
 @Component({

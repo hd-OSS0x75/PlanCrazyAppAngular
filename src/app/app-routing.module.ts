@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AppuserProfileComponent} from "./components/appuser-profile/appuser-profile.component";
-import {AppuserSigninComponent} from "./components/appuser-signin/appuser-signin.component";
-import {AppuserSignupComponent} from "./components/appuser-signup/appuser-signup.component";
-import {HomepageComponent} from "./components/homepage/homepage.component";
+import {AppuserSigninComponent} from "./components/authentification/appuser-signin/appuser-signin.component";
+import {AppuserSignupComponent} from "./components/authentification/appuser-signup/appuser-signup.component";
+import {HomepageComponent} from "./components/authentification/homepage/homepage.component";
 import {IsSignedInGuardService} from "./helpers/is-signed-in-guard.service";
 import {AppUserHomepageComponent} from "./components/calendar/app-user-homepage/app-user-homepage.component";
 import {AddTaskComponent} from "./components/calendar/add-task/add-task.component";

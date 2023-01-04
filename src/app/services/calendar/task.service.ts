@@ -12,6 +12,7 @@ export class TaskService {
 
   constructor(private http: HttpClient) { }
 
+  //todo: replace any by task model interface
   getAll(): Observable<any[]>{
     return this.http.get<any[]>(baseURL);
   }

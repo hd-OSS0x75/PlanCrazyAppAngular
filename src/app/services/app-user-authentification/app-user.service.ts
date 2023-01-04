@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {AppUser} from "../models/app-user";
+import {AppUser} from "../../models/app-user";
 
 //Ici on a l'URL de notre backend créé avec Spring
 const baseURL = 'http://localhost:8080/api/app-user';

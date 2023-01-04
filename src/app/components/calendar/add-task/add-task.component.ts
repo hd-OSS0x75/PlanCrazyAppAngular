@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {SessionStorageService} from "../../../services/session-storage.service";
-import {AppUserService} from "../../../services/app-user.service";
+import {SessionStorageService} from "../../../services/security/session-storage.service";
+import {AppUserService} from "../../../services/app-user-authentification/app-user.service";
 import {TaskService} from "../../../services/calendar/task.service";
 
 @Component({
