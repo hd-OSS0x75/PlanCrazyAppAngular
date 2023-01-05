@@ -48,7 +48,7 @@ export class AddTaskComponent implements OnInit {
   }
 
   onSubmit() {
-    const newTasks : Task = {
+    const newTask : Task = {
       taskTitle: this.newTaskForm.value.title,
       description: this.newTaskForm.value.description,
       location: this.newTaskForm.value.location,
@@ -56,10 +56,11 @@ export class AddTaskComponent implements OnInit {
       startingHour: this.newTaskForm.value.startingHour,
       endingDate: this.newTaskForm.value.endingDate,
       endingHour: this.newTaskForm.value.endingHour,
-
+      private: true
     };
-    this.taskService.addTask(newTasks).subscribe({
-      next:()=>this.router.navigate(['/homepage']),
+    console.log(newTask);
+    this.taskService.addTask(newTask).subscribe({
+      next:()=>this.router.navigate(['/month']),
       error: (err)=>console.log(err)
     });
 

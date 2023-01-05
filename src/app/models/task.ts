@@ -7,4 +7,5 @@ export interface Task {
     startingHour: any;
     endingDate: any;
     endingHour: any;
+    private: boolean;
 }
