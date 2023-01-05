@@ -13,6 +13,7 @@ export class AppUserHomepageComponent implements OnInit {
   nickname: string = 'Profil';
   taskList: any[] = [];//todo : replace any by task model
 
+
   constructor(private sessionStorageService: SessionStorageService,
               private appUserService: AppUserService,
               private taskService: TaskService) {}

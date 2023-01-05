@@ -1,0 +1,83 @@
+h1 {
+  text-align: center;
+  color: #42855B;
+  size: 32px;
+  text-shadow: #bbb9b9 1px 2px;
+  font-family: "Berlin Sans FB", sans-serif;
+}
+
+h2 {
+  border-style: none;
+  background-color: #E3F3EC;
+  text-align: center;
+  margin:30px auto;
+  box-shadow: 8px 8px 12px #817C7C;
+  font-family: "Berlin Sans FB", sans-serif;
+}
+
+/*mobile first: min width */
+@media (min-width: 360px) {
+  form {
+    padding: 10px;
+  }
+
+  label {
+    color: #817C7C;
+    width: 30%;
+    display: inline-block;
+    font-family: "Berlin Sans FB", sans-serif;
+  }
+
+  input {
+    height: 30px;
+    width: 60%;
+    border-radius: 10px;
+    font-family: "Berlin Sans FB", sans-serif;
+  }
+}
+
+/*desktop */
+@media (min-width: 600px)  {
+  form {
+    margin: 0 100px;
+  }
+
+  label {
+    color: #817C7C;
+    width: 100px;
+    display: inline-block;
+    align-items: end;
+    font-family: "Berlin Sans FB", sans-serif;
+  }
+
+  input {
+    height: 30px;
+    width: 70%;
+    border-radius: 10px;
+    font-family: "Berlin Sans FB", sans-serif;
+  }
+}
+
+
+.btn-valider {
+  font-family: "Berlin Sans FB", sans-serif;
+  margin: 0px 25%;
+  border-radius: 10px;
+  border: none;
+  width: 200px;
+  background-color: #90B77D;
+}
+
+.btn {
+  text-align: center;
+  font-family: "Berlin Sans FB", sans-serif;
+
+}
+
+.btn-success {
+  background-color: #90B77D;
+  border-radius: 20px;
+  padding: 0 40px;
+  margin:  0 10px;
+  border: none;
+}
