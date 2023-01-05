@@ -15,6 +15,7 @@ import { AddTaskComponent } from './components/calendar/add-task/add-task.compon
 import { DetailsTaskComponent } from './components/calendar/details-task/details-task.component';
 import { UpdateTaskComponent } from './components/calendar/update-task/update-task.component';
 import { TaskComponent } from './components/calendar/task/task.component';
+import {AuthInterceptorProviders} from "./helpers/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { TaskComponent } from './components/calendar/task/task.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

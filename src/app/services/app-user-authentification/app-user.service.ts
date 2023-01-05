@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {AppUser} from "../../models/app-user";
 
 //Ici on a l'URL de notre backend créé avec Spring
-const baseURL = 'http://localhost:8080/api/app-user';
+const baseUrl = 'http://localhost:8080/api/app-user';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +13,11 @@ export class AppUserService {
 
   constructor(private http: HttpClient) { }
 
-  addAppUser(newAppUSer: AppUser) {
-    return this.http.post(baseURL, newAppUSer);
+  updateAppUser(appUser: AppUser) {
+    return this.http.put(`${baseUrl}`, appUser);
   }
 
-  getAll(): Observable<AppUser[]>{
-    return this.http.get<AppUser[]>(baseURL);
-  }
-
-  get(id: any): Observable<any> {
-    return this.http.get(`${baseURL}/${id}`);
+  get(): Observable<any> {
+    return this.http.get(`${baseUrl}`);
   }
 }
