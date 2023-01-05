@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Task} from "../../models/task";
 
 //Ici on a l'URL de notre backend créé avec Spring
 const baseURL = 'http://localhost:8080/api/task';
@@ -19,5 +20,10 @@ export class TaskService {
 
   get(id: any): Observable<any> {
     return this.http.get(`${baseURL}/${id}`);
+  }
+
+  addTask(newTasks: Task) {
+    return this.http.post(baseURL, newTasks);
+
   }
 }

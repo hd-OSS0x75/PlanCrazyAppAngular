@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AppUser} from "../../../models/app-user";
-import {AppUserService} from "../../../services/app-user-authentification/app-user.service";
 import {Router} from "@angular/router";
+import {AppUserService} from "../../../services/app-user-authentification/app-user.service";
+import {AppUser} from "../../../models/app-user";
 
 @Component({
   selector: 'app-form-signup',
@@ -13,21 +13,24 @@ export class FormSignupComponent implements OnInit {
 
   signupForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder, //pour créer une représentation objet / TS de notre formulaire
               private appUserService: AppUserService,
               private router: Router) {
   }
 
+  //TODO: il n'y a pas de message d'erreur pour les doublons en base de données (pseudo + tel + email) - Le bouton "créer son compte" s'active mais rien ne se passe au click
+
+
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
       nickname: ['', Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      address: ['', Validators.required],
-      postcode: ['', Validators.required],
-      city: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-      email: ['', Validators.required],
+      firstName: [''],
+      lastName: [''],
+      address: [''],
+      postcode: ['', [Validators.minLength(5), Validators.maxLength(5)]],
+      city: [''],
+      phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      email: ['', Validators.email],
       password: ['', Validators.required],
       passwordConfirm: ['', Validators.required]
     });
@@ -45,11 +48,60 @@ export class FormSignupComponent implements OnInit {
       email: this.signupForm.value.email,
       password: this.signupForm.value.password
     };
-    //TODO : faire un login puis une redirection vers l'accueil de l'utilisateur (calendrier)
+    //TODO : faire une redirection vers l'accueil de l'utilisateur (calendrier)
     this.appUserService.addAppUser(newAppUser).subscribe({
-      next:()=>this.router.navigate(['/signin']),
+      next:()=>this.router.navigate(['/homepage']),
       error: (err)=>console.log(err)
     });
+  }
+
+
+//todo: methode utilitaire à sortir du composant
+  //Pour les champs obligatoires (pseudo, tel, email, password)
+  private invalidMandatoryField(field: string): boolean {
+    //pour vérifier que le champ est ok et aussi pour être sûr que l'utilisateur a modifié le champs ou que l'utilisateur a touché au champs
+    return this.signupForm.controls[field].invalid && (this.signupForm.controls[field].dirty || this.signupForm.controls[field].touched);
+  }
+
+  //todo: gérer le pseudo déjà existant
+  //POur les champs non obligatoire
+  private invalidOptionnalField(field: string): boolean {
+    return this.signupForm.controls[field].invalid && (this.signupForm.controls[field].value);
+  }
+
+  private validField(field: string): boolean {
+    return this.signupForm.controls[field].valid && (this.signupForm.controls[field].dirty);
+  }
+
+  nicknameIsInvalid(): boolean {
+    return this.invalidMandatoryField('nickname');
+  }
+
+  postcodeIsInvalid(): boolean {
+    return this.invalidOptionnalField('postcode');
+  }
+
+  phoneNumberIsInvalid(): boolean {
+    return this.invalidMandatoryField('phoneNumber');
+  }
+
+  emailIsInvalid(): boolean {
+    return this.invalidMandatoryField('email');
+  }
+
+  passwordIsInvalid(): boolean {
+    if(this.signupForm.value.password !== this.signupForm.value.passwordConfirm) {
+      return this.validField('password');
+    }
+    else {
+    return this.invalidMandatoryField('password')};
+  }
+
+//permet d'activer ou de désactiver le bouton de validation
+  //S'il y a encore des erreurs dans le formulaire alors le bouton n'est pas clickable
+  validationProblem() {
+    return this.signupForm.invalid ;
 
   }
 }
+

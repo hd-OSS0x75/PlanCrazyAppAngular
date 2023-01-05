@@ -1,5 +1,5 @@
 <h1>PlanCrazyApp</h1>
-<h2>Mon profil</h2>
+<h2>MON PROFIL</h2>
 
 
 <form [formGroup]="profileAppUserForm" (ngSubmit)="seModifier()">
@@ -41,8 +41,10 @@
   <p *ngIf="passwordIsInvalid()">Le mot de passe doit être saisi.</p>
   <p *ngIf="!passwordIsInvalid()"></p>
 
-  <button type="submit" [disabled]="!allowSendingModification()">Valider les modifications</button>
+  <button class="btn-valider" type="submit" [disabled]="!allowSendingModification()">Valider les modifications</button>
 </form>
 
-<button routerLink="/month">Retour</button>
-<button (click)="changeModificationAbility()">Modifier</button>
+<div class="btn">
+<button class="btn-success" routerLink="/month">Retour</button>
+<button class="btn-success" (click)="changeModificationAbility()">Modifier</button>
+</div>
