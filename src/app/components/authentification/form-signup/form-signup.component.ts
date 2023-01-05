@@ -18,19 +18,21 @@ export class FormSignupComponent implements OnInit {
               private router: Router) {
   }
 
+  //TODO: il n'y a pas de message d'erreur pour les doublons en base de données (pseudo + tel + email) - Le bouton "créer son compte" s'active mais rien ne se passe au click
+
+
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
       nickname: ['', Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      address: ['', Validators.required],
-      postcode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
-      city: ['', Validators.required],
+      firstName: [''],
+      lastName: [''],
+      address: [''],
+      postcode: ['', [Validators.minLength(5), Validators.maxLength(5)]],
+      city: [''],
       phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       email: ['', Validators.email],
       password: ['', Validators.required],
       passwordConfirm: ['', Validators.required]
-      // passwordConfirm: ['', [Validators.required, Validators.arguments == "password"]]
     });
   }
 
