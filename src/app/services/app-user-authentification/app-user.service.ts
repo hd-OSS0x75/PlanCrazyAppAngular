@@ -21,7 +21,7 @@ export class AppUserService {
     return this.http.get<AppUser[]>(baseURL);
   }
 
-  get(id: any): Observable<any> {
-    return this.http.get(`${baseURL}/${id}`);
+  get(): Observable<any> {
+    return this.http.get(`${baseURL}`);
   }
 }

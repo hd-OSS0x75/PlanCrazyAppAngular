@@ -55,7 +55,7 @@ export class AppuserSigninComponent {
   }
 
   test() {
-    this.appUserService.get(this.sessionStorageService.getAppUserId())
+    this.appUserService.get()
       .subscribe({
         next: data => {
           console.log(data);

@@ -51,12 +51,12 @@ export class AppuserProfileComponent implements OnInit {
 
   //BLOC : fonctions à l'initialisation
   ngOnInit(): void {
-    this.getAppUser(<string>this.sessionStorageService.getAppUserId());
+    this.getAppUser();
   }
 
 
-  private getAppUser(appUserId: string) {
-    this.appUserService.get(appUserId)
+  private getAppUser() {
+    this.appUserService.get()
       .subscribe({
         next: value => {
           this.currentUserProfile['nickname'] = value['nickname'];
@@ -132,7 +132,7 @@ export class AppuserProfileComponent implements OnInit {
   }
 
   private updateFields() {
-    this.getAppUser(<string>this.sessionStorageService.getAppUserId());
+    this.getAppUser();
   }
 
   private changeFieldsDisplay() {

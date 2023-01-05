@@ -25,7 +25,7 @@ export class DetailsTaskComponent implements OnInit{
   }
 
   private updateNickname(appUserId: string) {
-    this.appUserService.get(appUserId)
+    this.appUserService.get()
       .subscribe({
         next: value => {
           this.nickname = value['nickname'];
