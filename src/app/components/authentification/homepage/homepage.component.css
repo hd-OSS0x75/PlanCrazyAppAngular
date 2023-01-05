@@ -3,6 +3,7 @@ h1 {
   color: #42855B;
   size: 64px;
   text-shadow: #bbb9b9 1px 2px;
+  font-family: "Berlin Sans FB", sans-serif;
 }
 
 .btn{
@@ -12,8 +13,17 @@ h1 {
 }
 
 .btn-success {
-  background-color: #90B77D;
+  font-family: "Berlin Sans FB", sans-serif;
   margin: 100px 10px;
+  padding: 10px 10px;
   border-radius: 20px;
+  border: none;
+}
 
+.create {
+  background-color: #90B77D;
+}
+
+.connect {
+  background-color: #D2D79F;
 }
