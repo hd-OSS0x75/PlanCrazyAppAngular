@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AppUser} from "../../../models/app-user";
 import {AppUserService} from "../../../services/app-user-authentification/app-user.service";
 import {Router} from "@angular/router";
+import {AuthService} from "../../../services/security/auth.service";
 
 @Component({
   selector: 'app-form-signup',
@@ -15,6 +16,7 @@ export class FormSignupComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private appUserService: AppUserService,
+              private authService: AuthService,
               private router: Router) {
   }
 
@@ -45,8 +47,8 @@ export class FormSignupComponent implements OnInit {
       email: this.signupForm.value.email,
       password: this.signupForm.value.password
     };
-    //TODO : faire un login puis une redirection vers l'accueil de l'utilisateur (calendrier)
-    this.appUserService.addAppUser(newAppUser).subscribe({
+    //TODO : faire un login puis une redirection vers l'accueil de l'utilisateur (calendrier). À faire sans subscribe nestés !!
+    this.authService.addAppUser(newAppUser).subscribe({
       next:()=>this.router.navigate(['/signin']),
       error: (err)=>console.log(err)
     });

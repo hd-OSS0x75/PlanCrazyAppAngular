@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {SessionStorageService} from "./session-storage.service";
 import {BehaviorSubject, map, Observable} from "rxjs";
+import {AppUser} from "../../models/app-user";
 
 @Injectable({
   providedIn: 'root'
@@ -36,13 +37,10 @@ export class AuthService {
         })
       );
   }
-  // login(email: string, password: string, userId: string) {
-  //   // const signinRequest = {email, password};
-  //   this.sessionStorage.saveAppUserEmail(email);//à priori en réception un userId et un token
-  //   this.sessionStorage.saveToken(password);
-  //   this.sessionStorage.saveAppUserId(userId);
-  //   this.loggedIn.next(true);
-  // }
+
+  addAppUser(newAppUSer: AppUser) {
+    return this.http.post(`${this.BASE_URL}/signup`, newAppUSer);
+  }
 
   logout() {
     this.sessionStorage.clearSession();

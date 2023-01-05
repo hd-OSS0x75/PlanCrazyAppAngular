@@ -83,7 +83,6 @@ export class AppuserProfileComponent implements OnInit {
     return this.profileAppUserForm.controls[field].invalid && !this.profileAppUserForm.controls[field].pristine && this.allowModification;
   }
 
-
   nicknameIsInvalid(): boolean {
     return this.invalidField('nickname');
   }
@@ -166,6 +165,22 @@ export class AppuserProfileComponent implements OnInit {
   }
 
   seModifier() {
-    console.log(this.profileAppUserForm.value);//todo : send this to backend
+    const modifiedAppUser: AppUser = {
+      nickname: this.currentUserProfile['nickname'],
+      firstName: this.currentUserProfile['firstName'],
+      lastName: this.currentUserProfile['lastName'],
+      address: this.currentUserProfile['address'],
+      postcode: this.currentUserProfile['postcode'],
+      city: this.currentUserProfile['city'],
+      phoneNumber: this.currentUserProfile['phoneNumber'],
+      email: this.currentUserProfile['email'],
+      password: this.currentUserProfile['password']
+    };
+
+    console.log(modifiedAppUser);//todo : test this functionnality
+    this.appUserService.updateAppUser(modifiedAppUser).subscribe({
+      next: value => {console.log(value);},
+      error: err => {console.log(err);}
+    });
   }
 }
