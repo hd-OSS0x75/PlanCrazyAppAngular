@@ -26,7 +26,7 @@ export class AddTaskComponent implements OnInit {
     this.newTaskForm = this.formBuilder.group({
       title: ['', Validators.required],
       location: [''],
-      startingDate: [''],
+      startingDate: ['', Validators.required],
       endingDate: [''],
       startingHour: [''],
       endingHour: [''],

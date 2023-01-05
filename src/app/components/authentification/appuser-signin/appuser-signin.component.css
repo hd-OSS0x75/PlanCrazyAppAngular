@@ -16,7 +16,9 @@ h1 {
   background-color: #90B77D;
   border-radius: 20px;
   font-family: "Berlin Sans FB", sans-serif;
-  margin-top: 50px;
+  margin: 40px 50px 0 50px;
+  padding: 10px 0;
+  border : none;
 }
 
 form {
@@ -33,15 +35,11 @@ form {
 }
 
 input {
-  border: none;
+  border-top: none;
+  border-right: none;
+  border-left: none;
   font-family: "Berlin Sans FB", sans-serif;
+  width: 100%;
+  border-color: #90B77D;
 }
 
-hr{
-  color: #90B77D;
-  height: 2px;
-  background-color: #90B77D;
-  width : 100%;
-  border: none;
-  margin-top: -10px;
-}
