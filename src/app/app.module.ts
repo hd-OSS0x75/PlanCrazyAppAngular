@@ -1,5 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule,  LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr);
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/authentification/homepage/homepage.component';
@@ -43,7 +46,8 @@ import { WeatherFiveDaysForecastComponent } from './components/weather/weather-f
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [AuthInterceptorProviders],
+  providers: [AuthInterceptorProviders, { provide: LOCALE_ID, useValue: "fr-FR" }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
