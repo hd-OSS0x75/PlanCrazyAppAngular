@@ -24,6 +24,7 @@ input {
 textarea {
   border-radius: 10px;
   font-family: "Berlin Sans FB", sans-serif;
+  padding: 0 20px;
 }
 
 
