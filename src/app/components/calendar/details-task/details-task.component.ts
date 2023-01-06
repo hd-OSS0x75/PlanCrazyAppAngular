@@ -52,6 +52,7 @@ export class DetailsTaskComponent implements OnInit{
     this.taskService.get(id).subscribe({
       next: value => {
         console.log(value);
+        this.currentTask['taskId'] = value['taskId'];
         this.currentTask['title'] = value['taskTitle'];
         this.currentTask['location'] = value['location'];
         this.currentTask['startingDate'] = value['startingDate'];
