@@ -7,6 +7,17 @@ h2 {
   font-family: "Berlin Sans FB", sans-serif;
 }
 
+h3{
+  font-family: "Berlin Sans FB", sans-serif;
+  text-align: center;
+  font-weight: bold;
+}
+
+p{
+  font-family: "Berlin Sans FB", sans-serif;
+  text-align: center;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -24,4 +35,16 @@ input {
 textarea {
   border-radius: 10px;
   font-family: "Berlin Sans FB", sans-serif;
+}
+
+.btn-success {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #90B77D;
+  border-radius: 20px;
+  font-family: "Berlin Sans FB", sans-serif;
+  margin: 100px 10px;
+  padding: 10px 10px;
+  border : none;
 }

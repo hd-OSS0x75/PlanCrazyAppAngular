@@ -2,16 +2,16 @@
 <p></p>
 <a routerLink="/month">Retour</a>
 <p></p>
-<a routerLink="/task/update/{{currentTask.taskId}}">Modifier</a>
+
 
 <h2>Détail de l'évènement</h2>
+<h3>{{currentTask.title}}</h3>
+<p>Du {{currentTask.startingDate | date: "dd/MM/yyyy"}} - {{currentTask.startingHour}} au {{currentTask.endingDate  | date: "dd/MM/yyyy"}} - {{currentTask.endingHour}} </p>
+<p> Lieu : {{currentTask.location}} </p>
+
 <form [formGroup]="updateTaskForm">
-  <input id="title" type="text" formControlName="title" placeholder="Titre" value="{{currentTask.title}}"><br>
-  <input id="location" type="text" formControlName="location" placeholder="Lieu ou appel vidéo" value="{{currentTask.location}}"><br>
-  <input id="startingDate" type="date" formControlName="startingDate" placeholder="Date de début" value="{{currentTask.startingDate}}"><br>
-  <input id="endingDate" type="date" formControlName="endingDate" placeholder="Date de fin" value="{{currentTask.endingDate}}"><br>
-  <input id="startingHour" type="time" formControlName="startingHour" placeholder="Heure de début" value="{{currentTask.startingHour}}"><br>
-  <input id="endingHour" type="time" formControlName="endingHour" placeholder="Heure de fin" value="{{currentTask.endingHour}}"><br>
   <label class="notes" for="description">Notes</label>
   <textarea  id="description" type="text" formControlName="description" rows="6" value="{{currentTask.description}}"></textarea><br>
 </form>
+
+<a class="btn-success" routerLink="/task/update/{{currentTask.taskId}}">Modifier</a>
