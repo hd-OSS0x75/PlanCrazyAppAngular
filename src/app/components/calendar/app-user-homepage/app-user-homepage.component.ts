@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {SessionStorageService} from "../../../services/security/session-storage.service";
 import {AppUserService} from "../../../services/app-user-authentification/app-user.service";
 import {TaskService} from "../../../services/calendar/task.service";
-import * as events from "events";
 
 @Component({
   selector: 'app-app-user-homepage',
@@ -22,7 +21,6 @@ export class AppUserHomepageComponent implements OnInit {
   ngOnInit(): void {
     this.updateNickname();
     this.getAppUserTasks();
-
   }
 
   private updateNickname() {
@@ -54,4 +52,6 @@ export class AppUserHomepageComponent implements OnInit {
       error: err => console.log(err)
     });
   }
+
+
 }

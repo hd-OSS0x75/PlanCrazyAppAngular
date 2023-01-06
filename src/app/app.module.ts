@@ -18,6 +18,7 @@ import { TaskComponent } from './components/calendar/task/task.component';
 import {AuthInterceptorProviders} from "./helpers/auth.interceptor";
 import localeFr from '@angular/common/locales/fr';
 import {registerLocaleData} from "@angular/common";
+import {FlashMessagesModule} from "flash-messages-angular";
 registerLocaleData(localeFr, 'fr-FR')
 
 
@@ -40,6 +41,7 @@ registerLocaleData(localeFr, 'fr-FR')
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FlashMessagesModule.forRoot()
 
   ],
   providers: [

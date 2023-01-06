@@ -1,6 +1,8 @@
 <h1>PlanCrazyApp</h1>
 <h2>MON PROFIL</h2>
 
+<flash-messages class="flashMessage"></flash-messages>
+
 
 <form [formGroup]="profileAppUserForm" (ngSubmit)="seModifier()">
 
@@ -41,7 +43,7 @@
   <p *ngIf="passwordIsInvalid()">Le mot de passe doit être saisi.</p>
   <p *ngIf="!passwordIsInvalid()"></p>
 
-  <button class="btn-valider" type="submit" [disabled]="!allowSendingModification()">Valider les modifications</button>
+  <button class="btn-valider" type="submit" [disabled]="!allowSendingModification()" (click)="showFlash()">Valider les modifications</button>
 </form>
 
 <div class="btn">

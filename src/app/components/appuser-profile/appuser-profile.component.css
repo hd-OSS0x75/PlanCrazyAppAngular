@@ -15,6 +15,20 @@ h2 {
   font-family: "Berlin Sans FB", sans-serif;
 }
 
+.flash-message
+{
+  z-index: 10000;
+  position: relative;
+}
+
+.flashMessage
+{
+  font-family: "Berlin Sans FB", sans-serif;
+  color: red;
+  font-size:20px;
+  text-align: center;
+}
+
 /*mobile first: min width */
 @media (min-width: 360px) {
   form {
