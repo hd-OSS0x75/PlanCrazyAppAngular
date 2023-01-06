@@ -9,16 +9,14 @@
 
 <p class="date">{{today | date:'EEEE dd MMMM': '':'fr-FR'}}</p>
 
-<p>
-  Todo -> liste déroulante des prochaines tâches de la journée sélectionnée ne fonctionne plus... à vérifier! Peut être problème format date
-</p>
-
 <ul>
   <li *ngFor="let task of taskList">
-    <app-task taskId="{{task.taskId}}" taskTitle="{{task.taskTitle}}" startingHour="{{(task.startingDate | date: 'dd/MM/yy') + ': ' + task.startingHour}}"
+    <app-task  taskId="{{task.taskId}}" taskTitle="{{task.taskTitle}}" startingHour="{{(task.startingDate | date: 'dd/MM/yy') + ': ' + task.startingHour}}"
               (deleteThisTaskEvent)="deleteTask($event)"></app-task>
   </li>
 </ul>
 
+<div class="btn">
 <button class="btn-success" routerLink="/month">Journée complète</button>
 <button class="btn-success" routerLink="/task/add">Nouvelle tâche</button>
+</div>

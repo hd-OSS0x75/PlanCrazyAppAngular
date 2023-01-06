@@ -12,10 +12,18 @@ h1 {
   font-weight: bold;
 }
 
+li{
+  list-style-type: none;
+}
+
+.btn {
+  text-align: center;
+}
+
 .btn-success {
   background-color: #90B77D;
   border-radius: 20px;
-  padding: 0 40px;
-  margin:  0 10px;
+  margin: 20px 10px;
+  padding: 10px 10px;
   border: none;
 }
