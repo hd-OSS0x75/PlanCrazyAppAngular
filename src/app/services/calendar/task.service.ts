@@ -22,8 +22,15 @@ export class TaskService {
     return this.http.get(`${baseURL}/${id}`);
   }
 
-  addTask(newTasks: Task) {
+  add(newTasks: Task): Observable<any> {
     return this.http.post(baseURL, newTasks);
+  }
 
+  update(updatedTask: Task): Observable<any> {
+    return this.http.put(baseURL, updatedTask);
+  }
+
+  delete(id: any): Observable<any> {
+    return this.http.delete(`${baseURL}/${id}`);
   }
 }

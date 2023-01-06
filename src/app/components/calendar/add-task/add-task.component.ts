@@ -59,7 +59,7 @@ export class AddTaskComponent implements OnInit {
       private: true
     };
     console.log(newTask);
-    this.taskService.addTask(newTask).subscribe({
+    this.taskService.add(newTask).subscribe({
       next:()=>this.router.navigate(['/month']),
       error: (err)=>console.log(err)
     });
