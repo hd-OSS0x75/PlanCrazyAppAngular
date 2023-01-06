@@ -20,12 +20,12 @@ export class AppUserHomepageComponent implements OnInit {
               private taskService: TaskService)  {   }
 
   ngOnInit(): void {
-    this.updateNickname(<string>this.sessionStorageService.getAppUserId());
+    this.updateNickname();
     this.getAppUserTasks();
 
   }
 
-  private updateNickname(appUserId: string) {
+  private updateNickname() {
     this.appUserService.get()
       .subscribe({
         next: value => {

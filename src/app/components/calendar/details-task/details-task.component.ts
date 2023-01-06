@@ -20,11 +20,11 @@ export class DetailsTaskComponent implements OnInit{
               private taskService: TaskService) {}
 
   ngOnInit(): void {
-    this.updateNickname(<string>this.sessionStorageService.getAppUserId());
+    this.updateNickname();
     this.getTask(this.route.snapshot.params['id']);//todo : meilleure méthode ?
   }
 
-  private updateNickname(appUserId: string) {
+  private updateNickname() {
     this.appUserService.get()
       .subscribe({
         next: value => {

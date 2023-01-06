@@ -22,7 +22,7 @@ export class AddTaskComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit(): void {
-    this.updateNickname(<string>this.sessionStorageService.getAppUserId());
+    this.updateNickname();
     this.newTaskForm = this.formBuilder.group({
       title: ['', Validators.required],
       location: [''],
@@ -35,7 +35,7 @@ export class AddTaskComponent implements OnInit {
     });
   }
 
-  private updateNickname(appUserId: string) {
+  private updateNickname() {
     this.appUserService.get()
       .subscribe({
         next: value => {
