@@ -1,0 +1,10 @@
+#five-days-container {
+  background: #D2D79F;
+  display: flex;
+  justify-content: space-between;
+  max-width: 40rem;
+  margin: 3rem auto;
+  padding: 3rem;
+  border-radius: 5rem;
+  box-shadow: 4px 4px 4px #817B7B;
+}

@@ -16,6 +16,9 @@ import { DetailsTaskComponent } from './components/calendar/details-task/details
 import { UpdateTaskComponent } from './components/calendar/update-task/update-task.component';
 import { TaskComponent } from './components/calendar/task/task.component';
 import {AuthInterceptorProviders} from "./helpers/auth.interceptor";
+import { WeatherLandingPageComponent } from './components/weather/weather-landing-page/weather-landing-page.component';
+import { WeatherMainWidgetComponent } from './components/weather/weather-main-widget/weather-main-widget.component';
+import { WeatherFiveDaysForecastComponent } from './components/weather/weather-five-days-forecast/weather-five-days-forecast.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import {AuthInterceptorProviders} from "./helpers/auth.interceptor";
     AddTaskComponent,
     DetailsTaskComponent,
     UpdateTaskComponent,
-    TaskComponent
+    TaskComponent,
+    WeatherLandingPageComponent,
+    WeatherMainWidgetComponent,
+    WeatherFiveDaysForecastComponent
   ],
   imports: [
     BrowserModule,
