@@ -15,8 +15,11 @@ form {
 }
 
 input{
-  border: none;
-  width: 200px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  width: 100%;
+  border-color: #90B77D;
 }
 
 input, button, .notes {
@@ -37,16 +40,13 @@ input, button, .notes {
 
 .btn-success {
   background-color: #90B77D;
-  margin-top: 40px;
+  margin: 40px 50px 0 50px;
+  padding: 10px 0;
   border-radius: 20px;
   border : none;
 }
 
-hr{
-  color: #90B77D;
-  height: 2px;
-  background-color: #90B77D;
-  width : 100%;
-  border: none;
-  margin-top: -10px;
+textarea {
+  padding: 0 20px;
 }
+

@@ -1,23 +1,17 @@
 <a routerLink="/profile">{{nickname}}</a>
+<p></p>
 <a routerLink="/month">Annuler</a>
 
 <h2>Nouvel évènement</h2>
 
 <form [formGroup]="newTaskForm" (ngSubmit)="onSubmit()">
   <input id="title" type="text" formControlName="title" placeholder="Titre"><br>
-  <hr/>
   <input id="location" type="text" formControlName="location" placeholder="Lieu ou appel vidéo"><br>
-  <hr/>
   <input id="startingDate" type="date" formControlName="startingDate" placeholder="Date de début"><br>
-  <hr/>
   <input id="endingDate" type="date" formControlName="endingDate" placeholder="Date de fin"><br>
-  <hr/>
   <input id="startingHour" type="time" formControlName="startingHour" placeholder="Heure de début"><br>
-  <hr/>
   <input id="endingHour" type="time" formControlName="endingHour" placeholder="Heure de fin"><br>
-  <hr/>
   <input id="URL" type="text" formControlName="URL" placeholder="URL"><br>
-  <hr/>
   <label class="notes" for="description">Notes</label>
   <textarea  id="description" type="text" formControlName="description" rows="6"></textarea><br>
 
@@ -25,3 +19,8 @@
           class="btn-success"
           [disabled]="validationProblem()">Valider</button>
 </form>
+
+<!--ASTUCE POUR TESTER LE REMPLISSAGE DES CHAMPS D'UN FORMULAIRE-->
+<pre>
+  {{newTaskForm.value | json }}
+</pre>

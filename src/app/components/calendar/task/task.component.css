@@ -1,0 +1,19 @@
+div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  font-family: "Berlin Sans FB", sans-serif;
+  background-color: #E8E8E8;
+  border-radius: 20px;
+  padding: 20px 40px;
+  margin:  10px 0;
+  border: none;
+}
+
+fa-trash-can {
+  color: blue;
+}

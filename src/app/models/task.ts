@@ -3,9 +3,9 @@ export interface Task {
     taskTitle: string;
     description: string;
     location: string;
-    startingDate: any;
+    startingDate: Date;
     startingHour: any;
-    endingDate: any;
+    endingDate: Date;
     endingHour: any;
     private: boolean;
 }

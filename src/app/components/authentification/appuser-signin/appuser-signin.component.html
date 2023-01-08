@@ -4,11 +4,9 @@
   <input id="email" type="email" formControlName="email" placeholder="Entrer son email">
   <p *ngIf="emailIsInvalid()" class="alert-danger">Rentrez un email valide.</p>
   <p *ngIf="!emailIsInvalid()"></p>
-  <hr/>
   <input id="password" type="password" formControlName="password" placeholder="Entrer son mot de passe">
   <p *ngIf="passwordIsInvalid()" class="alert-danger">Le mot de passe doit être saisi.</p>
   <p *ngIf="!passwordIsInvalid()"></p>
-  <hr/>
   <button class="btn-success" type="submit" [disabled]="!signingInAppUserForm.valid">Se connecter</button>
 </form>
 

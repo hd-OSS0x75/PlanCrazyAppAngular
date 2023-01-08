@@ -22,11 +22,11 @@ export class AddTaskComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit(): void {
-    this.updateNickname(<string>this.sessionStorageService.getAppUserId());
+    this.updateNickname();
     this.newTaskForm = this.formBuilder.group({
       title: ['', Validators.required],
       location: [''],
-      startingDate: [''],
+      startingDate: ['', Validators.required],
       endingDate: [''],
       startingHour: [''],
       endingHour: [''],
@@ -35,7 +35,7 @@ export class AddTaskComponent implements OnInit {
     });
   }
 
-  private updateNickname(appUserId: string) {
+  private updateNickname() {
     this.appUserService.get()
       .subscribe({
         next: value => {
@@ -59,7 +59,7 @@ export class AddTaskComponent implements OnInit {
       private: true
     };
     console.log(newTask);
-    this.taskService.addTask(newTask).subscribe({
+    this.taskService.add(newTask).subscribe({
       next:()=>this.router.navigate(['/month']),
       error: (err)=>console.log(err)
     });

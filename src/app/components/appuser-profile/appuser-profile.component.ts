@@ -3,6 +3,7 @@ import {SessionStorageService} from "../../services/security/session-storage.ser
 import {AppUserService} from "../../services/app-user-authentification/app-user.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AppUser} from "../../models/app-user";
+import {FlashMessagesService} from "flash-messages-angular";
 
 @Component({
   selector: 'app-appuser-profile',
@@ -46,7 +47,8 @@ export class AppuserProfileComponent implements OnInit {
   allowModification: boolean = false;
 
   constructor(private sessionStorageService: SessionStorageService,
-              private appUserService: AppUserService) {
+              private appUserService: AppUserService,
+              private flashMessage: FlashMessagesService) {
   }
 
   //BLOC : fonctions à l'initialisation
@@ -119,9 +121,6 @@ export class AppuserProfileComponent implements OnInit {
     return this.invalidField('password');
   }
 
-
-
-
   // BLOC : gestion de l'évènement : l'utilisateur clique sur le bouton modifier
 
   changeModificationAbility() {
@@ -182,5 +181,12 @@ export class AppuserProfileComponent implements OnInit {
       next: value => {console.log(value);},
       error: err => {console.log(err);}
     });
+  }
+
+//MESSAGE FLASH
+  //1er paramètre: message
+  //2nd paramètre: optionnel (durée message, genre d'alerte etc.)
+  showFlash(){
+    this.flashMessage.show('Modifications prises en compte');
   }
 }
