@@ -1,27 +1,10 @@
 <div id="five-days-container">
-  <div class="dayOfTheWeek">
-    <h3>Lundi</h3>
-    <i class="fas fa-3x fa-sun sun"></i>
-    <p>Temp°</p>
-  </div>
-  <div class="dayOfTheWeek">
-    <h3>Mardi</h3>
-    <i class="fas fa-3x fa-sun sun"></i>
-    <p>Temp°</p>
-  </div>
-  <div class="dayOfTheWeek">
-    <h3>Mercredi</h3>
-    <i class="fas fa-3x fa-sun sun"></i>
-    <p>Temp°</p>
-  </div>
-  <div class="dayOfTheWeek">
-    <h3>Jeudi</h3>
-    <i class="fas fa-3x fa-sun sun"></i>
-    <p>Temp°</p>
-  </div>
-  <div class="dayOfTheWeek">
-    <h3>Vendredi</h3>
-    <i class="fas fa-3x fa-sun sun"></i>
-    <p>Temp°</p>
+  <div *ngFor="let item of fiveDaysWeatherData" class="dayOfTheWeek">
+    <h3>{{item.dt_txt | date:'EEEE'}}</h3>
+    <i *ngIf="item.weather[0].main.includes('Clear')" class="fas fa-3x fa-sun sun"></i>
+    <i *ngIf="item.weather[0].main.includes('Clouds')" class="fas fa-3x fa-cloud cloud"></i>
+    <i *ngIf="item.weather[0].main.includes('Rain')" class="fas fa-3x fa-cloud-rain rain"></i>
+    <i *ngIf="item.weather[0].main.includes('Snow')" class="fas fa-3x fa-snowflake snow"></i>
+    <p>{{item.main.temp}}°</p>
   </div>
 </div>

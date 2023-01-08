@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {WeatherDataService} from "../../../services/weather/weather-data.service";
-import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-weather-main-widget',
@@ -13,20 +12,21 @@ export class WeatherMainWidgetComponent {
   isCloudy = false;
   isRainy = false;
   isSnowy = false;
-  private selectedCity = "daun"
+  private selectedCity = "paris"
 
   dateOfToday = new Date();
+
   weatherData!: {
-    name: undefined,
+    name: string,
     weather: {
-      main: undefined,
-      description: undefined
+      main: string,
+      description: string
     },
     main: {
       temp: number,
-      pressure: undefined,
-      feels_like: undefined,
-      humidity: undefined
+      pressure: number,
+      feels_like: number,
+      humidity: number
     }
     sys: {
       sunrise: undefined,
