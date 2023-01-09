@@ -8,6 +8,11 @@
 <h3>{{currentTask.title}}</h3>
 <p>Du {{currentTask.startingDate | date: "dd/MM/yyyy"}} - {{currentTask.startingHour}} au {{currentTask.endingDate  | date: "dd/MM/yyyy"}} - {{currentTask.endingHour}} </p>
 <p> Lieu : {{currentTask.location}} </p>
+<p>Propriétaire : {{currentTask.ownerEmail}}</p>
+
+<label for="sharingMail">Partager à : </label>
+<input type="email" placeholder="addresse@mail.com" id="sharingMail" name="sharingMail" [(ngModel)]="sharingUserEmail">
+<button (click)="shareWithUser()">Partager</button>
 
 <form [formGroup]="updateTaskForm">
   <label class="notes" for="description">Notes</label>
