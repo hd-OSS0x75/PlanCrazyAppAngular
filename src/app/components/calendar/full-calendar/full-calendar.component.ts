@@ -25,10 +25,6 @@ export class FullCalendarComponent implements OnInit {
 
   @Output() choseThisDateEvent = new EventEmitter<string>();
 
-  choseThisDate(date: string) {
-    this.choseThisDateEvent.emit(date);
-  }
-
   calendarVisible = true;
 
   calendarOptions: CalendarOptions = {
@@ -41,8 +37,8 @@ export class FullCalendarComponent implements OnInit {
     events: this.taskList,
     editable: true,
     nowIndicator: true,
-    dateClick: this.handleDateSelect.bind(this), //todo : make it work
-    eventClick: this.handleEventClick.bind(this), //todo : make it work
+    dateClick: this.handleDateSelect.bind(this),
+    eventClick: this.handleEventClick.bind(this), //todo : make it work. What do we want from it ?
     eventColor: "#90B77D",
   };
 
@@ -89,8 +85,8 @@ export class FullCalendarComponent implements OnInit {
       events: this.taskList,
       editable: true,
       nowIndicator: true,
-      dateClick: this.handleDateSelect.bind(this),//todo : make it work
-      eventClick: this.handleEventClick.bind(this), //todo : make it work
+      dateClick: this.handleDateSelect.bind(this),
+      eventClick: this.handleEventClick.bind(this), //todo : make it work. What do we want from it ?
       eventColor: "#90B77D",
     };
   }
@@ -113,18 +109,18 @@ export class FullCalendarComponent implements OnInit {
     //     allDay: selectDateInfo.allDay
     //   });
 
-      // //ENREGISTREMENT EN BDD
-      // //Pour récupérer la date pour notre BDD il faut transformer la date du calendrier (string) en format date
-      // const[year, month, day] = clickedDate.split('-')
-      //  console.log(day);
-      //  console.log(month);
-      //  console.log(year);
-      //  const date = new Date(+year, +month - 1, +day);
-      //  console.log(date);
-      //  newTask.startingDate = date;
-      //  newTask.taskTitle = title;
-      //  console.log(newTask.taskTitle);
-      // this.taskService.add(newTask);
+    // //ENREGISTREMENT EN BDD
+    // //Pour récupérer la date pour notre BDD il faut transformer la date du calendrier (string) en format date
+    // const[year, month, day] = clickedDate.split('-')
+    //  console.log(day);
+    //  console.log(month);
+    //  console.log(year);
+    //  const date = new Date(+year, +month - 1, +day);
+    //  console.log(date);
+    //  newTask.startingDate = date;
+    //  newTask.taskTitle = title;
+    //  console.log(newTask.taskTitle);
+    // this.taskService.add(newTask);
   }
 
   //AU CLIC SUR UN EVENEMENT, UNE TACHE ON A SON DETAIL
@@ -140,5 +136,8 @@ export class FullCalendarComponent implements OnInit {
     });
   }
 
+  choseThisDate(date: string) {
+    this.choseThisDateEvent.emit(date);
+  }
 
 }
