@@ -8,10 +8,4 @@ export interface Task {
     endingDate: Date;
     endingHour: any;
     private: boolean;
-
-
-
-
-
-
 }
