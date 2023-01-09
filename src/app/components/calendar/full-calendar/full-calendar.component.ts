@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {CalendarOptions, DateSelectArg, EventApi, EventClickArg} from "@fullcalendar/core";
 import dayGridPlugin from '@fullcalendar/daygrid';
 import frLocale from "@fullcalendar/core/locales/fr";
@@ -21,7 +21,15 @@ let newTask: Task ;
   styleUrls: ['./full-calendar.component.css']
 })
 export class FullCalendarComponent implements OnInit{
-  taskList: any[] = [];
+  // taskList: any[] = [];
+  @Input("eventList")
+  taskList?: any[];
+  //   = [
+  //   // { title: 'rdv dentiste', start: '2023-01-09 ', end: '2023-01-09', id: "3"},
+  //   // {title: 'rdv banque', start: '2023-01-10', end: '2023-01-10', id: "2"},
+  //   // {title: 'rdv dermatologue', start: '2023-01-15', end:'2023-01-15', id: "4"}
+  // ];
+
 
   calendarVisible = true;
 
@@ -35,11 +43,14 @@ export class FullCalendarComponent implements OnInit{
     // events: [
     //   { title: 'rdv dentiste', date: '2023-01-09', id: "3"},
     //   {title: 'rdv banque', date: '2023-01-10', id: "2"}],
-    //events: this.event1,
+    events: this.taskList,
     editable: true,
+    nowIndicator: true,
     dateClick: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this),
     eventColor: "#90B77D",
+
+
   };
 
 
@@ -61,7 +72,6 @@ export class FullCalendarComponent implements OnInit{
     //     this.events1 = data.ev
     //     this.event$.next(data.eventsByTaskId)
     //   })
-
   }
 
   //AU CLIC SUR UNE DATE ON A LES INFOS LIEES
@@ -101,6 +111,7 @@ export class FullCalendarComponent implements OnInit{
     //QUAND ON CLIQUE SUR UN EVENEMENT on affiche son nom dans la console ou son id
     console.log(clickInfo.event.title)
     console.log(clickInfo.event.id)
+    console.log(clickInfo)
 
     this.taskService.get(clickInfo.event.id).subscribe({
       next: () => this.router.navigate(['/details/:clickInfo.event.id']),
