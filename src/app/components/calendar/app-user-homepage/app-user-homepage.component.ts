@@ -39,7 +39,10 @@ export class AppUserHomepageComponent implements OnInit {
     this.taskService.getAll()
       .subscribe({
         next: value => {
-          this.taskList = value;
+          this.taskList = value.filter(value1 => {
+            return (new Date(value1.startingDate) <= new Date(this.chosenDate)) && (new Date(value1.endingDate) >= new Date(this.chosenDate))
+          });
+          console.log(this.taskList);
         },
         error: err => {console.log(err);}
       });
@@ -56,6 +59,7 @@ export class AppUserHomepageComponent implements OnInit {
   choseDate($event: string) {
     console.log($event);
     this.chosenDate = <Date><unknown>$event;
+    this.getAppUserTasks();
   }
 
 }
