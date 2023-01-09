@@ -1,0 +1,17 @@
+full-calendar {
+  font-family:  "Berlin Sans FB", sans-serif;
+  border-radius: 10px;
+  /*border: solid #837d7d;*/
+  box-shadow: #b0adad 10px 10px;
+  margin: 50px;
+  /*background-color: #837d7d;*/
+  color: #90B77D;
+}
+
+/*todo: je n'arrive pas à changer la couleur du fond de la date du jour*/
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: #f3533f;
+}
+
+
+
