@@ -1,12 +1,12 @@
 export interface Task {
     taskId?: string;
-    title: string;
+    taskTitle: string;
     description: string;
     location: string;
-    start: Date;
-    // startingHour: any;
-    end: Date;
-    // endingHour: any;
+    startingDate: Date;
+    startingHour: any;
+    endingDate: Date;
+    endingHour: any;
     private: boolean;
 
 
