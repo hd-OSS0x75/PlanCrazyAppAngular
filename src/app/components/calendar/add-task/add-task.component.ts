@@ -22,11 +22,11 @@ export class AddTaskComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit(): void {
-    this.updateNickname(<string>this.sessionStorageService.getAppUserId());
+    this.updateNickname();
     this.newTaskForm = this.formBuilder.group({
       title: ['', Validators.required],
       location: [''],
-      startingDate: [''],
+      startingDate: ['', Validators.required],
       endingDate: [''],
       startingHour: [''],
       endingHour: [''],
@@ -35,8 +35,8 @@ export class AddTaskComponent implements OnInit {
     });
   }
 
-  private updateNickname(appUserId: string) {
-    this.appUserService.get(appUserId)
+  private updateNickname() {
+    this.appUserService.get()
       .subscribe({
         next: value => {
           this.nickname = value['nickname'];
@@ -48,7 +48,7 @@ export class AddTaskComponent implements OnInit {
   }
 
   onSubmit() {
-    const newTasks : Task = {
+    const newTask : Task = {
       taskTitle: this.newTaskForm.value.title,
       description: this.newTaskForm.value.description,
       location: this.newTaskForm.value.location,
@@ -56,10 +56,11 @@ export class AddTaskComponent implements OnInit {
       startingHour: this.newTaskForm.value.startingHour,
       endingDate: this.newTaskForm.value.endingDate,
       endingHour: this.newTaskForm.value.endingHour,
-
+      private: true
     };
-    this.taskService.addTask(newTasks).subscribe({
-      next:()=>this.router.navigate(['/homepage']),
+    console.log(newTask);
+    this.taskService.add(newTask).subscribe({
+      next:()=>this.router.navigate(['/month']),
       error: (err)=>console.log(err)
     });
 

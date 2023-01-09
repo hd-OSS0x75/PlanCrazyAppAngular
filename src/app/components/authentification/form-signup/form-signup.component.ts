@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
-import {AppUserService} from "../../../services/app-user-authentification/app-user.service";
 import {AppUser} from "../../../models/app-user";
+import {AppUserService} from "../../../services/app-user-authentification/app-user.service";
+import {Router} from "@angular/router";
+import {AuthService} from "../../../services/security/auth.service";
 
 @Component({
   selector: 'app-form-signup',
@@ -15,11 +16,9 @@ export class FormSignupComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, //pour créer une représentation objet / TS de notre formulaire
               private appUserService: AppUserService,
+              private authService: AuthService,
               private router: Router) {
   }
-
-  //TODO: il n'y a pas de message d'erreur pour les doublons en base de données (pseudo + tel + email) - Le bouton "créer son compte" s'active mais rien ne se passe au click
-
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
@@ -36,7 +35,7 @@ export class FormSignupComponent implements OnInit {
     });
   }
 
-  onSubmit(){
+  onSubmit() {
     const newAppUser: AppUser = {
       nickname: this.signupForm.value.nickname,
       firstName: this.signupForm.value.firstName,
@@ -48,10 +47,10 @@ export class FormSignupComponent implements OnInit {
       email: this.signupForm.value.email,
       password: this.signupForm.value.password
     };
-    //TODO : faire une redirection vers l'accueil de l'utilisateur (calendrier)
-    this.appUserService.addAppUser(newAppUser).subscribe({
-      next:()=>this.router.navigate(['/homepage']),
-      error: (err)=>console.log(err)
+    //TODO : faire un login puis une redirection vers l'accueil de l'utilisateur (calendrier). À faire sans subscribe nestés !!
+    this.authService.addAppUser(newAppUser).subscribe({
+      next: () => this.router.navigate(['/signin']),
+      error: (err) => console.log(err)
     });
   }
 
@@ -101,7 +100,6 @@ export class FormSignupComponent implements OnInit {
   //S'il y a encore des erreurs dans le formulaire alors le bouton n'est pas clickable
   validationProblem() {
     return this.signupForm.invalid ;
-
   }
 }
 

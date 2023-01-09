@@ -1,5 +1,17 @@
 <a routerLink="/profile">{{nickname}}</a>
-<a routerLink="/month">Annuler</a>
-<a routerLink="/task/update/{{currentTask.taskId}}">Modifier</a>
+<p></p>
+<a routerLink="/month">Retour</a>
+<p></p>
+
 
 <h2>Détail de l'évènement</h2>
+<h3>{{currentTask.title}}</h3>
+<p>Du {{currentTask.startingDate | date: "dd/MM/yyyy"}} - {{currentTask.startingHour}} au {{currentTask.endingDate  | date: "dd/MM/yyyy"}} - {{currentTask.endingHour}} </p>
+<p> Lieu : {{currentTask.location}} </p>
+
+<form [formGroup]="updateTaskForm">
+  <label class="notes" for="description">Notes</label>
+  <textarea  id="description" type="text" formControlName="description" rows="6" value="{{currentTask.description}}"></textarea><br>
+</form>
+
+<a class="btn-success" routerLink="/task/update/{{currentTask.taskId}}">Modifier</a>

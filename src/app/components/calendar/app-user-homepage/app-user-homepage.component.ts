@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {SessionStorageService} from "../../../services/security/session-storage.service";
 import {AppUserService} from "../../../services/app-user-authentification/app-user.service";
 import {TaskService} from "../../../services/calendar/task.service";
-import * as events from "events";
 
 @Component({
   selector: 'app-app-user-homepage',
@@ -12,19 +11,20 @@ import * as events from "events";
 export class AppUserHomepageComponent implements OnInit {
   nickname: string = 'Profil';
   taskList: any[] = [];//todo : replace any by task model
+  chosenDate = new Date();
 
 
   constructor(private sessionStorageService: SessionStorageService,
               private appUserService: AppUserService,
-              private taskService: TaskService) {}
+              private taskService: TaskService)  {   }
 
   ngOnInit(): void {
-    this.updateNickname(<string>this.sessionStorageService.getAppUserId());
+    this.updateNickname();
     this.getAppUserTasks();
   }
 
-  private updateNickname(appUserId: string) {
-    this.appUserService.get(appUserId)
+  private updateNickname() {
+    this.appUserService.get()
       .subscribe({
         next: value => {
           this.nickname = value['nickname'];
@@ -39,7 +39,10 @@ export class AppUserHomepageComponent implements OnInit {
     this.taskService.getAll()
       .subscribe({
         next: value => {
-          this.taskList = value;
+          this.taskList = value.filter(value1 => {
+            return (new Date(value1.startingDate) <= new Date(this.chosenDate)) && (new Date(value1.endingDate) >= new Date(this.chosenDate))
+          });
+          console.log(this.taskList);
         },
         error: err => {console.log(err);}
       });
@@ -47,5 +50,16 @@ export class AppUserHomepageComponent implements OnInit {
 
   deleteTask($event: string) {
     console.log($event);
+    this.taskService.delete($event).subscribe({
+      next: value => console.log(value),
+      error: err => console.log(err)
+    });
   }
+
+  choseDate($event: string) {
+    console.log($event);
+    this.chosenDate = <Date><unknown>$event; // todo : new Date($event)
+    this.getAppUserTasks();
+  }
+
 }

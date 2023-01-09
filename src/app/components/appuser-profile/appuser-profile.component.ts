@@ -3,6 +3,7 @@ import {SessionStorageService} from "../../services/security/session-storage.ser
 import {AppUserService} from "../../services/app-user-authentification/app-user.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AppUser} from "../../models/app-user";
+import {FlashMessagesService} from "flash-messages-angular";
 
 @Component({
   selector: 'app-appuser-profile',
@@ -46,17 +47,18 @@ export class AppuserProfileComponent implements OnInit {
   allowModification: boolean = false;
 
   constructor(private sessionStorageService: SessionStorageService,
-              private appUserService: AppUserService) {
+              private appUserService: AppUserService,
+              private flashMessage: FlashMessagesService) {
   }
 
   //BLOC : fonctions à l'initialisation
   ngOnInit(): void {
-    this.getAppUser(<string>this.sessionStorageService.getAppUserId());
+    this.getAppUser();
   }
 
 
-  private getAppUser(appUserId: string) {
-    this.appUserService.get(appUserId)
+  private getAppUser() {
+    this.appUserService.get()
       .subscribe({
         next: value => {
           this.currentUserProfile['nickname'] = value['nickname'];
@@ -82,7 +84,6 @@ export class AppuserProfileComponent implements OnInit {
     // @ts-ignore
     return this.profileAppUserForm.controls[field].invalid && !this.profileAppUserForm.controls[field].pristine && this.allowModification;
   }
-
 
   nicknameIsInvalid(): boolean {
     return this.invalidField('nickname');
@@ -120,9 +121,6 @@ export class AppuserProfileComponent implements OnInit {
     return this.invalidField('password');
   }
 
-
-
-
   // BLOC : gestion de l'évènement : l'utilisateur clique sur le bouton modifier
 
   changeModificationAbility() {
@@ -132,7 +130,7 @@ export class AppuserProfileComponent implements OnInit {
   }
 
   private updateFields() {
-    this.getAppUser(<string>this.sessionStorageService.getAppUserId());
+    this.getAppUser();
   }
 
   private changeFieldsDisplay() {
@@ -166,6 +164,29 @@ export class AppuserProfileComponent implements OnInit {
   }
 
   seModifier() {
-    console.log(this.profileAppUserForm.value);//todo : send this to backend
+    const modifiedAppUser: AppUser = {
+      nickname: this.currentUserProfile['nickname'],
+      firstName: this.currentUserProfile['firstName'],
+      lastName: this.currentUserProfile['lastName'],
+      address: this.currentUserProfile['address'],
+      postcode: this.currentUserProfile['postcode'],
+      city: this.currentUserProfile['city'],
+      phoneNumber: this.currentUserProfile['phoneNumber'],
+      email: this.currentUserProfile['email'],
+      password: this.currentUserProfile['password']
+    };
+
+    console.log(modifiedAppUser);//todo : test this functionnality
+    this.appUserService.updateAppUser(modifiedAppUser).subscribe({
+      next: value => {console.log(value);},
+      error: err => {console.log(err);}
+    });
+  }
+
+//MESSAGE FLASH
+  //1er paramètre: message
+  //2nd paramètre: optionnel (durée message, genre d'alerte etc.)
+  showFlash(){
+    this.flashMessage.show('Modifications prises en compte');
   }
 }

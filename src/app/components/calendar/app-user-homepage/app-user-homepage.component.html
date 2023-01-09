@@ -2,23 +2,18 @@
 
 <h1>PlanCrazyApp</h1>
 
-<p>
-  Todo -> vision au mois des évènement permettant de sélectionner un jour dans le mois,
-  en utilisant par exemple une API Angular de type Calendar
-</p>
+<app-full-calendar (choseThisDateEvent)="choseDate($event)"></app-full-calendar>
 
-<p>TODO : date du jour</p>
-
-<p>
-  Todo -> liste déroulante des prochaines tâches de la journée sélectionnée.
-  POur le moment la liste de toutes les tâches s'affiche
-</p>
+<p class="date">{{chosenDate | date:'EEEE dd MMMM': '':'fr-FR'}}</p>
 
 <ul>
   <li *ngFor="let task of taskList">
-    <app-task taskId="{{task.taskId}}" taskTitle="{{task.taskTitle}}" startingHour="{{task.startingHour}}"  (deleteThisTaskEvent)="deleteTask($event)"></app-task>
+    <app-task  taskId="{{task.taskId}}" taskTitle="{{task.taskTitle}}" startingHour="{{(task.startingDate | date: 'dd/MM/yy') + ': ' + task.startingHour}}"
+              (deleteThisTaskEvent)="deleteTask($event)"></app-task>
   </li>
 </ul>
 
+<div class="btn">
 <button class="btn-success" routerLink="/month">Journée complète</button>
 <button class="btn-success" routerLink="/task/add">Nouvelle tâche</button>
+</div>
