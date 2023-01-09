@@ -23,6 +23,8 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {FullCalendarModule} from "@fullcalendar/angular";
 import { FullCalendarComponent } from './components/calendar/full-calendar/full-calendar.component';
+import {ToastrModule} from "ngx-toastr";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 registerLocaleData(localeFr, 'fr-FR')
 
 
@@ -43,12 +45,22 @@ registerLocaleData(localeFr, 'fr-FR')
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     FlashMessagesModule.forRoot(),
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
-    FullCalendarModule
+    FullCalendarModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      autoDismiss: true,
+      closeButton: true,
+      progressBar: true,
+      progressAnimation: "decreasing",
+    }),
 
   ],
   providers: [

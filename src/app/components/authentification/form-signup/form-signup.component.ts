@@ -4,6 +4,7 @@ import {AppUser} from "../../../models/app-user";
 import {AppUserService} from "../../../services/app-user-authentification/app-user.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../services/security/auth.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-form-signup',
@@ -17,7 +18,8 @@ export class FormSignupComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, //pour créer une représentation objet / TS de notre formulaire
               private appUserService: AppUserService,
               private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -29,8 +31,8 @@ export class FormSignupComponent implements OnInit {
       postcode: ['', [Validators.minLength(5), Validators.maxLength(5)]],
       city: [''],
       phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
-      email: ['', Validators.email],
-      password: ['', Validators.required],
+      email: ['', Validators.required, Validators.email],
+      password: ['', Validators.required, Validators.minLength(5)],
       passwordConfirm: ['', Validators.required]
     });
   }
@@ -47,14 +49,18 @@ export class FormSignupComponent implements OnInit {
       email: this.signupForm.value.email,
       password: this.signupForm.value.password
     };
+
     //TODO : faire un login puis une redirection vers l'accueil de l'utilisateur (calendrier). À faire sans subscribe nestés !!
     this.authService.addAppUser(newAppUser).subscribe({
-      next: () => this.router.navigate(['/signin']),
-      error: (err) => console.log(err)
+      next:() => {
+        this.toastr.success("Inscription validée");
+        this.router.navigate(['/signin'])},
+      error: (err) => console.log(err),
     });
+
   }
 
-
+//PARTIE VALIDATION DES CHAMPS DU FORMULAIRE
 //todo: methode utilitaire à sortir du composant
   //Pour les champs obligatoires (pseudo, tel, email, password)
   private invalidMandatoryField(field: string): boolean {

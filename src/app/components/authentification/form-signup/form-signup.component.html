@@ -7,14 +7,14 @@
   <input id="firstName" type="text" formControlName="firstName" placeholder="Entrer son prénom"><br>
   <input id="lastName" type="text" formControlName="lastName" placeholder="Entrer son nom"><br>
   <input id="address" type="text" formControlName="address" placeholder="Entrer son adresse"><br>
-  <input id="postcode" type="number" formControlName="postcode" placeholder="Code postal"><br>
+  <input id="postcode" type="text" formControlName="postcode" placeholder="Code postal"><br>
   <p *ngIf="postcodeIsInvalid()" class="alert-danger">Rentrez un code postal valide à 5 chiffres.</p>
   <input id="city" type="text" formControlName="city" placeholder="Ville"><br>
   <p class="annotation">Champ obligatoire</p>
-  <input id="phoneNumber" type="number" formControlName="phoneNumber" placeholder="Entrer son numéro de téléphone">
+  <input id="phoneNumber" type="text" formControlName="phoneNumber" placeholder="Entrer son numéro de téléphone">
   <p *ngIf="phoneNumberIsInvalid()" class="alert-danger">Rentrez un numéro de téléphone valide à 10 chiffres.</p><br>
   <p class="annotation">Champ obligatoire</p>
-  <input id="email" type="text" formControlName="email" placeholder="Entrer son email"><br>
+  <input id="email" type="email" formControlName="email" placeholder="Entrer son email"><br>
   <p *ngIf="emailIsInvalid()" class="alert-danger">Rentrez un email valide.</p>
   <p class="annotation">Champ obligatoire</p>
   <input id="password" type="text" formControlName="password" placeholder="Entrer son mot de passe"><br>
