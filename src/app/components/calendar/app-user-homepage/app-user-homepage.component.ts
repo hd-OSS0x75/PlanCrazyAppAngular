@@ -58,7 +58,7 @@ export class AppUserHomepageComponent implements OnInit {
 
   choseDate($event: string) {
     console.log($event);
-    this.chosenDate = <Date><unknown>$event;
+    this.chosenDate = <Date><unknown>$event; // todo : new Date($event)
     this.getAppUserTasks();
   }
 
