@@ -16,6 +16,7 @@
   display: flex;
   justify-content: space-between;
   padding: calc(0.2rem + 1vw) 0;
+  text-transform: capitalize;
 }
 
 #dateAndTemp p {
