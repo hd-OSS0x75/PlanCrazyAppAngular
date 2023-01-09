@@ -1,25 +1,23 @@
 <div id="widget-component">
-  <div id="container">
   <div id="dateAndTemp">
     <p>{{dateOfToday | date:'EEEE d MMMM'}}</p>
     <p>{{weatherDataOfToday.main.temp}}°</p>
   </div>
   <div id="icons-container">
     <div *ngIf="weatherDataOfToday.weather[0].main.includes('Clear')">
-    <i class="fas fa-3x fa-sun sun"></i>
+      <img src="assets/svg/day.svg">
     </div>
     <div *ngIf="weatherDataOfToday.weather[0].main.includes('Clouds')">
-      <i class="fas fa-3x fa-cloud cloud"></i>
+      <img src="assets/svg/cloudy.svg">
     </div>
     <div *ngIf="weatherDataOfToday.weather[0].main.includes('Rain')">
-     <i class="fas fa-3x fa-cloud-rain rain"></i>
+      <img src="assets/svg/rainy.svg">
     </div>
     <div *ngIf="weatherDataOfToday.weather[0].main.includes('Snow')">
-      <i class="fas fa-3x fa-snowflake snow"></i>
+      <img src="assets/svg/snowy.svg">
     </div>
   </div>
   <p id="city">
     {{weatherDataOfToday.name}}
   </p>
-  </div>
 </div>

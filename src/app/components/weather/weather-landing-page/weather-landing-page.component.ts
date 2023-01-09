@@ -81,6 +81,7 @@ export class WeatherLandingPageComponent{
     };
     this.getWeatherForNow(newLocation);
     this.getWeatherForecast(newLocation);
+    this.cityToUpdate = "";
   }
 
   getWeatherForNow(location: string) {

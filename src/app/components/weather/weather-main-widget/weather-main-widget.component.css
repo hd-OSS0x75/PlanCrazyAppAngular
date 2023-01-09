@@ -1,34 +1,43 @@
 #widget-component {
   background: #ECF0F2;
   max-width: 40rem;
+  width: 90%;
+  height: calc(15rem + 5vw);
   margin: 0 auto;
   border-radius: 2rem;
   box-shadow: 2px 2px 2px black;
-}
-
-#container {
+  background-image: url("https://images.unsplash.com/photo-1536532184021-da5392b55da1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  background-position: center;
   padding: 2rem;
 }
+
 
 #dateAndTemp {
   display: flex;
   justify-content: space-between;
+  padding: calc(0.2rem + 1vw) 0;
 }
 
 #dateAndTemp p {
-  color: #817B7B;
+  color: black;
   font-size: 2rem;
+  padding-bottom: 0.5rem;
 }
 
 #icons-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #817B7B;
+  color: black;
+  padding: calc(1.2rem + 1vw) 0;
+}
+
+#icons-container img {
+  transform: scale(2.5);
 }
 
 #city {
   text-align: center;
-  color: #817B7B;
+  color: black;
   font-size: 2rem;
 }

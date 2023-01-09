@@ -1,3 +1,9 @@
+#landingPageContainer {
+  background: #dcdcdc;
+  height: 100vh;
+  padding: calc(1rem + 1vw) 0;
+}
+
 #updateLocation {
   display: flex;
   flex-direction: column;
@@ -8,17 +14,24 @@
 
 #updateLocation input {
   max-width: 50%;
-  margin: 1rem auto;
+  margin: 0 auto;
   padding: 1rem;
   border: 1px solid #c4b8b8;
   box-shadow: 2px 2px 2px black;
   border-radius: 1rem;
 }
 
+#updateLocation input:focus {
+  outline: none;
+}
+
 #updateLocation button {
   max-width: 40%;
   padding: 1rem;
   border-radius: 1rem;
-  margin: 1rem auto;
+  margin: 2rem auto;
   box-shadow: 4px 4px 4px dimgray;
+  border: none;
+  color: #ECF0F2;
+  background: #42855B;
 }
