@@ -11,7 +11,7 @@ import {TaskService} from "../../../services/calendar/task.service";
 export class AppUserHomepageComponent implements OnInit {
   nickname: string = 'Profil';
   taskList: any[] = [];//todo : replace any by task model
-  today= new Date();
+  chosenDate = new Date();
 
 
   constructor(private sessionStorageService: SessionStorageService,
@@ -53,5 +53,9 @@ export class AppUserHomepageComponent implements OnInit {
     });
   }
 
+  choseDate($event: string) {
+    console.log($event);
+    this.chosenDate = <Date><unknown>$event;
+  }
 
 }

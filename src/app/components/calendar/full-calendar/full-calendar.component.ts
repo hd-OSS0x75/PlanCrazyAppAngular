@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CalendarOptions, DateSelectArg, EventApi, EventClickArg} from "@fullcalendar/core";
 import dayGridPlugin from '@fullcalendar/daygrid';
 import frLocale from "@fullcalendar/core/locales/fr";
@@ -23,6 +23,12 @@ let newTask: Task;
 export class FullCalendarComponent implements OnInit {
   taskList?: any[];
 
+  @Output() choseThisDateEvent = new EventEmitter<string>();
+
+  choseThisDate(date: string) {
+    this.choseThisDateEvent.emit(date);
+  }
+
   calendarVisible = true;
 
   calendarOptions: CalendarOptions = {
@@ -35,8 +41,8 @@ export class FullCalendarComponent implements OnInit {
     events: this.taskList,
     editable: true,
     nowIndicator: true,
-    // dateClick: this.handleDateSelect.bind(this), //todo : make it work
-    eventClick: this.handleEventClick.bind(this),
+    dateClick: this.handleDateSelect.bind(this), //todo : make it work
+    eventClick: this.handleEventClick.bind(this), //todo : make it work
     eventColor: "#90B77D",
   };
 
@@ -83,28 +89,29 @@ export class FullCalendarComponent implements OnInit {
       events: this.taskList,
       editable: true,
       nowIndicator: true,
-      // dateClick: this.handleDateSelect.bind(this),//todo : make it work
-      eventClick: this.handleEventClick.bind(this),
+      dateClick: this.handleDateSelect.bind(this),//todo : make it work
+      eventClick: this.handleEventClick.bind(this), //todo : make it work
       eventColor: "#90B77D",
     };
   }
 
-//AU CLIC SUR UNE DATE ON A LES INFOS LIEES
+//AU CLIC SUR UNE DATE PERMET DE MODIFIER LA VALEUR DE LA DATE
   handleDateSelect(selectDateInfo: DateClickArg) {
     let clickedDate = selectDateInfo.dateStr;
-    console.log(clickedDate)
+    // console.log(clickedDate);
+    this.choseThisDate(clickedDate);
     //On entre des taches dans le calendrier
-    const title = prompt(clickedDate + ' - Veuillez entrer un titre à votre tâche');
-    const calendarApi = selectDateInfo.view.calendar;
-    //  var addTaskComponent = new AddTaskComponent();
-    calendarApi.unselect(); // clear date selection
-    if (title) {
-      calendarApi.addEvent({
-        title,
-        start: selectDateInfo.dateStr,
-        end: selectDateInfo.dateStr,
-        allDay: selectDateInfo.allDay
-      });
+    // const title = prompt(clickedDate + ' - Veuillez entrer un titre à votre tâche');
+    // const calendarApi = selectDateInfo.view.calendar;
+    // //  var addTaskComponent = new AddTaskComponent();
+    // calendarApi.unselect(); // clear date selection
+    // if (title) {
+    //   calendarApi.addEvent({
+    //     title,
+    //     start: selectDateInfo.dateStr,
+    //     end: selectDateInfo.dateStr,
+    //     allDay: selectDateInfo.allDay
+    //   });
 
       // //ENREGISTREMENT EN BDD
       // //Pour récupérer la date pour notre BDD il faut transformer la date du calendrier (string) en format date
@@ -118,7 +125,6 @@ export class FullCalendarComponent implements OnInit {
       //  newTask.taskTitle = title;
       //  console.log(newTask.taskTitle);
       // this.taskService.add(newTask);
-    }
   }
 
   //AU CLIC SUR UN EVENEMENT, UNE TACHE ON A SON DETAIL

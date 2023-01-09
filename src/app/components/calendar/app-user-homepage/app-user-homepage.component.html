@@ -2,9 +2,9 @@
 
 <h1>PlanCrazyApp</h1>
 
-<app-full-calendar></app-full-calendar>
+<app-full-calendar (choseThisDateEvent)="choseDate($event)"></app-full-calendar>
 
-<p class="date">{{today | date:'EEEE dd MMMM': '':'fr-FR'}}</p>
+<p class="date">{{chosenDate | date:'EEEE dd MMMM': '':'fr-FR'}}</p>
 
 <ul>
   <li *ngFor="let task of taskList">
