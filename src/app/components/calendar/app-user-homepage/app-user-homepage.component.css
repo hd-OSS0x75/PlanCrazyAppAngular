@@ -21,6 +21,7 @@ li{
 }
 
 .btn-success {
+  font-family: "Berlin Sans FB", sans-serif;
   background-color: #90B77D;
   border-radius: 20px;
   margin: 20px 10px;

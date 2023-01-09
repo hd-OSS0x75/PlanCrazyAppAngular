@@ -11,7 +11,7 @@ import {TaskService} from "../../../services/calendar/task.service";
 export class AppUserHomepageComponent implements OnInit {
   nickname: string = 'Profil';
   taskList: any[] = [];//todo : replace any by task model
-  today= new Date();
+  chosenDate = new Date();
 
 
   constructor(private sessionStorageService: SessionStorageService,
@@ -39,7 +39,10 @@ export class AppUserHomepageComponent implements OnInit {
     this.taskService.getAll()
       .subscribe({
         next: value => {
-          this.taskList = value;
+          this.taskList = value.filter(value1 => {
+            return (new Date(value1.startingDate) <= new Date(this.chosenDate)) && (new Date(value1.endingDate) >= new Date(this.chosenDate))
+          });
+          console.log(this.taskList);
         },
         error: err => {console.log(err);}
       });
@@ -53,5 +56,10 @@ export class AppUserHomepageComponent implements OnInit {
     });
   }
 
+  choseDate($event: string) {
+    console.log($event);
+    this.chosenDate = <Date><unknown>$event; // todo : new Date($event)
+    this.getAppUserTasks();
+  }
 
 }

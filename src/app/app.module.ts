@@ -19,6 +19,10 @@ import {AuthInterceptorProviders} from "./helpers/auth.interceptor";
 import localeFr from '@angular/common/locales/fr';
 import {registerLocaleData} from "@angular/common";
 import {FlashMessagesModule} from "flash-messages-angular";
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import {FullCalendarModule} from "@fullcalendar/angular";
+import { FullCalendarComponent } from './components/calendar/full-calendar/full-calendar.component';
 registerLocaleData(localeFr, 'fr-FR')
 
 
@@ -34,14 +38,17 @@ registerLocaleData(localeFr, 'fr-FR')
     AddTaskComponent,
     DetailsTaskComponent,
     UpdateTaskComponent,
-    TaskComponent
+    TaskComponent,
+    FullCalendarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    FullCalendarModule
 
   ],
   providers: [
