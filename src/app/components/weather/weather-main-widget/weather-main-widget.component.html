@@ -2,16 +2,24 @@
   <div id="container">
   <div id="dateAndTemp">
     <p>{{dateOfToday | date:'EEEE d MMMM'}}</p>
-    <p>{{weatherData.main.temp}}°</p>
+    <p>{{weatherDataOfToday.main.temp}}°</p>
   </div>
   <div id="icons-container">
-    <i *ngIf="isSunny" class="fas fa-3x fa-sun sun"></i>
-    <i *ngIf="isCloudy" class="fas fa-3x fa-cloud cloud"></i>
-    <i *ngIf="isRainy" class="fas fa-3x fa-cloud-rain rain"></i>
-    <i *ngIf="isSnowy" class="fas fa-3x fa-snowflake snow"></i>
+    <div *ngIf="weatherDataOfToday.weather[0].main.includes('Clear')">
+    <i class="fas fa-3x fa-sun sun"></i>
+    </div>
+    <div *ngIf="weatherDataOfToday.weather[0].main.includes('Clouds')">
+      <i class="fas fa-3x fa-cloud cloud"></i>
+    </div>
+    <div *ngIf="weatherDataOfToday.weather[0].main.includes('Rain')">
+     <i class="fas fa-3x fa-cloud-rain rain"></i>
+    </div>
+    <div *ngIf="weatherDataOfToday.weather[0].main.includes('Snow')">
+      <i class="fas fa-3x fa-snowflake snow"></i>
+    </div>
   </div>
   <p id="city">
-    {{weatherData.name}}
+    {{weatherDataOfToday.name}}
   </p>
   </div>
 </div>

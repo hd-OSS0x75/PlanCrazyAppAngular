@@ -1,0 +1,24 @@
+#updateLocation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+#updateLocation input {
+  max-width: 50%;
+  margin: 1rem auto;
+  padding: 1rem;
+  border: 1px solid #c4b8b8;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 1rem;
+}
+
+#updateLocation button {
+  max-width: 40%;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 1rem auto;
+  box-shadow: 4px 4px 4px dimgray;
+}
