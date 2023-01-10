@@ -8,7 +8,7 @@ import { AppuserSigninComponent } from './components/authentification/appuser-si
 import { AppuserProfileComponent } from './components/appuser-profile/appuser-profile.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormSignupComponent } from './components/authentification/form-signup/form-signup.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { AppUserHomepageComponent } from './components/calendar/app-user-homepage/app-user-homepage.component';
 import { AddTaskComponent } from './components/calendar/add-task/add-task.component';
@@ -16,8 +16,9 @@ import { DetailsTaskComponent } from './components/calendar/details-task/details
 import { UpdateTaskComponent } from './components/calendar/update-task/update-task.component';
 import { TaskComponent } from './components/calendar/task/task.component';
 import {AuthInterceptorProviders} from "./helpers/auth.interceptor";
-import localeFr from '@angular/common/locales/fr';
-import {registerLocaleData} from "@angular/common";
+import { WeatherLandingPageComponent } from './components/weather/weather-landing-page/weather-landing-page.component';
+import { WeatherMainWidgetComponent } from './components/weather/weather-main-widget/weather-main-widget.component';
+import { WeatherFiveDaysForecastComponent } from './components/weather/weather-five-days-forecast/weather-five-days-forecast.component';
 import {FlashMessagesModule} from "flash-messages-angular";
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
@@ -25,6 +26,8 @@ import {FullCalendarModule} from "@fullcalendar/angular";
 import { FullCalendarComponent } from './components/calendar/full-calendar/full-calendar.component';
 import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 registerLocaleData(localeFr, 'fr-FR')
 
 
@@ -41,7 +44,13 @@ registerLocaleData(localeFr, 'fr-FR')
     DetailsTaskComponent,
     UpdateTaskComponent,
     TaskComponent,
-    FullCalendarComponent
+    FullCalendarComponent,
+    TaskComponent,
+    WeatherLandingPageComponent,
+    WeatherMainWidgetComponent,
+    WeatherFiveDaysForecastComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +60,8 @@ registerLocaleData(localeFr, 'fr-FR')
     ReactiveFormsModule,
     FlashMessagesModule.forRoot(),
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    FullCalendarModule,
+    FormsModule
     FullCalendarModule,
     ToastrModule.forRoot({
       timeOut: 3000,

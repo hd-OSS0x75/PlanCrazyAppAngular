@@ -9,30 +9,15 @@ import {TaskService} from "../../../services/calendar/task.service";
   styleUrls: ['./app-user-homepage.component.css']
 })
 export class AppUserHomepageComponent implements OnInit {
-  nickname: string = 'Profil';
   taskList: any[] = [];//todo : replace any by task model
   chosenDate = new Date();
-
 
   constructor(private sessionStorageService: SessionStorageService,
               private appUserService: AppUserService,
               private taskService: TaskService)  {   }
 
   ngOnInit(): void {
-    this.updateNickname();
     this.getAppUserTasks();
-  }
-
-  private updateNickname() {
-    this.appUserService.get()
-      .subscribe({
-        next: value => {
-          this.nickname = value['nickname'];
-        },
-        error: err => {
-          console.log(err);
-        }
-      });
   }
 
   private getAppUserTasks() {

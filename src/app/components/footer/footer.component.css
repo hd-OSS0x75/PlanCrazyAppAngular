@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Slackey&display=swap');
+
+#footerContainer {
+  background: #42b883;
+}
+
+#sectionsContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+#sectionsContainer .section {
+  padding: calc(1rem + 1vw);
+}
+
+#sectionsContainer .section h3 {
+  padding: calc(0.7rem + 0.7vw) 0;
+}
+
+#pContainer p{
+  padding: calc(0.3rem + 0.3vw) 0;
+}
+
+
+#pContainer p a {
+  text-decoration: none;
+  color: black;
+}
+
+#menuContainer p{
+  padding: calc(0.3rem + 0.3vw) 0;
+  text-align: center;
+}
+
+#menuContainer p a {
+  text-decoration: none;
+  color: black;
+}
+
+#githubSection p{
+  padding: calc(0.3rem + 0.3vw) 0;
+  display: flex;
+}
+
+#githubSection a {
+  text-decoration: none;
+  margin-left: calc(1rem + 0.5vw);
+  color: black;
+  display: block;
+}
+
+#pContainer img {
+  display: block;
+  height: 40px;
+}
+
+#notes {
+  text-align: center;
+  padding: calc(1rem + 2vw) 0;
+}
+
+#hardWork {
+  font-family: 'Slackey', cursive;
+}

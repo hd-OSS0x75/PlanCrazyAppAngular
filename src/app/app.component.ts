@@ -8,13 +8,4 @@ import {Observable} from "rxjs";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'PlanCrazyAppAngular';
-  isLoggedIn$: Observable<boolean> = this.authService.isLoggedIn;
-
-  constructor(private authService: AuthService) {
-  }
-
-  onLogout() {
-    this.authService.logout();
-  }
 }

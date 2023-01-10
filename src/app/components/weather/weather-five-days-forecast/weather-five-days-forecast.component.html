@@ -1,0 +1,18 @@
+<div id="five-days-container">
+  <div *ngFor="let item of fiveDaysWeatherData" class="dayOfTheWeek">
+    <h5>{{item.dt_txt | date:'EEEE'}}</h5>
+    <div *ngIf="item.weather[0].main.includes('Clear')">
+      <img src="assets/svg/day.svg">
+    </div>
+    <div *ngIf="item.weather[0].main.includes('Clouds')">
+      <img src="assets/svg/cloudy.svg">
+    </div>
+    <div *ngIf="item.weather[0].main.includes('Rain')">
+      <img src="assets/svg/rainy.svg">
+    </div>
+    <div *ngIf="item.weather[0].main.includes('Snow')">
+      <img src="assets/svg/snowy.svg">
+    </div>
+    <p>{{item.main.temp}}°</p>
+  </div>
+</div>
