@@ -1,0 +1,57 @@
+#headerContainer {
+  background: #26E60B;
+  background: linear-gradient(to top, #26E60B 0%, #00BD1C 100%);
+}
+#logout {
+  text-align: right;
+}
+#logout p {
+  padding: calc(0.5rem + 0.5vw) calc(1rem + 2vw) 0 0;
+}
+
+#logout p a {
+  text-decoration: none;
+  font-size: calc(0.5rem + 1vw);
+}
+
+h1 {
+  text-align: center;
+  font-size: calc(2rem + 1.5vw);
+  color: #0f4424;
+  text-shadow: #bbb9b9 1px 2px;
+  padding: calc(1rem + 1vw);
+}
+
+#profileContainer img {
+  width: calc(4rem + 7vw);
+  height: auto;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 5px 5px 5px #4b4040;
+}
+
+#profileContainer p {
+  text-align: center;
+  padding-top: calc(0.5rem + 1vw);
+}
+
+#profileContainer p a{
+  text-decoration: none;
+}
+
+#menu {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+
+#menu p {
+  margin: calc(1rem + 1vw);
+}
+
+#menu a {
+  text-decoration: none;
+  font-size: calc(0.7rem + 0.7vw);
+  color: #2d2d1e;
+}

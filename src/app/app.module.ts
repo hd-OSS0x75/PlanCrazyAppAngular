@@ -27,6 +27,8 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {FullCalendarModule} from "@fullcalendar/angular";
 import { FullCalendarComponent } from './components/calendar/full-calendar/full-calendar.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 registerLocaleData(localeFr, 'fr-FR')
 
 
@@ -47,7 +49,9 @@ registerLocaleData(localeFr, 'fr-FR')
     TaskComponent,
     WeatherLandingPageComponent,
     WeatherMainWidgetComponent,
-    WeatherFiveDaysForecastComponent
+    WeatherFiveDaysForecastComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

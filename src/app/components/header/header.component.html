@@ -1,0 +1,31 @@
+<div id="headerContainer">
+    <div id="logout">
+      <p *ngIf="isLoggedIn$ | async"><a href="" (click)="onLogout()">Deconnexion   &#10162;</a></p>
+    </div>
+    <h1>PlanCrazyApp</h1>
+  <div id="profileContainer">
+    <div id="imageContainer">
+      <img src="/assets/images/girl.jpg" alt="girl smiling">
+    </div>
+    <p id="nickname"><a routerLink="/profile">{{nickname}}</a></p>
+  </div>
+  <nav>
+    <div id="menu">
+      <p><a
+        routerLink="/homepage"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >Accueil</a></p>
+      <p><a
+        routerLink="/profile"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >Profil</a></p>
+      <p><a
+        routerLink="/weather-landing-page"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >Météo</a></p>
+    </div>
+  </nav>
+</div>
