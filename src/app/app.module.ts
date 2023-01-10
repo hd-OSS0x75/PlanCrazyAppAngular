@@ -22,8 +22,6 @@ import {AuthInterceptorProviders} from "./helpers/auth.interceptor";
 import { WeatherLandingPageComponent } from './components/weather/weather-landing-page/weather-landing-page.component';
 import { WeatherMainWidgetComponent } from './components/weather/weather-main-widget/weather-main-widget.component';
 import { WeatherFiveDaysForecastComponent } from './components/weather/weather-five-days-forecast/weather-five-days-forecast.component';
-import localeFr from '@angular/common/locales/fr';
-import {registerLocaleData} from "@angular/common";
 import {FlashMessagesModule} from "flash-messages-angular";
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
