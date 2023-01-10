@@ -24,7 +24,7 @@ h2 {
 .flashMessage
 {
   font-family: "Berlin Sans FB", sans-serif;
-  color: red;
+  color: #42855B;
   font-size:20px;
   text-align: center;
 }
@@ -72,7 +72,7 @@ h2 {
   }
 }
 
-
+/*todo: bug sur l'affichage du bouton*/
 .btn-valider {
   font-family: "Berlin Sans FB", sans-serif;
   margin: 0px 25%;
@@ -80,6 +80,7 @@ h2 {
   border: none;
   width: 200px;
   background-color: #90B77D;
+  align-self: center;
 }
 
 .btn {
