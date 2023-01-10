@@ -1,17 +1,21 @@
+#addContainer {
+  margin: calc(1rem + 1vw) 0;
+}
+
 h2 {
   border-style: none;
   background-color: #E3F3EC;
   text-align: center;
-  margin:30px auto;
+  margin: 30px auto;
   box-shadow: 8px 8px 12px #817C7C;
-  font-family: "Berlin Sans FB", sans-serif;
 }
 
 form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 450px;
+  width: calc(7rem + 50vw);
+  margin: calc(1rem + 3vw) auto;
 }
 
 input{
@@ -20,6 +24,8 @@ input{
   border-left: none;
   width: 100%;
   border-color: #90B77D;
+  font-size: calc(0.4rem + 0.4vw);
+  margin: calc(0.4rem + 0.3rem) 0;
 }
 
 input, button, .notes {
@@ -41,12 +47,28 @@ input, button, .notes {
 .btn-success {
   background-color: #90B77D;
   margin: 40px 50px 0 50px;
-  padding: 10px 0;
-  border-radius: 20px;
+  padding: calc(0.5rem + 0.5vw);
+  border-radius: 3rem;
   border : none;
+  font-size: calc(0.5rem + 0.5vw);
+  box-shadow: 4px 4px 4px rgb(158, 149, 149);
 }
 
 textarea {
   padding: 0 20px;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  font-size: calc(0.5rem + 0.5vw);
+  background: rgb(161, 98, 98);
+  border-radius: 5rem;
+  text-align: center;
+  width: 15%;
+  margin: calc(1rem + 1vw) auto;
+  padding: calc(0.2rem + 0.2vw);
+  color: black;
+  box-shadow: 4px 4px 4px rgb(158, 149, 149);
 }
 

@@ -4,7 +4,6 @@ h2 {
   text-align: center;
   margin: 3rem auto;
   box-shadow: 8px 8px 12px #817C7C;
-  width: calc(15rem + 25vw);
   font-size: calc(1rem + 0.5vw);
 }
 

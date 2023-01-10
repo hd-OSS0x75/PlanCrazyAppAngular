@@ -1,26 +1,28 @@
-<a routerLink="/profile">{{nickname}}</a>
-<p></p>
-<a routerLink="/month">Annuler</a>
+<div id="addContainer">
 
-<h2>Nouvel évènement</h2>
+  <h2>Nouvel évènement</h2>
 
-<form [formGroup]="newTaskForm" (ngSubmit)="onSubmit()">
-  <input id="title" type="text" formControlName="title" placeholder="Titre"><br>
-  <input id="location" type="text" formControlName="location" placeholder="Lieu ou appel vidéo"><br>
-  <input id="startingDate" type="date" formControlName="startingDate" placeholder="Date de début"><br>
-  <input id="endingDate" type="date" formControlName="endingDate" placeholder="Date de fin"><br>
-  <input id="startingHour" type="time" formControlName="startingHour" placeholder="Heure de début"><br>
-  <input id="endingHour" type="time" formControlName="endingHour" placeholder="Heure de fin"><br>
-  <input id="URL" type="text" formControlName="URL" placeholder="URL"><br>
-  <label class="notes" for="description">Notes</label>
-  <textarea  id="description" type="text" formControlName="description" rows="6"></textarea><br>
+  <form [formGroup]="newTaskForm" (ngSubmit)="onSubmit()">
+    <input id="title" type="text" formControlName="title" placeholder="Titre"><br>
+    <input id="location" type="text" formControlName="location" placeholder="Lieu ou appel vidéo"><br>
+    <input id="startingDate" type="date" formControlName="startingDate" placeholder="Date de début"><br>
+    <input id="endingDate" type="date" formControlName="endingDate" placeholder="Date de fin"><br>
+    <input id="startingHour" type="time" formControlName="startingHour" placeholder="Heure de début"><br>
+    <input id="endingHour" type="time" formControlName="endingHour" placeholder="Heure de fin"><br>
+    <input id="URL" type="text" formControlName="URL" placeholder="URL"><br>
+    <label class="notes" for="description">Notes</label>
+    <textarea  id="description" type="text" formControlName="description" rows="6"></textarea><br>
 
-  <button type="submit"
-          class="btn-success"
-          [disabled]="validationProblem()">Valider</button>
-</form>
+    <button type="submit"
+            class="btn-success"
+            [disabled]="validationProblem()">Valider</button>
+  </form>
+
+  <a routerLink="/month">Annuler</a>
+
+</div>
 
 <!--ASTUCE POUR TESTER LE REMPLISSAGE DES CHAMPS D'UN FORMULAIRE-->
-<pre>
+<!-- <pre>
   {{newTaskForm.value | json }}
-</pre>
+</pre> -->
