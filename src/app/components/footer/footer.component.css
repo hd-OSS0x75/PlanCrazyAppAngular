@@ -21,6 +21,22 @@
   padding: calc(0.3rem + 0.3vw) 0;
 }
 
+
+#pContainer p a {
+  text-decoration: none;
+  color: black;
+}
+
+#menuContainer p{
+  padding: calc(0.3rem + 0.3vw) 0;
+  text-align: center;
+}
+
+#menuContainer p a {
+  text-decoration: none;
+  color: black;
+}
+
 #githubSection p{
   padding: calc(0.3rem + 0.3vw) 0;
   display: flex;
@@ -40,7 +56,7 @@
 
 #notes {
   text-align: center;
-  padding: calc(1rem + 1vw) 0;
+  padding: calc(1rem + 2vw) 0;
 }
 
 #hardWork {
