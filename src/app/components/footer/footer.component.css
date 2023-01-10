@@ -67,3 +67,20 @@
 #hardWork {
   font-family: 'Slackey', cursive;
 }
+
+@media (max-width: 500px) {
+  #sectionsContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #sectionsContainer .section {
+    width: 100%;
+    text-align: center;
+  }
+
+  #githubSection p {
+    display: flex;
+    justify-content: center;
+  }
+}
