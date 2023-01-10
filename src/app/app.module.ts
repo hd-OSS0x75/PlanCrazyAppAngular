@@ -28,6 +28,8 @@ import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr, 'fr-FR')
 
 
@@ -61,7 +63,7 @@ registerLocaleData(localeFr, 'fr-FR')
     FlashMessagesModule.forRoot(),
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
     FullCalendarModule,
-    FormsModule
+    FormsModule,
     FullCalendarModule,
     ToastrModule.forRoot({
       timeOut: 3000,
