@@ -28,11 +28,16 @@ export class FormSignupComponent implements OnInit {
       firstName: [''],
       lastName: [''],
       address: [''],
-      postcode: ['', [Validators.minLength(5), Validators.maxLength(5)]],
+      postcode: ['', Validators.pattern("^[0-9]{5}$")],
       city: [''],
-      phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
-      email: ['', Validators.required, Validators.email],
-      password: ['', Validators.required, Validators.minLength(5)],
+      phoneNumber: ['', [Validators.required,
+        Validators.pattern("^[0-9]{10}$")
+      ]],
+      email: ['', [Validators.required,
+        Validators.email,
+        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      password: ['', [Validators.required,
+        Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]],
       passwordConfirm: ['', Validators.required]
     });
   }
@@ -55,7 +60,10 @@ export class FormSignupComponent implements OnInit {
       next:() => {
         this.toastr.success("Inscription validée");
         this.router.navigate(['/signin'])},
-      error: (err) => console.log(err),
+      error: (err) => {
+        console.log(err);
+        this.toastr.error("Pseudo, téléphone ou email déjà utilisé");
+      },
     });
 
   }
@@ -64,11 +72,12 @@ export class FormSignupComponent implements OnInit {
 //todo: methode utilitaire à sortir du composant
   //Pour les champs obligatoires (pseudo, tel, email, password)
   private invalidMandatoryField(field: string): boolean {
-    //pour vérifier que le champ est ok et aussi pour être sûr que l'utilisateur a modifié le champs ou que l'utilisateur a touché au champs
+ //pour vérifier que le champ est ok et aussi pour être sûr que l'utilisateur a modifié le champs ou que l'utilisateur a touché au champs
     return this.signupForm.controls[field].invalid && (this.signupForm.controls[field].dirty || this.signupForm.controls[field].touched);
   }
 
   //todo: gérer le pseudo déjà existant
+
   //POur les champs non obligatoire
   private invalidOptionnalField(field: string): boolean {
     return this.signupForm.controls[field].invalid && (this.signupForm.controls[field].value);
@@ -78,6 +87,7 @@ export class FormSignupComponent implements OnInit {
     return this.signupForm.controls[field].valid && (this.signupForm.controls[field].dirty);
   }
 
+  //METHODES PERMETTANT D'AFFICHER UN MESSAGE DANS LE FORMULAIRE EN FONCTION DES VALIDATORS DEFINIS
   nicknameIsInvalid(): boolean {
     return this.invalidMandatoryField('nickname');
   }
@@ -94,18 +104,19 @@ export class FormSignupComponent implements OnInit {
     return this.invalidMandatoryField('email');
   }
 
-  passwordIsInvalid(): boolean {
-    if(this.signupForm.value.password !== this.signupForm.value.passwordConfirm) {
-      return this.validField('password');
-    }
-    else {
-    return this.invalidMandatoryField('password')};
+  passwordlenghtIsInvalid(): boolean{
+    return this.invalidMandatoryField('password');
   }
 
-//permet d'activer ou de désactiver le bouton de validation
-  //S'il y a encore des erreurs dans le formulaire alors le bouton n'est pas clickable
-  validationProblem() {
-    return this.signupForm.invalid ;
+  passwordIsInvalid(): boolean {
+    if(this.signupForm.value.password !== this.signupForm.value.passwordConfirm) {
+      return this.validField('passwordConfirm');
+    }
+    else {
+    return this.invalidMandatoryField('passwordConfirm')}
   }
+
+
+
 }
 

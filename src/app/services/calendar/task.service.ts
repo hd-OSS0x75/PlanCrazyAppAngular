@@ -20,11 +20,6 @@ export class TaskService {
     return this.http.get<any[]>(baseURL);
   }
 
-  //TODO : SEGO - A EFFACER CAR SUREMENT INUTILE
-  // getTasksByDate(): Observable<any>{
-  //   return this.http.get<any[]>(baseURL);
-  // }
-
   get(id: any): Observable<any> {
     return this.http.get(`${baseURL}/${id}`);
   }
