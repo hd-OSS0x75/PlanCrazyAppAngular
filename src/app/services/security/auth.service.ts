@@ -23,7 +23,6 @@ export class AuthService {
   constructor(private http: HttpClient,
               private sessionStorage: SessionStorageService) { }
 
-  //todo - security : change signature to an observable method, post url signin
   login(email: string, password: string): Observable<boolean> {
     const signinRequest = {email, password};
     return this.http.post<any>(`${this.BASE_URL}/signin`, signinRequest)
@@ -31,7 +30,7 @@ export class AuthService {
         map((jwtResponse: any) => {
           console.log(jwtResponse);
           this.sessionStorage.saveToken(jwtResponse.token);
-          this.sessionStorage.saveAppUserId(jwtResponse.userId);
+          this.sessionStorage.saveNickname(jwtResponse.nickname);
           this.loggedIn.next(true);
           return true;
         })

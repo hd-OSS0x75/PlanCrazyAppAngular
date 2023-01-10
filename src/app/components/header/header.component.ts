@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/security/auth.service";
 import {Observable} from "rxjs";
 import {AppUserService} from "../../services/app-user-authentification/app-user.service";
+import {SessionStorageService} from "../../services/security/session-storage.service";
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,9 @@ export class HeaderComponent implements OnInit {
   title = 'PlanCrazyAppAngular';
   isLoggedIn$: Observable<boolean> = this.authService.isLoggedIn;
 
-  constructor(private authService: AuthService, private appUserService: AppUserService) {
+  constructor(private authService: AuthService,
+              private appUserService: AppUserService,
+              private sessionStorageService: SessionStorageService) {
   }
 
   ngOnInit(): void {
@@ -26,14 +29,8 @@ export class HeaderComponent implements OnInit {
   }
 
   private updateNickname() {
-    this.appUserService.get()
-      .subscribe({
-        next: value => {
-          this.nickname = value['nickname'];
-        },
-        error: err => {
-          console.log(err);
-        }
-      });
+    if (this.sessionStorageService.getNickname()) {
+      this.nickname = <string>this.sessionStorageService.getNickname();
+    }
   }
 }
