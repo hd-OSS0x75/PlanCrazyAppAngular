@@ -36,6 +36,9 @@ export class TaskService {
     return this.http.delete(`${baseURL}/${id}`);
   }
 
-
+  share(appUserToShareEmail: any, taskId: any): Observable<any> {
+    const sharingRequest = {taskId, appUserToShareEmail};
+    return this.http.put(`${baseURL}/share`, sharingRequest);
+  }
 
 }
