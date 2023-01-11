@@ -8,15 +8,28 @@
 </div>
 
 <div id="formContainer">
-  <label for="sharingMail">Partager à : </label>
-  <input type="email" placeholder="addresse@mail.com" id="sharingMail" name="sharingMail" [(ngModel)]="sharingUserEmail">
-  <button id="shareBtn" (click)="shareWithUser()">Partager</button>
 
   <form [formGroup]="updateTaskForm">
     <label class="notes" for="description">Notes</label>
     <textarea  id="description" type="text" formControlName="description" rows="6" value="{{currentTask.description}}"></textarea><br>
-</form>
+  </form>
+
+  <label>Partage : </label>
+
+  <div *ngFor="let emailOfUserSharedWith of sharedWithEmailList">
+    <app-user-task-is-shared-with email="{{emailOfUserSharedWith}}"
+                                  (unshareWithThisUserEvent)="unshareWithThisUser($event)">
+    </app-user-task-is-shared-with>
+  </div>
+
+  <div id="taskSharedRow">
+    <input type="email" placeholder="addresse@mail.com" id="sharingMail" name="sharingMail" [(ngModel)]="sharingUserEmail">
+    <button id="shareBtn" (click)="shareWithUser()">Partager</button>
+  </div>
+
+
 </div>
+
 <div id="btnContainer">
   <a class="btn-success" routerLink="/task/update/{{currentTask.taskId}}">Modifier</a>
   <a class="btn-back" routerLink="/month">Retour</a>

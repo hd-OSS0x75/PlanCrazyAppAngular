@@ -48,8 +48,8 @@ label {
 
 input {
   display: block;
-  height: 30px;
-  width: calc(7rem + 40vw);
+  height: 50px;
+  flex: 5;
   border-radius: 10px;
   margin: calc(0.3rem + 0.3vw) auto;
   box-shadow: 5px 5px 5px #dccaca;
@@ -72,11 +72,16 @@ textarea {
 
 #shareBtn {
   display: block;
-  margin: calc(1rem + 1vw) auto;
+  flex: 1;
+  height: 50px;
+  margin: calc(0.3rem + 0.3vw) auto;
   padding: calc(0.5rem + 0.5vw);
+  box-shadow: 5px 5px 5px #dccaca;
   border: 1px solid #797070;
-  border-radius: 0.4rem;
+  border-radius: 10px;
+  background-color: #90B77D;
 }
+
 
 #btnContainer {
   margin-bottom: calc(1rem + 2vw);
@@ -105,6 +110,15 @@ a {
   background: rgb(232, 137, 137);
   padding: calc(0.2rem + 0.2vw);
   width: 15%;
+}
+
+#taskSharedRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: calc(7rem + 40vw);
+  gap: 10px;
 }
 
 

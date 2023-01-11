@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.updateNickname();
+    this.updateNickname();
   }
 
   onLogout() {
@@ -29,9 +29,16 @@ export class HeaderComponent implements OnInit {
   }
 
   private updateNickname() {
-    if (this.sessionStorageService.getNickname()) {
-      this.nickname = <string>this.sessionStorageService.getNickname();
+    if (this.sessionStorageService.getToken()) {
+      this.appUserService.get().subscribe({
+        next: value => {
+          this.nickname = value['nickname']
+        },
+        error: err => {
+          console.log(err)
+        }
+      });
     }
-     }
+  }
 
 }

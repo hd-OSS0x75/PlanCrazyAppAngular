@@ -24,6 +24,7 @@ export class DetailsTaskComponent implements OnInit{
     description: new FormControl([{value: '', disabled: true}]),
   });
   sharingUserEmail: String = '';
+  sharedWithEmailList?: string[];
 
 
   constructor(private sessionStorageService: SessionStorageService,
@@ -35,6 +36,7 @@ export class DetailsTaskComponent implements OnInit{
   ngOnInit(): void {
     this.updateNickname();
     this.getTask(this.route.snapshot.params['id']);//todo : meilleure méthode que snapshot?
+    this.getSharedWithEmailList(this.route.snapshot.params['id']);//todo : meilleure méthode que snapshot?
   }
 
   private updateNickname() {
@@ -52,7 +54,6 @@ export class DetailsTaskComponent implements OnInit{
   private getTask(id: string) {
     this.taskService.get(id).subscribe({
       next: value => {
-        console.log(value);
         this.currentTask['taskId'] = value['taskId'];
         this.currentTask['title'] = value['taskTitle'];
         this.currentTask['location'] = value['location'];
@@ -62,7 +63,6 @@ export class DetailsTaskComponent implements OnInit{
         this.currentTask['endingHour'] = value['endingHour'];
         this.currentTask['description'] = value['description'];
         this.currentTask['ownerEmail'] = value['ownerEmail'];
-        console.log(this.currentTask);
       },
       error: err => {console.log(err);}
     });
@@ -71,8 +71,29 @@ export class DetailsTaskComponent implements OnInit{
   shareWithUser() {
     this.taskService.share(this.sharingUserEmail, this.route.snapshot.params['id'])//todo : meilleure méthode que snapshot?
       .subscribe({
-        next: value => console.log(value),
+        next: value => {
+          console.log(value);
+          this.getSharedWithEmailList(this.route.snapshot.params['id']);
+        },
         error: err => console.log(err)
       });
+  }
+
+  unshareWithThisUser($event: string) {
+    this.taskService.unshare($event, this.route.snapshot.params['id']).subscribe({
+      next: value => {
+        console.log(value);
+        this.getSharedWithEmailList(this.route.snapshot.params['id']);
+      },
+      error: err => console.log(err)
+    })
+  }
+
+  private getSharedWithEmailList(taskId: string) {
+    this.taskService.getAppUsersEmailWhomThisTaskIsSharedWith(taskId).subscribe({
+      // next: value => console.log(value.filter(s => s != this.sessionStorageService.getNickname())),
+      next: value => this.sharedWithEmailList = value.filter(s => s != "hugo-duval-1@hotmail.fr"), // todo : change back-end to return e-mail OR login to get user info and stock these into session storage
+      error: err => console.log(err)
+    })
   }
 }
