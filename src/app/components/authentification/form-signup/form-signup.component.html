@@ -18,6 +18,7 @@
   <p class="annotation">Champ obligatoire</p>
   <input id="password" type="text" formControlName="password" placeholder="Entrer son mot de passe (au moins 8 caractères) "><br>
   <p *ngIf="passwordlenghtIsInvalid()" class="alert-danger">8 caractères minimum dont 1 chiffre, 1 majuscule, 1 minuscule, 1 caractère spécial.</p>
+  <p class="annotation">Champ obligatoire</p>
   <input id="passwordConfirm" type="text" formControlName="passwordConfirm" placeholder="Confirmer son mot de passe"><br>
   <p *ngIf="passwordIsInvalid()" class="alert-danger">Le mot de passe ne correspond pas.</p>
 
@@ -27,6 +28,6 @@
 </form>
 
 <div class="seConnecter">
-<p>Vous avez déjà un compte ? </p>
+<p>Vous avez déjà un compte ?</p>
 <a routerLink="/signin">Se connecter</a>
 </div>

@@ -21,7 +21,7 @@
 
 #dateAndTemp p {
   color: black;
-  font-size: 2rem;
+  font-size: calc(1rem + 1vw);
   padding-bottom: 0.5rem;
 }
 
