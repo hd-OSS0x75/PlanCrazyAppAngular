@@ -14,8 +14,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     const token = this.sessionStorage.getToken();
 
-    //TODO request.url.match(/api\//) ?? filtrer la météo
-    if(token) {
+    if(token && !currentRequest.url.match('api.openweathermap.org')) {
       currentRequest = req.clone({headers: req.headers.set('Authorization', `Bearer ${token}`)})
     }
     return next.handle(currentRequest);
