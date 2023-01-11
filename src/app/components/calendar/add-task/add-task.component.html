@@ -13,6 +13,7 @@
     <label class="notes" for="description">Notes</label>
     <textarea  id="description" type="text" formControlName="description" rows="6"></textarea><br>
 
+
     <button type="submit"
             class="btn-success"
             [disabled]="validationProblem()">Valider</button>
@@ -21,8 +22,3 @@
   <a routerLink="/month">Annuler</a>
 
 </div>
-
-<!--ASTUCE POUR TESTER LE REMPLISSAGE DES CHAMPS D'UN FORMULAIRE-->
-<!-- <pre>
-  {{newTaskForm.value | json }}
-</pre> -->

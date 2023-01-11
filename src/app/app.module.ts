@@ -1,8 +1,5 @@
-import { NgModule,  LOCALE_ID } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { registerLocaleData } from '@angular/common';
-import localeFr from '@angular/common/locales/fr';
-registerLocaleData(localeFr);
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/authentification/homepage/homepage.component';
@@ -27,8 +24,12 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {FullCalendarModule} from "@fullcalendar/angular";
 import { FullCalendarComponent } from './components/calendar/full-calendar/full-calendar.component';
+import {ToastrModule} from "ngx-toastr";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr, 'fr-FR')
 
 
@@ -55,13 +56,25 @@ registerLocaleData(localeFr, 'fr-FR')
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     FlashMessagesModule.forRoot(),
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
     FullCalendarModule,
-    FormsModule
+    FormsModule,
+    FullCalendarModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      autoDismiss: true,
+      closeButton: true,
+      progressBar: true,
+      progressAnimation: "decreasing",
+    }),
+
   ],
   providers: [
     AuthInterceptorProviders,

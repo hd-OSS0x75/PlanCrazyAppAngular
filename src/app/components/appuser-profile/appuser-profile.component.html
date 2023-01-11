@@ -22,30 +22,34 @@
   <p *ngIf="addressIsInvalid()">Rentrez une adresse valide.</p>
   <p *ngIf="!addressIsInvalid()"></p>
   <label for="postcode">Code-Postal : </label>
-  <input id="postcode" type="number" formControlName="postcode" [(ngModel)]="currentUserProfile.postcode">
-  <p *ngIf="postcodeIsInvalid()">Rentrez un code postal valide.</p>
+  <input id="postcode" type="text" formControlName="postcode" [(ngModel)]="currentUserProfile.postcode">
+  <p *ngIf="postcodeIsInvalid()">Rentrez un code postal valide à 5 chiffres.</p>
   <p *ngIf="!postcodeIsInvalid()"></p>
   <label for="city">Ville : </label>
   <input id="city" type="text" formControlName="city" [(ngModel)]="currentUserProfile.city">
   <p *ngIf="cityIsInvalid()">La ville doit être saisie.</p>
   <p *ngIf="!cityIsInvalid()"></p>
   <label for="phoneNumber">Téléphone : </label>
-  <input id="phoneNumber" type="number" formControlName="phoneNumber" [(ngModel)]="currentUserProfile.phoneNumber">
-  <p *ngIf="phoneNumberIsInvalid()">Rentrez un numéro de téléphone valide.</p>
+  <input id="phoneNumber" type="text" formControlName="phoneNumber" [(ngModel)]="currentUserProfile.phoneNumber">
+  <p *ngIf="phoneNumberIsInvalid()">Rentrez un numéro de téléphone valide à 10 chiffres.</p>
   <p *ngIf="!phoneNumberIsInvalid()"></p>
   <label for="email">Email : </label>
   <input id="email" type="email" formControlName="email" [(ngModel)]="currentUserProfile.email">
   <p *ngIf="emailIsInvalid()">Rentrez un email valide.</p>
   <p *ngIf="!emailIsInvalid()"></p>
-  <label for="password">Mot de passe : </label>
-  <input id="password" type="password" formControlName="password" [(ngModel)]="currentUserProfile.password">
-  <p *ngIf="passwordIsInvalid()">Le mot de passe doit être saisi.</p>
-  <p *ngIf="!passwordIsInvalid()"></p>
+<!--  <label for="password">Mot de passe : </label>-->
+<!--  <input id="password" type="password" formControlName="password" [(ngModel)]="currentUserProfile.password">-->
+<!--  <p *ngIf="passwordIsInvalid()">Le mot de passe doit être saisi.</p>-->
+<!--  <p *ngIf="!passwordIsInvalid()"></p>-->
 
-  <button class="btn-valider" type="submit" [disabled]="!allowSendingModification()" (click)="showFlash()">Valider les modifications</button>
+  <button class="btn-valider" type="submit" [disabled]="!allowSendingModification()" (click)="showFlash()">
+    <div *ngIf="toDisplayValider">Valider les modifications
+    </div>
+  </button>
 </form>
 
 <div class="btn">
   <button class="btn-success" routerLink="/month">Retour</button>
+
   <button class="btn-success" (click)="changeModificationAbility()">Modifier</button>
 </div>

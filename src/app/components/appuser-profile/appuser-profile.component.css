@@ -35,7 +35,6 @@ input {
 
 .flashMessage
 {
-  color: red;
   font-size:20px;
   text-align: center;
 }
@@ -102,5 +101,3 @@ input {
     width: 70%;
     border-radius: 10px;
   }
-} */
-

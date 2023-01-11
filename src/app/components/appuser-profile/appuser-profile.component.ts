@@ -12,23 +12,17 @@ import {FlashMessagesService} from "flash-messages-angular";
 })
 export class AppuserProfileComponent implements OnInit {
   profileAppUserForm = new FormGroup({
-    nickname: new FormControl({value: '', disabled: true},
-      [Validators.required]),
-    firstName: new FormControl({value: '', disabled: true},
-      [Validators.required]),
-    lastName: new FormControl({value: '', disabled: true},
-      [Validators.required]),
-    address: new FormControl({value: '', disabled: true},
-      [Validators.required]),
-    postcode: new FormControl({value: '', disabled: true},
-      [Validators.required]),
-    city: new FormControl({value: '', disabled: true},
-      [Validators.required]),
+    nickname: new FormControl({value: '', disabled: true},[Validators.required]),
+    firstName: new FormControl({value: '', disabled: true},),
+    lastName: new FormControl({value: '', disabled: true},),
+    address: new FormControl({value: '', disabled: true},),
+    postcode: new FormControl({value: '', disabled: true},[Validators.pattern("^[0-9]{5}$")]),
+    city: new FormControl({value: '', disabled: true},),
     phoneNumber: new FormControl({value: '', disabled: true},
-      [Validators.required]),
+      [Validators.required,  Validators.pattern("^[0-9]{10}$")]),
     email: new FormControl({value: '', disabled: true},
       [Validators.required, Validators.email]),
-    password: new FormControl({value: '', disabled: true},
+    password: new FormControl({value: '', disabled: false},
       [Validators.required])
   });
 
@@ -45,6 +39,8 @@ export class AppuserProfileComponent implements OnInit {
   };
 
   allowModification: boolean = false;
+  toDisplayModifier: boolean = true;
+  toDisplayValider: boolean = false;
 
   constructor(private sessionStorageService: SessionStorageService,
               private appUserService: AppUserService,
@@ -125,6 +121,8 @@ export class AppuserProfileComponent implements OnInit {
 
   changeModificationAbility() {
     this.allowModification = !this.allowModification;
+    this.toDisplayModifier = !this.toDisplayModifier;
+    this.toDisplayValider = !this.toDisplayValider;
     this.updateFields();
     this.changeFieldsDisplay();
   }
@@ -135,15 +133,15 @@ export class AppuserProfileComponent implements OnInit {
 
   private changeFieldsDisplay() {
     if (this.allowModification) {
-      this.profileAppUserForm.get('nickname')?.enable();
+      this.profileAppUserForm.get('nickname')?.disable();
       this.profileAppUserForm.get('firstName')?.enable();
       this.profileAppUserForm.get('lastName')?.enable();
       this.profileAppUserForm.get('address')?.enable();
       this.profileAppUserForm.get('postcode')?.enable();
       this.profileAppUserForm.get('city')?.enable();
-      this.profileAppUserForm.get('phoneNumber')?.enable();
-      this.profileAppUserForm.get('email')?.enable();
-      this.profileAppUserForm.get('password')?.enable();
+      this.profileAppUserForm.get('phoneNumber')?.disable();
+      this.profileAppUserForm.get('email')?.disable();
+      this.profileAppUserForm.get('password')?.disable();
     } else {
       this.profileAppUserForm.get('nickname')?.disable();
       this.profileAppUserForm.get('firstName')?.disable();
@@ -186,7 +184,10 @@ export class AppuserProfileComponent implements OnInit {
 //MESSAGE FLASH
   //1er paramètre: message
   //2nd paramètre: optionnel (durée message, genre d'alerte etc.)
+
   showFlash(){
+    this.toDisplayModifier = !this.toDisplayModifier;
+    this.toDisplayValider = !this.toDisplayValider;
     this.flashMessage.show('Modifications prises en compte');
   }
 }

@@ -20,11 +20,6 @@ export class TaskService {
     return this.http.get<any[]>(baseURL);
   }
 
-  //TODO : SEGO - A EFFACER CAR SUREMENT INUTILE
-  // getTasksByDate(): Observable<any>{
-  //   return this.http.get<any[]>(baseURL);
-  // }
-
   get(id: any): Observable<any> {
     return this.http.get(`${baseURL}/${id}`);
   }
@@ -41,6 +36,9 @@ export class TaskService {
     return this.http.delete(`${baseURL}/${id}`);
   }
 
-
+  share(appUserToShareEmail: any, taskId: any): Observable<any> {
+    const sharingRequest = {taskId, appUserToShareEmail};
+    return this.http.put(`${baseURL}/share`, sharingRequest);
+  }
 
 }

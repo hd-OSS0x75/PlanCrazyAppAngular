@@ -23,6 +23,7 @@ export class DetailsTaskComponent implements OnInit{
     endingHour: new FormControl([{value: '', disabled: true}]),
     description: new FormControl([{value: '', disabled: true}]),
   });
+  sharingUserEmail: String = '';
 
 
   constructor(private sessionStorageService: SessionStorageService,
@@ -60,9 +61,18 @@ export class DetailsTaskComponent implements OnInit{
         this.currentTask['startingHour'] = value['startingHour'];
         this.currentTask['endingHour'] = value['endingHour'];
         this.currentTask['description'] = value['description'];
+        this.currentTask['ownerEmail'] = value['ownerEmail'];
         console.log(this.currentTask);
       },
       error: err => {console.log(err);}
     });
+  }
+
+  shareWithUser() {
+    this.taskService.share(this.sharingUserEmail, this.route.snapshot.params['id'])//todo : meilleure méthode que snapshot?
+      .subscribe({
+        next: value => console.log(value),
+        error: err => console.log(err)
+      });
   }
 }
