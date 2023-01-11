@@ -2,7 +2,6 @@
 
 <app-full-calendar (choseThisDateEvent)="choseDate($event)"></app-full-calendar>
 
-
 <ul>
   <li *ngFor="let task of taskList">
     <app-task  taskId="{{task.taskId}}" taskTitle="{{task.taskTitle}}" startingHour="{{(task.startingDate | date: 'dd/MM/yy') + '- ' + task.startingHour}}"
