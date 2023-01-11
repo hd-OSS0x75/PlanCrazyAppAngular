@@ -19,12 +19,13 @@
 
 <p>Propriétaire : {{currentTask.ownerEmail}}</p>
 <p>Partagé avec :</p>
-<!--<ul>-->
-<!--  <li *ngFor="let email of sharedWithEmailList">-->
-<!--    <app-task  taskId="{{task.taskId}}" taskTitle="{{task.taskTitle}}" startingHour="{{(task.startingDate | date: 'dd/MM/yy') + ': ' + task.startingHour}}"-->
-<!--               (deleteThisTaskEvent)="deleteTask($event)"></app-task>-->
-<!--  </li>-->
-<!--</ul>-->
+<ul>
+  <li *ngFor="let emailOfUserSharedWith of sharedWithEmailList">
+    <app-user-task-is-shared-with email="{{emailOfUserSharedWith}}"
+              (unshareWithThisUserEvent)="unshareWithThisUser($event)">
+    </app-user-task-is-shared-with>
+  </li>
+</ul>
 
 <label for="sharingMail">Partager à : </label>
 <input type="email" placeholder="addresse@mail.com" id="sharingMail" name="sharingMail" [(ngModel)]="sharingUserEmail">
