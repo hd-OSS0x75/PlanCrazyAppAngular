@@ -25,7 +25,6 @@ export class DetailsTaskComponent implements OnInit{
   });
   sharingUserEmail: String = '';
   sharedWithEmailList?: string[];
-  // sharedWithEmailList: string[] = ['-', '--'];
 
 
   constructor(private sessionStorageService: SessionStorageService,
