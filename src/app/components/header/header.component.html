@@ -5,13 +5,12 @@
       <p *ngIf="isLoggedIn$ | async"><a href="" (click)="onLogout()">Deconnexion   &#10162;</a></p>
     </div>
     <h1>PlanCrazyApp</h1>
-  <div id="profileContainer">
+  <div *ngIf="isLoggedIn$ | async" id="profileContainer">
     <div id="imageContainer">
       <img src="/assets/images/girl.jpg" alt="girl smiling">
     </div>
-    <p id="nickname" ><a routerLink="/profile">{{nickname}}</a></p>
   </div>
-  <nav>
+  <nav *ngIf="isLoggedIn$ | async">
     <div id="menu">
       <p><a
         routerLink="/month"

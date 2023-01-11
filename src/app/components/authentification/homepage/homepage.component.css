@@ -2,7 +2,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: calc(1.5rem + 1.5vw) auto;
+  margin: 0 auto;
+  min-height: 60vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)), url('https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80') no-repeat;
+  background-position: center;
+  background-size: 100%;
 }
 
 .btn-success {
@@ -24,4 +28,10 @@
   width: calc(12rem + 1.2vw);
   background-color: #90B77D;
   white-space: nowrap;
+}
+
+@media (max-width: 1000px) {
+.btn {
+  min-height: 40vh;
+}
 }
