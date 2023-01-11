@@ -24,6 +24,8 @@ export class DetailsTaskComponent implements OnInit{
     description: new FormControl([{value: '', disabled: true}]),
   });
   sharingUserEmail: String = '';
+  // sharedWithEmailList?: string[];
+  sharedWithEmailList: string[] = ['-', '--'];
 
 
   constructor(private sessionStorageService: SessionStorageService,
@@ -72,5 +74,9 @@ export class DetailsTaskComponent implements OnInit{
         next: value => console.log(value),
         error: err => console.log(err)
       });
+  }
+
+  unshareWithThisUser($event: string) {
+    console.log($event);
   }
 }
