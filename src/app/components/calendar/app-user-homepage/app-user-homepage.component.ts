@@ -17,7 +17,6 @@ export class AppUserHomepageComponent implements OnInit {
               private taskService: TaskService)  {   }
 
   ngOnInit(): void {
-
     this.getAppUserTasks();
   }
 
