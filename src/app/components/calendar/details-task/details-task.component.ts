@@ -52,7 +52,6 @@ export class DetailsTaskComponent implements OnInit{
   private getTask(id: string) {
     this.taskService.get(id).subscribe({
       next: value => {
-        console.log(value);
         this.currentTask['taskId'] = value['taskId'];
         this.currentTask['title'] = value['taskTitle'];
         this.currentTask['location'] = value['location'];
@@ -62,7 +61,6 @@ export class DetailsTaskComponent implements OnInit{
         this.currentTask['endingHour'] = value['endingHour'];
         this.currentTask['description'] = value['description'];
         this.currentTask['ownerEmail'] = value['ownerEmail'];
-        console.log(this.currentTask);
       },
       error: err => {console.log(err);}
     });
