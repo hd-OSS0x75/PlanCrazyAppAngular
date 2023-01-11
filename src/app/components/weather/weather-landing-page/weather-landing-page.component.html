@@ -1,0 +1,10 @@
+<div id="landingPageContainer">
+  <app-weather-main-widget [dateOfToday]="dateOfToday" [weatherDataOfToday]="weatherDataOfToday"></app-weather-main-widget>
+  <app-weather-five-days-forecast [fiveDaysWeatherData]="fiveDaysWeatherData"></app-weather-five-days-forecast>
+  <div id="updateLocation">
+    <input type="text" [(ngModel)]="cityToUpdate" placeholder="Ville...">
+    <button (click)="updateWithNewLocation(cityToUpdate)">Mise à jour</button>
+  </div>
+</div>
+
+

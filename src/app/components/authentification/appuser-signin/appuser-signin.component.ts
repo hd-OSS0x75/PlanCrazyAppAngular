@@ -4,6 +4,7 @@ import {SessionStorageService} from "../../../services/security/session-storage.
 import {AuthService} from "../../../services/security/auth.service";
 import {AppUserService} from "../../../services/app-user-authentification/app-user.service";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-appuser-signin',
@@ -21,7 +22,8 @@ export class AppuserSigninComponent {
   constructor(private sessionStorageService: SessionStorageService,
               private appUserService: AppUserService,
               private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private toastr: ToastrService) {
   }
 
   seConnecter() {
@@ -31,29 +33,15 @@ export class AppuserSigninComponent {
         password: <string>this.signingInAppUserForm.value.password
       };
 
-      this.appUserService.getAll().subscribe({
-        next: (data) => {
-          data.forEach((value) => {
-            if (value['email'] == dataForm.email) {
-              this.unexistingEmail = false;
-              if (value['password'] == dataForm.password){
-                this.incorrectPassword = false;
-                this.authService.login(dataForm.email, dataForm.password, <string>value['appUserId']);
-                this.router.navigate(['/month']);
-              } else {
-                console.log('Incorrect password'); // todo reactive, maybe do not print here as every value is tested
-              }
-            } else {
-              // console.log("This email adress doesn't exists"); // todo reactive, => do not print here as every value is tested
-            }
-          })
-        },
-        error: (error) => {
-          console.log(error);
+      this.authService.login(dataForm.email, dataForm.password).subscribe(
+        {
+          next: value => {
+            this.router.navigate(['/month']);
+            },
+          error: err => {
+            this.toastr.error("Votre compte ou votre mot de passe est incorrect");}
         }
-      });
-
-
+      );
     }
   }
 
@@ -72,7 +60,7 @@ export class AppuserSigninComponent {
   }
 
   test() {
-    this.appUserService.get(this.sessionStorageService.getAppUserId())
+    this.appUserService.get()
       .subscribe({
         next: data => {
           console.log(data);

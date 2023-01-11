@@ -2,7 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {SessionStorageService} from "../../../services/security/session-storage.service";
 import {AppUserService} from "../../../services/app-user-authentification/app-user.service";
 import {TaskService} from "../../../services/calendar/task.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Task} from "../../../models/task";
 
 @Component({
   selector: 'app-details-task',
@@ -11,21 +13,32 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class DetailsTaskComponent implements OnInit{
   nickname: string = 'Profil';
-  currentTask: any ={};//todo : replace any by task model
+  currentTask: any = {};//todo : replace any by task model
+  updateTaskForm = new FormGroup({
+    title: new FormControl([{value: '', disabled: true}, Validators.required]),
+    location: new FormControl([{value: '', disabled: true}]),
+    startingDate: new FormControl([{value: '', disabled: true}, Validators.required]),
+    endingDate: new FormControl([{value: '', disabled: true}]),
+    startingHour: new FormControl ([{value: '', disabled: true}]),
+    endingHour: new FormControl([{value: '', disabled: true}]),
+    description: new FormControl([{value: '', disabled: true}]),
+  });
+  sharingUserEmail: String = '';
 
 
   constructor(private sessionStorageService: SessionStorageService,
               private appUserService: AppUserService,
               private route: ActivatedRoute,
-              private taskService: TaskService) {}
+              private taskService: TaskService,
+              private router: Router) {}
 
   ngOnInit(): void {
-    this.updateNickname(<string>this.sessionStorageService.getAppUserId());
-    this.getTask(this.route.snapshot.params['id']);//todo : meilleure méthode ?
+    this.updateNickname();
+    this.getTask(this.route.snapshot.params['id']);//todo : meilleure méthode que snapshot?
   }
 
-  private updateNickname(appUserId: string) {
-    this.appUserService.get(appUserId)
+  private updateNickname() {
+    this.appUserService.get()
       .subscribe({
         next: value => {
           this.nickname = value['nickname'];
@@ -38,8 +51,28 @@ export class DetailsTaskComponent implements OnInit{
 
   private getTask(id: string) {
     this.taskService.get(id).subscribe({
-      next: value => {this.currentTask = value;},
+      next: value => {
+        console.log(value);
+        this.currentTask['taskId'] = value['taskId'];
+        this.currentTask['title'] = value['taskTitle'];
+        this.currentTask['location'] = value['location'];
+        this.currentTask['startingDate'] = value['startingDate'];
+        this.currentTask['endingDate'] = value['endingDate'];
+        this.currentTask['startingHour'] = value['startingHour'];
+        this.currentTask['endingHour'] = value['endingHour'];
+        this.currentTask['description'] = value['description'];
+        this.currentTask['ownerEmail'] = value['ownerEmail'];
+        console.log(this.currentTask);
+      },
       error: err => {console.log(err);}
     });
+  }
+
+  shareWithUser() {
+    this.taskService.share(this.sharingUserEmail, this.route.snapshot.params['id'])//todo : meilleure méthode que snapshot?
+      .subscribe({
+        next: value => console.log(value),
+        error: err => console.log(err)
+      });
   }
 }

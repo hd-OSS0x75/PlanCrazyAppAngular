@@ -9,6 +9,7 @@ import {AppUserHomepageComponent} from "./components/calendar/app-user-homepage/
 import {AddTaskComponent} from "./components/calendar/add-task/add-task.component";
 import {DetailsTaskComponent} from "./components/calendar/details-task/details-task.component";
 import {UpdateTaskComponent} from "./components/calendar/update-task/update-task.component";
+import {WeatherLandingPageComponent} from "./components/weather/weather-landing-page/weather-landing-page.component";
 
 const routes: Routes = [
   { path  :'', redirectTo: 'homepage', pathMatch: 'full'},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'task/add', component: AddTaskComponent, canActivate: [IsSignedInGuardService] },
   { path: 'task/details/:id', component: DetailsTaskComponent, canActivate: [IsSignedInGuardService] },
   { path: 'task/update/:id', component: UpdateTaskComponent, canActivate: [IsSignedInGuardService] },
+  { path: 'weather-landing-page', component: WeatherLandingPageComponent, canActivate: [IsSignedInGuardService]  }
 ];
 
 @NgModule({

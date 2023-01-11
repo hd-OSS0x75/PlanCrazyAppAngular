@@ -1,0 +1,66 @@
+h2 {
+  border-style: none;
+  background-color: #E3F3EC;
+  text-align: center;
+  margin: 3rem auto;
+  box-shadow: 8px 8px 12px #817C7C;
+  font-size: calc(1rem + 0.5vw);
+}
+
+form {
+  width: calc(7rem + 60vw);
+  margin: calc(1rem + 2vw) auto;
+}
+
+label {
+  display: block;
+  color: #817C7C;
+  width: 100px;
+  margin: calc(0.3rem + 0.3vw) 0;
+}
+
+input {
+  height: 3rem;
+  width: 100%;
+  border-radius: 10px;
+  padding-left: calc(0.5rem + 0.3vw);
+  font-size: calc(0.8rem + 0.3vw);
+}
+
+.flash-message
+{
+  z-index: 10000;
+  position: relative;
+}
+
+.flashMessage
+{
+  color: red;
+  font-size:20px;
+  text-align: center;
+}
+
+
+.btn-valider {
+  display: block;
+  margin: calc(1.2rem + 0.5vw) auto;
+  padding: calc(0.5rem + 0.5vw);
+  border-radius: 5rem;
+  border: none;
+  width: 200px;
+  background-color: #90B77D;
+}
+
+.btn {
+  text-align: center;
+  padding: calc(10rem + 2vw);
+}
+
+.btn-success {
+  margin: 0.5rem calc(1rem + 0.5vw) calc(0.8rem + 0.4vw) calc(1rem + 0.5vw);
+  padding: calc(0.8rem + 0.4vw);
+  border-radius: 5rem;
+  border: none;
+  width: 200px;
+  background-color: #90B77D;
+}

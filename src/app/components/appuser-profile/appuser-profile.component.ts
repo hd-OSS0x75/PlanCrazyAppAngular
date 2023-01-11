@@ -3,6 +3,7 @@ import {SessionStorageService} from "../../services/security/session-storage.ser
 import {AppUserService} from "../../services/app-user-authentification/app-user.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AppUser} from "../../models/app-user";
+import {FlashMessagesService} from "flash-messages-angular";
 
 @Component({
   selector: 'app-appuser-profile',
@@ -11,23 +12,17 @@ import {AppUser} from "../../models/app-user";
 })
 export class AppuserProfileComponent implements OnInit {
   profileAppUserForm = new FormGroup({
-    nickname: new FormControl({value: '', disabled: true},
-      [Validators.required]),
-    firstName: new FormControl({value: '', disabled: true},
-      [Validators.required]),
-    lastName: new FormControl({value: '', disabled: true},
-      [Validators.required]),
-    address: new FormControl({value: '', disabled: true},
-      [Validators.required]),
-    postcode: new FormControl({value: '', disabled: true},
-      [Validators.required]),
-    city: new FormControl({value: '', disabled: true},
-      [Validators.required]),
+    nickname: new FormControl({value: '', disabled: true},[Validators.required]),
+    firstName: new FormControl({value: '', disabled: true},),
+    lastName: new FormControl({value: '', disabled: true},),
+    address: new FormControl({value: '', disabled: true},),
+    postcode: new FormControl({value: '', disabled: true},[Validators.pattern("^[0-9]{5}$")]),
+    city: new FormControl({value: '', disabled: true},),
     phoneNumber: new FormControl({value: '', disabled: true},
-      [Validators.required]),
+      [Validators.required,  Validators.pattern("^[0-9]{10}$")]),
     email: new FormControl({value: '', disabled: true},
       [Validators.required, Validators.email]),
-    password: new FormControl({value: '', disabled: true},
+    password: new FormControl({value: '', disabled: false},
       [Validators.required])
   });
 
@@ -44,19 +39,22 @@ export class AppuserProfileComponent implements OnInit {
   };
 
   allowModification: boolean = false;
+  toDisplayModifier: boolean = true;
+  toDisplayValider: boolean = false;
 
   constructor(private sessionStorageService: SessionStorageService,
-              private appUserService: AppUserService) {
+              private appUserService: AppUserService,
+              private flashMessage: FlashMessagesService) {
   }
 
   //BLOC : fonctions à l'initialisation
   ngOnInit(): void {
-    this.getAppUser(<string>this.sessionStorageService.getAppUserId());
+    this.getAppUser();
   }
 
 
-  private getAppUser(appUserId: string) {
-    this.appUserService.get(appUserId)
+  private getAppUser() {
+    this.appUserService.get()
       .subscribe({
         next: value => {
           this.currentUserProfile['nickname'] = value['nickname'];
@@ -82,7 +80,6 @@ export class AppuserProfileComponent implements OnInit {
     // @ts-ignore
     return this.profileAppUserForm.controls[field].invalid && !this.profileAppUserForm.controls[field].pristine && this.allowModification;
   }
-
 
   nicknameIsInvalid(): boolean {
     return this.invalidField('nickname');
@@ -120,32 +117,31 @@ export class AppuserProfileComponent implements OnInit {
     return this.invalidField('password');
   }
 
-
-
-
   // BLOC : gestion de l'évènement : l'utilisateur clique sur le bouton modifier
 
   changeModificationAbility() {
     this.allowModification = !this.allowModification;
+    this.toDisplayModifier = !this.toDisplayModifier;
+    this.toDisplayValider = !this.toDisplayValider;
     this.updateFields();
     this.changeFieldsDisplay();
   }
 
   private updateFields() {
-    this.getAppUser(<string>this.sessionStorageService.getAppUserId());
+    this.getAppUser();
   }
 
   private changeFieldsDisplay() {
     if (this.allowModification) {
-      this.profileAppUserForm.get('nickname')?.enable();
+      this.profileAppUserForm.get('nickname')?.disable();
       this.profileAppUserForm.get('firstName')?.enable();
       this.profileAppUserForm.get('lastName')?.enable();
       this.profileAppUserForm.get('address')?.enable();
       this.profileAppUserForm.get('postcode')?.enable();
       this.profileAppUserForm.get('city')?.enable();
-      this.profileAppUserForm.get('phoneNumber')?.enable();
-      this.profileAppUserForm.get('email')?.enable();
-      this.profileAppUserForm.get('password')?.enable();
+      this.profileAppUserForm.get('phoneNumber')?.disable();
+      this.profileAppUserForm.get('email')?.disable();
+      this.profileAppUserForm.get('password')?.disable();
     } else {
       this.profileAppUserForm.get('nickname')?.disable();
       this.profileAppUserForm.get('firstName')?.disable();
@@ -166,6 +162,32 @@ export class AppuserProfileComponent implements OnInit {
   }
 
   seModifier() {
-    console.log(this.profileAppUserForm.value);//todo : send this to backend
+    const modifiedAppUser: AppUser = {
+      nickname: this.currentUserProfile['nickname'],
+      firstName: this.currentUserProfile['firstName'],
+      lastName: this.currentUserProfile['lastName'],
+      address: this.currentUserProfile['address'],
+      postcode: this.currentUserProfile['postcode'],
+      city: this.currentUserProfile['city'],
+      phoneNumber: this.currentUserProfile['phoneNumber'],
+      email: this.currentUserProfile['email'],
+      password: this.currentUserProfile['password']
+    };
+
+    console.log(modifiedAppUser);//todo : test this functionnality
+    this.appUserService.updateAppUser(modifiedAppUser).subscribe({
+      next: value => {console.log(value);},
+      error: err => {console.log(err);}
+    });
+  }
+
+//MESSAGE FLASH
+  //1er paramètre: message
+  //2nd paramètre: optionnel (durée message, genre d'alerte etc.)
+
+  showFlash(){
+    this.toDisplayModifier = !this.toDisplayModifier;
+    this.toDisplayValider = !this.toDisplayValider;
+    this.flashMessage.show('Modifications prises en compte');
   }
 }

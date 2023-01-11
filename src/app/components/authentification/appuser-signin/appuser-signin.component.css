@@ -1,0 +1,44 @@
+.alert-danger {
+  color: #FF0000;
+  font-size: 12px;
+}
+
+.btn-success {
+  background-color: #90B77D;
+  border-radius: 20px;
+  margin: 40px 50px 0 50px;
+  padding: 10px 0;
+  border : none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: calc(15rem + 12vw);
+  margin: 0 auto;
+  padding: calc(2rem + 1vw);
+}
+
+.inscription {
+  text-align: center;
+  margin: calc(1rem + 1vw);
+  font-family: "Berlin Sans FB", sans-serif;
+}
+
+.inscription a {
+  color: #35495e;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid #90B77D;
+  font-size: calc(0.7rem + 0.7vw);
+  margin: calc(0.5rem + 0.5vw) 0;
+  text-align: center;
+}
+
+input:focus {
+  outline-color: #d2c5c5;
+}
+

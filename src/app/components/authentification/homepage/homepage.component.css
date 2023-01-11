@@ -1,0 +1,27 @@
+.btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: calc(1.5rem + 1.5vw) auto;
+}
+
+.btn-success {
+  border: none;
+  border-radius: 10rem;
+  padding: calc(0.7rem + 0.5vw);
+  margin: calc(0.7rem + 0.5vw) auto;
+  box-shadow: 4px 4px 4px #756e6e;
+  font-size: calc(0.6rem + 0.6vw);
+  color: #35495e;
+}
+
+.connect {
+  width: calc(14rem + 1.3vw);
+  background-color: #D2D79F;
+}
+
+.create {
+  width: calc(12rem + 1.2vw);
+  background-color: #90B77D;
+  white-space: nowrap;
+}

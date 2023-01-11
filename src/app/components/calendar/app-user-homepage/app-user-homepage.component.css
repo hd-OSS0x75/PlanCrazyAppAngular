@@ -1,0 +1,31 @@
+h1 {
+  text-align: center;
+  color: #42855B;
+  size: 32px;
+  text-shadow: #bbb9b9 1px 2px;
+}
+
+.date {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-top: calc(1rem + 1vw);
+}
+
+li{
+  list-style-type: none;
+}
+
+.btn {
+  text-align: center;
+  margin: calc(0.5rem + 0.5vw);
+}
+
+.btn-success {
+  background-color: #90B77D;
+  border-radius: 3rem;
+  margin: 20px calc(0.5rem + 0.3vw);
+  padding: calc(0.6rem + 0.6vw);
+  border: none;
+  font-size: calc(0.6rem + 0.6vw);
+}
