@@ -43,6 +43,11 @@ input:focus {
   background-color: #D9D9D9;
   border : none;
   margin-top: 10px;
+  padding: calc(0.6rem + 0.6vw);
+}
+
+#description:focus {
+  outline-color: #c4b8b8;
 }
 
 .btn-success {
@@ -53,10 +58,6 @@ input:focus {
   border : none;
   font-size: calc(0.5rem + 0.5vw);
   box-shadow: 4px 4px 4px rgb(158, 149, 149);
-}
-
-textarea {
-  padding: 0 50px;
 }
 
 a {

@@ -38,7 +38,7 @@ export class AppUserHomepageComponent implements OnInit {
   deleteTask($event: string) {
     console.log($event);
     this.taskService.delete($event).subscribe({
-      next: value => console.log(value),
+      next: value => this.getAppUserTasks(),
       error: err => console.log(err)
     });
   }

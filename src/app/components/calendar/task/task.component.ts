@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-task',
@@ -13,7 +13,10 @@ export class TaskComponent {
   @Input('startingHour')
   startingHour?: string;
 
+
   @Output() deleteThisTaskEvent = new EventEmitter<string>();
+
+  Date: any;
 
   deleteThisTask() {
     this.deleteThisTaskEvent.emit(this.taskId);
