@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 const TOKEN_KEY = "auth-password";
-const NICKNAME_KEY = "auth-nickname";
+const EMAIL_KEY = "auth-email";
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +18,12 @@ export class SessionStorageService {
     return window.sessionStorage.getItem(TOKEN_KEY);
   }
 
-  saveNickname(nickname: string) {
-    window.sessionStorage.setItem(NICKNAME_KEY, nickname);
+  saveEmail(email: string) {
+    window.sessionStorage.setItem(EMAIL_KEY, email);
   }
 
-  getNickname() {
-    return window.sessionStorage.getItem(NICKNAME_KEY);
+  getEmail() {
+    return window.sessionStorage.getItem(EMAIL_KEY);
   }
 
   clearSession(){
