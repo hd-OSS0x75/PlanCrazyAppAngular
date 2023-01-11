@@ -8,15 +8,25 @@
 <h3>{{currentTask.title}}</h3>
 <p>Du {{currentTask.startingDate | date: "dd/MM/yyyy"}} - {{currentTask.startingHour}} au {{currentTask.endingDate  | date: "dd/MM/yyyy"}} - {{currentTask.endingHour}} </p>
 <p> Lieu : {{currentTask.location}} </p>
-<p>Propriétaire : {{currentTask.ownerEmail}}</p>
-
-<label for="sharingMail">Partager à : </label>
-<input type="email" placeholder="addresse@mail.com" id="sharingMail" name="sharingMail" [(ngModel)]="sharingUserEmail">
-<button (click)="shareWithUser()">Partager</button>
 
 <form [formGroup]="updateTaskForm">
   <label class="notes" for="description">Notes</label>
   <textarea  id="description" type="text" formControlName="description" rows="6" value="{{currentTask.description}}"></textarea><br>
 </form>
+
+<p>Propriétaire : {{currentTask.ownerEmail}}</p>
+<p>Partagé avec :</p>
+<!--<ul>-->
+<!--  <li *ngFor="let email of sharedWithEmailList">-->
+<!--    <app-task  taskId="{{task.taskId}}" taskTitle="{{task.taskTitle}}" startingHour="{{(task.startingDate | date: 'dd/MM/yy') + ': ' + task.startingHour}}"-->
+<!--               (deleteThisTaskEvent)="deleteTask($event)"></app-task>-->
+<!--  </li>-->
+<!--</ul>-->
+
+<label for="sharingMail">Partager à : </label>
+<input type="email" placeholder="addresse@mail.com" id="sharingMail" name="sharingMail" [(ngModel)]="sharingUserEmail">
+<button (click)="shareWithUser()">Partager</button>
+
+
 
 <a class="btn-success" routerLink="/task/update/{{currentTask.taskId}}">Modifier</a>
