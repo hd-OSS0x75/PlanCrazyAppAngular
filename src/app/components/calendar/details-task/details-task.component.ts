@@ -91,9 +91,8 @@ export class DetailsTaskComponent implements OnInit{
 
   private getSharedWithEmailList(taskId: string) {
     this.taskService.getAppUsersEmailWhomThisTaskIsSharedWith(taskId).subscribe({
-      // next: value => console.log(value.filter(s => s != this.sessionStorageService.getNickname())),
-      next: value => this.sharedWithEmailList = value.filter(s => s != "hugo-duval-1@hotmail.fr"), // todo : change back-end to return e-mail OR login to get user info and stock these into session storage
+      next: value => this.sharedWithEmailList = value.filter(s => s != this.sessionStorageService.getEmail()),
       error: err => console.log(err)
-    })
+    });
   }
 }
