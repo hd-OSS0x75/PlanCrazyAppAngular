@@ -5,14 +5,10 @@ import frLocale from "@fullcalendar/core/locales/fr";
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import interactionPlugin, {DateClickArg} from '@fullcalendar/interaction';
-import {AppUser} from "../../../models/app-user";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AppUserService} from "../../../services/app-user-authentification/app-user.service";
 import {TaskService} from "../../../services/calendar/task.service";
-import {BehaviorSubject, Observable} from "rxjs";
 import {Task} from 'src/app/models/task';
-import {AddTaskComponent} from "../add-task/add-task.component";
-let newTask: Task;
 
 @Component({
   selector: 'app-full-calendar',
@@ -21,6 +17,7 @@ let newTask: Task;
 })
 export class FullCalendarComponent implements OnInit {
   taskList?: any[];
+  task: Task | undefined;
 
   @Output() choseThisDateEvent = new EventEmitter<string>();
 
@@ -77,9 +74,10 @@ export class FullCalendarComponent implements OnInit {
         this.taskList = value.map(
           value1 => {
             return {
+              id: value1['taskId'],
               title: value1['taskTitle'],
-              start: value1['startingDate'],
-              end: value1['endingDate']
+              start: (value1['startingDate'] + ' ' + value1['startingHour']),
+              end: (value1['endingDate'] + ' ' + value1['endingHour']),
             };
           }
         );
@@ -121,6 +119,7 @@ export class FullCalendarComponent implements OnInit {
       //   if(!confirm("Etes vous sûr de vouloir déplacer l'évènements?")) {infos.revert();}
       //     },
       nowIndicator: true,
+      selectable: true,
       dateClick: this.handleDateSelect.bind(this),
       eventClick: this.handleEventClick.bind(this), //todo : make it work. What do we want from it ?
       eventColor: "#90B77D",
@@ -132,20 +131,19 @@ export class FullCalendarComponent implements OnInit {
     };
   }
 
-//AU CLIC SUR UNE DATE PERMET DE MODIFIER LA VALEUR DE LA DATE
+//AU CLIC SUR UNE DATE PERMET DE MODIFIER LA VALEUR DE LA DATE DANS LE TITRE ET FAIT APPARAITRE TACHES DU JOUR
   handleDateSelect(selectDateInfo: DateClickArg) {
     let clickedDate = selectDateInfo.dateStr;
+    console.log(selectDateInfo);
+
     this.choseThisDate(clickedDate);
   }
 
-  //TODO: reprendre cette fonction qui ne fonctionne pas
   //AU CLIC SUR UN EVENEMENT, UNE TACHE ON A SON DETAIL
   handleEventClick(clickInfo: EventClickArg) {
-    console.log(clickInfo.event.title)
-    console.log(clickInfo.event.id)
-    console.log(clickInfo)
-    this.taskService.get(clickInfo.event.id).subscribe({
-      next: () => this.router.navigate(['/details/:clickInfo.event.id']),
+   let id= clickInfo.event.id;
+    this.taskService.get(id).subscribe({
+      next: () => this.router.navigate(['/task/details/' + id]),
       error: (err) => console.log(err)
     });
   }
