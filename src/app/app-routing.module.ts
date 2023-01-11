@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'task/add', component: AddTaskComponent, canActivate: [IsSignedInGuardService] },
   { path: 'task/details/:id', component: DetailsTaskComponent, canActivate: [IsSignedInGuardService] },
   { path: 'task/update/:id', component: UpdateTaskComponent, canActivate: [IsSignedInGuardService] },
-  { path: 'weather-landing-page', component: WeatherLandingPageComponent }
+  { path: 'weather-landing-page', component: WeatherLandingPageComponent, canActivate: [IsSignedInGuardService]  }
 ];
 
 @NgModule({
