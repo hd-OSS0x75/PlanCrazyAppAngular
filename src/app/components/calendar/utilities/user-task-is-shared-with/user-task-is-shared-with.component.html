@@ -1,8 +1,4 @@
 <div>
-  <p>
-    {{appUserEmail}}
-  </p>
-  <button (click)="unShareWithThisUser()">Départager
-    <i class="fa-regular fa-trash-can"></i>
-  </button>
+  <input type="email" disabled="true" [(ngModel)]="appUserEmail">
+  <button id="shareBtn" (click)="unShareWithThisUser()">Départager</button>
 </div>

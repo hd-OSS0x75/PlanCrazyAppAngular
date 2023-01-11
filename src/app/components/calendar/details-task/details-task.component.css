@@ -46,7 +46,7 @@ label {
   margin: calc(0.3rem + 0.3vw) 0;
 }
 
-input {
+:host ::ng-deep input {
   display: block;
   height: 30px;
   width: calc(7rem + 40vw);
@@ -70,7 +70,7 @@ textarea {
   box-shadow: 5px 5px 5px #dccaca;
 }
 
-#shareBtn {
+:host ::ng-deep #shareBtn {
   display: block;
   margin: calc(1rem + 1vw) auto;
   padding: calc(0.5rem + 0.5vw);
