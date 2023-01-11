@@ -1,5 +1,3 @@
-<h1>PlanCrazyApp</h1>
-
 <form [formGroup]="signingInAppUserForm" (ngSubmit)="seConnecter()">
   <input id="email" type="email" formControlName="email" placeholder="Entrer son email">
   <p *ngIf="emailIsInvalid()" class="alert-danger">Rentrez un email valide.</p>
@@ -11,6 +9,6 @@
 </form>
 
 <div class="inscription">
-<a  routerLink="/signup">Vous n'avez pas de compte ? S'inscrire</a>
+  <a  routerLink="/signup">Vous n'avez pas de compte ? S'inscrire</a>
 </div>
 

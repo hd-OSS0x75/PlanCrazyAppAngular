@@ -1,18 +1,30 @@
-h1 {
-  text-align: center;
-  color: #42855B;
-  size: 32px;
-  text-shadow: #bbb9b9 1px 2px;
-  font-family: "Berlin Sans FB", sans-serif;
-}
-
 h2 {
   border-style: none;
   background-color: #E3F3EC;
   text-align: center;
-  margin:30px auto;
+  margin: 3rem auto;
   box-shadow: 8px 8px 12px #817C7C;
-  font-family: "Berlin Sans FB", sans-serif;
+  font-size: calc(1rem + 0.5vw);
+}
+
+form {
+  width: calc(7rem + 60vw);
+  margin: calc(1rem + 2vw) auto;
+}
+
+label {
+  display: block;
+  color: #817C7C;
+  width: 100px;
+  margin: calc(0.3rem + 0.3vw) 0;
+}
+
+input {
+  height: 3rem;
+  width: 100%;
+  border-radius: 10px;
+  padding-left: calc(0.5rem + 0.3vw);
+  font-size: calc(0.8rem + 0.3vw);
 }
 
 .flash-message
@@ -23,14 +35,37 @@ h2 {
 
 .flashMessage
 {
-  font-family: "Berlin Sans FB", sans-serif;
-  color: #42855B;
   font-size:20px;
   text-align: center;
 }
 
+
+.btn-valider {
+  display: block;
+  margin: calc(1.2rem + 0.5vw) auto;
+  padding: calc(0.5rem + 0.5vw);
+  border-radius: 5rem;
+  border: none;
+  width: 200px;
+  background-color: #90B77D;
+}
+
+.btn {
+  text-align: center;
+  padding: calc(10rem +2vw);
+}
+
+.btn-success {
+  margin: 0.5rem calc(1rem + 0.5vw) calc(0.8rem + 0.4vw) calc(1rem + 0.5vw);
+  padding: calc(0.8rem + 0.4vw);
+  border-radius: 5rem;
+  border: none;
+  width: 200px;
+  background-color: #90B77D;
+}
+
 /*mobile first: min width */
-@media (min-width: 360px) {
+/* @media (min-width: 360px) {
   form {
     padding: 10px;
   }
@@ -39,19 +74,17 @@ h2 {
     color: #817C7C;
     width: 30%;
     display: inline-block;
-    font-family: "Berlin Sans FB", sans-serif;
   }
 
   input {
     height: 30px;
     width: 60%;
     border-radius: 10px;
-    font-family: "Berlin Sans FB", sans-serif;
   }
-}
+} */
 
 /*desktop */
-@media (min-width: 600px)  {
+/* @media (min-width: 600px)  {
   form {
     margin: 0 100px;
   }
@@ -61,37 +94,10 @@ h2 {
     width: 100px;
     display: inline-block;
     align-items: end;
-    font-family: "Berlin Sans FB", sans-serif;
   }
 
   input {
     height: 30px;
     width: 70%;
     border-radius: 10px;
-    font-family: "Berlin Sans FB", sans-serif;
   }
-}
-
-/*todo: bug sur l'affichage du bouton*/
-.btn-valider {
-  font-family: "Berlin Sans FB", sans-serif;
-  margin: 0px 25%;
-  border-radius: 10px;
-  border: none;
-  width: 200px;
-  background-color: #90B77D;
-  align-self: center;
-}
-
-.btn {
-  text-align: center;
-  font-family: "Berlin Sans FB", sans-serif;
-}
-
-.btn-success {
-  background-color: #90B77D;
-  border-radius: 20px;
-  padding: 0 40px;
-  margin:  0 10px;
-  border: none;
-}

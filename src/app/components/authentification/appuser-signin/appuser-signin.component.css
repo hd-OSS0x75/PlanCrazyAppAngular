@@ -1,21 +1,11 @@
-h1 {
-  text-align: center;
-  color: #42855B;
-  size: 32px;
-  text-shadow: #bbb9b9 1px 2px;
-  font-family: "Berlin Sans FB", sans-serif;
-}
-
 .alert-danger {
   color: #FF0000;
-  font-family: "Berlin Sans FB", sans-serif;
   font-size: 12px;
 }
 
 .btn-success {
   background-color: #90B77D;
   border-radius: 20px;
-  font-family: "Berlin Sans FB", sans-serif;
   margin: 40px 50px 0 50px;
   padding: 10px 0;
   border : none;
@@ -25,21 +15,30 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 450px;
+  width: calc(15rem + 12vw);
+  margin: 0 auto;
+  padding: calc(2rem + 1vw);
 }
 
 .inscription {
   text-align: center;
-  margin-top: 30px;
+  margin: calc(1rem + 1vw);
   font-family: "Berlin Sans FB", sans-serif;
 }
 
+.inscription a {
+  color: #35495e;
+}
+
 input {
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  font-family: "Berlin Sans FB", sans-serif;
-  width: 100%;
-  border-color: #90B77D;
+  border: none;
+  border-bottom: 1px solid #90B77D;
+  font-size: calc(0.7rem + 0.7vw);
+  margin: calc(0.5rem + 0.5vw) 0;
+  text-align: center;
+}
+
+input:focus {
+  outline-color: #d2c5c5;
 }
 

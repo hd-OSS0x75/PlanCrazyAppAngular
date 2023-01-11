@@ -1,6 +1,7 @@
+<p class="date">{{chosenDate | date:'EEEE dd MMMM': '':'fr-FR'}}</p>
+
 <app-full-calendar (choseThisDateEvent)="choseDate($event)"></app-full-calendar>
 
-<p class="date">{{chosenDate | date:'EEEE dd MMMM': '':'fr-FR'}}</p>
 
 <ul>
   <li *ngFor="let task of taskList">
