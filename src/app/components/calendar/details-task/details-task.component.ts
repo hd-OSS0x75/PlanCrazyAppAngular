@@ -5,6 +5,7 @@ import {TaskService} from "../../../services/calendar/task.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Task} from "../../../models/task";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-details-task',
@@ -31,7 +32,8 @@ export class DetailsTaskComponent implements OnInit{
               private appUserService: AppUserService,
               private route: ActivatedRoute,
               private taskService: TaskService,
-              private router: Router) {}
+              private router: Router,
+              private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.updateNickname();
@@ -75,7 +77,9 @@ export class DetailsTaskComponent implements OnInit{
           console.log(value);
           this.getSharedWithEmailList(this.route.snapshot.params['id']);
         },
-        error: err => console.log(err)
+        error: err => {
+          console.log(err);
+          this.toastr.error("email non existant") }
       });
   }
 
