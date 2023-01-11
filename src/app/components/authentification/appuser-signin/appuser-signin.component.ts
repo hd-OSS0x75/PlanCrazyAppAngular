@@ -35,7 +35,9 @@ export class AppuserSigninComponent {
 
       this.authService.login(dataForm.email, dataForm.password).subscribe(
         {
-          next: value => {this.router.navigate(['/month']);},
+          next: value => {
+            this.router.navigate(['/month']);
+            },
           error: err => {
             this.toastr.error("Votre compte ou votre mot de passe est incorrect");}
         }

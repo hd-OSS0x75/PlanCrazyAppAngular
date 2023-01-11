@@ -1,3 +1,5 @@
+<!--<meta http-equiv="refresh" content="10">-->
+
 <div id="headerContainer">
     <div id="logout">
       <p *ngIf="isLoggedIn$ | async"><a href="" (click)="onLogout()">Deconnexion   &#10162;</a></p>
@@ -7,7 +9,7 @@
     <div id="imageContainer">
       <img src="/assets/images/girl.jpg" alt="girl smiling">
     </div>
-    <p id="nickname"><a routerLink="/profile">{{nickname}}</a></p>
+    <p id="nickname" ><a routerLink="/profile">{{nickname}}</a></p>
   </div>
   <nav>
     <div id="menu">

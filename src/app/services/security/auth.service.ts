@@ -31,6 +31,7 @@ export class AuthService {
           console.log(jwtResponse);
           this.sessionStorage.saveToken(jwtResponse.token);
           this.sessionStorage.saveNickname(jwtResponse.nickname);
+          console.log(jwtResponse.userId);
           this.loggedIn.next(true);
           return true;
         })

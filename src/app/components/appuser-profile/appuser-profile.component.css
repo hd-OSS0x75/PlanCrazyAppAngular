@@ -35,6 +35,7 @@ input {
 
 .flashMessage
 {
+  color: red;
   font-size:20px;
   text-align: center;
 }
@@ -52,7 +53,7 @@ input {
 
 .btn {
   text-align: center;
-  padding: calc(10rem +2vw);
+  padding: calc(10rem + 2vw);
 }
 
 .btn-success {
@@ -63,41 +64,3 @@ input {
   width: 200px;
   background-color: #90B77D;
 }
-
-/*mobile first: min width */
-/* @media (min-width: 360px) {
-  form {
-    padding: 10px;
-  }
-
-  label {
-    color: #817C7C;
-    width: 30%;
-    display: inline-block;
-  }
-
-  input {
-    height: 30px;
-    width: 60%;
-    border-radius: 10px;
-  }
-} */
-
-/*desktop */
-/* @media (min-width: 600px)  {
-  form {
-    margin: 0 100px;
-  }
-
-  label {
-    color: #817C7C;
-    width: 100px;
-    display: inline-block;
-    align-items: end;
-  }
-
-  input {
-    height: 30px;
-    width: 70%;
-    border-radius: 10px;
-  }

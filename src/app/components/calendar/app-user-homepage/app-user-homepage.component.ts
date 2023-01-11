@@ -17,6 +17,7 @@ export class AppUserHomepageComponent implements OnInit {
               private taskService: TaskService)  {   }
 
   ngOnInit(): void {
+
     this.getAppUserTasks();
   }
 
@@ -31,6 +32,7 @@ export class AppUserHomepageComponent implements OnInit {
         },
         error: err => {console.log(err);}
       });
+
   }
 
   deleteTask($event: string) {

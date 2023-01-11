@@ -42,14 +42,10 @@
 <!--  <p *ngIf="passwordIsInvalid()">Le mot de passe doit être saisi.</p>-->
 <!--  <p *ngIf="!passwordIsInvalid()"></p>-->
 
-  <button class="btn-valider" type="submit" [disabled]="!allowSendingModification()" (click)="showFlash()">
-    <div *ngIf="toDisplayValider">Valider les modifications
-    </div>
-  </button>
+  <button class="btn-valider" type="submit" [disabled]="!allowSendingModification()" (click)="showFlash()">Valider les modifications</button>
 </form>
 
 <div class="btn">
   <button class="btn-success" routerLink="/month">Retour</button>
-
   <button class="btn-success" (click)="changeModificationAbility()">Modifier</button>
 </div>
