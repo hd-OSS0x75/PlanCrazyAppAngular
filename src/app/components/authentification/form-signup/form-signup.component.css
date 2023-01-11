@@ -1,6 +1,5 @@
 .alert-danger {
   color: #FF0000;
-  font-family: "Berlin Sans FB", sans-serif;
   font-size: 12px;
 }
 
@@ -8,7 +7,8 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 450px;
+  margin: calc(3rem + 2vw) auto;
+  width: calc(7rem + 45vw);
 }
 
 input{
@@ -17,28 +17,35 @@ input{
   border-left: none;
   width: 100%;
   border-color: #90B77D;
+  font-size: calc(0.6rem + 0.3vw);
+  padding: calc(0.2rem + 0.2vw);
 }
 
-input, button {
-  font-family: "Berlin Sans FB", sans-serif;
+input:focus {
+  outline-color: #c9bcbc;
 }
 
 
 .annotation {
-  color: #FF0000;
-  font-size: 8px;
+  color: #ff7e67;
+  font-size: calc(0.5rem + 0.3vw);
   text-align: right;
-  font-family: "Berlin Sans FB", sans-serif;
 }
 
 .btn-success {
   background-color: #90B77D;
   margin: 40px 50px 0 50px;
-  padding: 10px 0;
-  border-radius: 20px;
+  padding: calc(0.6rem + 0.5vw);
+  border-radius: 4rem;
   border : none;
+  font-size: calc(0.6rem + 0.3vw);
 }
 
 .seConnecter {
   text-align: center;
+  margin-bottom: calc(3rem + 0.8vw);
+}
+
+.seConnecter p {
+  margin: calc(1rem + 0.4vw);
 }

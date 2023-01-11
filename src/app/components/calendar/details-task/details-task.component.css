@@ -1,50 +1,110 @@
+#card {
+  padding: calc(1rem + 1vw);
+  border: 1px solid #d7baba;
+  box-shadow: 5px 5px 5px #dccaca;
+  border-radius: 3rem;
+  width: calc(15rem + 20vw);
+  margin: calc(1rem + 2vw) auto;
+}
+
 h2 {
   border-style: none;
   background-color: #E3F3EC;
   text-align: center;
   margin:30px auto;
   box-shadow: 8px 8px 12px #817C7C;
-  font-family: "Berlin Sans FB", sans-serif;
 }
 
 h3{
-  font-family: "Berlin Sans FB", sans-serif;
+  text-transform: capitalize;
   text-align: center;
   font-weight: bold;
+  margin: calc(0.8rem + 0.8vw);
 }
 
 p{
-  font-family: "Berlin Sans FB", sans-serif;
   text-align: center;
+  margin: calc(0.5rem + 0.3vw) 0;
+}
+
+#formContainer {
+  width: calc(7rem + 40vw);
+  margin: 0 auto;
 }
 
 form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 450px;
+  width: calc(7rem + 40vw);
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  color: #817C7C;
+  margin: calc(0.3rem + 0.3vw) 0;
 }
 
 input {
+  display: block;
   height: 30px;
-  width: 60%;
+  width: calc(7rem + 40vw);
   border-radius: 10px;
-  font-family: "Berlin Sans FB", sans-serif;
+  margin: calc(0.3rem + 0.3vw) auto;
+  box-shadow: 5px 5px 5px #dccaca;
+  padding: calc(0.5rem + 0.5vw);
+  border: 1px solid #d5c7c7;
+  font-size: calc(0.7rem + 0.3vw);
+}
+
+input:focus {
+  outline-color: #c4b8b8;
 }
 
 textarea {
   border-radius: 10px;
-  font-family: "Berlin Sans FB", sans-serif;
+  padding: calc(0.5rem + 0.5vw);
+  background: #e0d8d8;
+  border: none;
+  box-shadow: 5px 5px 5px #dccaca;
+}
+
+#shareBtn {
+  display: block;
+  margin: calc(1rem + 1vw) auto;
+  padding: calc(0.5rem + 0.5vw);
+  border: 1px solid #797070;
+  border-radius: 0.4rem;
+}
+
+#btnContainer {
+  margin-bottom: calc(1rem + 2vw);
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  font-size: calc(0.5rem + 0.5vw);
+  background: rgb(232, 137, 137);
+  border-radius: 5rem;
+  text-align: center;
+  margin: calc(0.5rem + 0.6vw) auto;
+  padding: calc(0.2rem + 0.2vw);
+  color: black;
+  box-shadow: 4px 4px 4px rgb(158, 149, 149);
 }
 
 .btn-success {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   background-color: #90B77D;
-  border-radius: 20px;
-  font-family: "Berlin Sans FB", sans-serif;
-  margin: 100px 10px;
-  padding: 10px 10px;
-  border : none;
+  padding: calc(0.3rem + 0.3vw);
+  width: 20%;
 }
+
+.btn-back {
+  background: rgb(232, 137, 137);
+  padding: calc(0.2rem + 0.2vw);
+  width: 15%;
+}
+
+

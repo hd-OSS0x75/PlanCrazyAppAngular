@@ -9,7 +9,7 @@ h2 {
 
 form {
   width: calc(7rem + 60vw);
-  margin: calc(1rem + 2vw) auto;
+  margin: calc(1rem + 2vw) auto calc(0.5rem + 1vw);
 }
 
 label {
@@ -43,7 +43,7 @@ input {
 
 .btn-valider {
   display: block;
-  margin: calc(1.2rem + 0.5vw) auto;
+  margin: calc(2rem + 1vw) auto 0;
   padding: calc(0.5rem + 0.5vw);
   border-radius: 5rem;
   border: none;
@@ -53,7 +53,7 @@ input {
 
 .btn {
   text-align: center;
-  padding: calc(10rem + 2vw);
+  padding: 0 0 calc(1rem + 2vw);
 }
 
 .btn-success {
