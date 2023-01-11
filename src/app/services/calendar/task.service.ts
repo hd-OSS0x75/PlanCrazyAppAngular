@@ -32,6 +32,16 @@ export class TaskService {
     return this.http.put(baseURL, updatedTask);
   }
 
+  // update(updatedTask: Task): Observable<any> {
+  //   const event = {updatedTask.get}
+  //
+  // }
+
+  // update(updatedTaskStartDate: Date): Observable<Task> {
+  //   const evantStartingDate = {updatedTaskStartDate}
+  //   return this.http.put<Task>(baseURL, evantStartingDate);
+  // }
+
   delete(id: any): Observable<any> {
     return this.http.delete(`${baseURL}/${id}`);
   }

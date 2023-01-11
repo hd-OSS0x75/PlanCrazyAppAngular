@@ -17,7 +17,7 @@ import {Task} from 'src/app/models/task';
 })
 export class FullCalendarComponent implements OnInit {
   taskList?: any[];
-  task: Task | undefined;
+  task: any[] | undefined;
 
   @Output() choseThisDateEvent = new EventEmitter<string>();
 
@@ -48,9 +48,9 @@ export class FullCalendarComponent implements OnInit {
       center : "dayGridMonth,timeGridWeek,timeGridDay" //TODO : voir l'utilité
     },
     editable: true, // permet de déplacer la réunion en drag and drop //todo: la MAJ ne se fait pas en BDD
-    // eventDrop: (infos) => {
-    //   if(!confirm("Etes vous sûr de vouloir déplacer l'évènements?")) {infos.revert();}
-    //     },
+    eventDrop: (infos) => {
+      if(!confirm("Etes vous sûr de vouloir déplacer l'évènements?")) {infos.revert();}
+        },
     nowIndicator: true, //TODO: essayer de le mettre en vert
     dateClick: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this), //todo : make it work. What do we want from it ?
@@ -112,12 +112,14 @@ export class FullCalendarComponent implements OnInit {
         end: 'today prev, next',
       },
       footerToolbar:{
-        center : "dayGridMonth,timeGridWeek,timeGridDay" //TODO : voir l'utilité
+        center : "dayGridMonth,timeGridWeek,timeGridDay"
       },
       editable: true, // permet de déplacer la réunion en drag and drop //todo: la MAJ ne se fait pas en BDD
       // eventDrop: (infos) => {
       //   if(!confirm("Etes vous sûr de vouloir déplacer l'évènements?")) {infos.revert();}
+      //      // else{this.updateDateEvent(infos.event.id)}
       //     },
+      eventDrop: this.updateDateEvent.bind(this),
       nowIndicator: true,
       selectable: true,
       dateClick: this.handleDateSelect.bind(this),
@@ -134,8 +136,6 @@ export class FullCalendarComponent implements OnInit {
 //AU CLIC SUR UNE DATE PERMET DE MODIFIER LA VALEUR DE LA DATE DANS LE TITRE ET FAIT APPARAITRE TACHES DU JOUR
   handleDateSelect(selectDateInfo: DateClickArg) {
     let clickedDate = selectDateInfo.dateStr;
-    console.log(selectDateInfo);
-
     this.choseThisDate(clickedDate);
   }
 
@@ -150,6 +150,33 @@ export class FullCalendarComponent implements OnInit {
 
   choseThisDate(date: string) {
     this.choseThisDateEvent.emit(date);
+  }
+
+  updateDateEvent(events: any){
+    console.log(events.event.id);
+    console.log(events.event.title);
+    console.log(events.event.start.toJSON());
+    console.log(events.event.start.toLocaleDateString());
+    console.log(events.event.start.toTimeString());
+    console.log(events.event.end);
+    let task: Task = {
+      taskId: events.event.id,
+      taskTitle: events.event.title,
+      description: events.event.description,
+      location: events.event.location,
+      startingDate: events.event.start.toLocaleDateString(),
+      startingHour: events.event.start.toTimeString(),
+      endingDate: events.event.end.toLocaleDateString(),
+      endingHour: events.event.end.toTimeString(),
+      private: events.event.private
+    };
+
+    console.log(task);
+    this.taskService.update(task).subscribe({
+      next:()=>console.log("Mise à jour effectuée"),
+      error:(err)=>console.log(err)
+    });
+
   }
 
 }
