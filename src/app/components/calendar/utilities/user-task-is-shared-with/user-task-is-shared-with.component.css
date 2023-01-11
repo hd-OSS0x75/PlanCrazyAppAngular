@@ -1,0 +1,32 @@
+#taskSharedRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: calc(7rem + 40vw);
+  gap: 10px;
+}
+
+#unshareBtn {
+  display: block;
+  flex: 1;
+  height: 50px;
+  margin: calc(0.3rem + 0.3vw) auto;
+  padding: calc(0.5rem + 0.5vw);
+  box-shadow: 5px 5px 5px #dccaca;
+  border: 1px solid #797070;
+  border-radius: 10px;
+  background: rgb(232, 137, 137);
+}
+
+input {
+  display: block;
+  height: 50px;
+  flex: 5;
+  border-radius: 10px;
+  margin: calc(0.3rem + 0.3vw) auto;
+  box-shadow: 5px 5px 5px #dccaca;
+  padding: calc(0.5rem + 0.5vw);
+  border: 1px solid #d5c7c7;
+  font-size: calc(0.7rem + 0.3vw);
+}

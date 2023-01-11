@@ -22,8 +22,11 @@
     </app-user-task-is-shared-with>
   </div>
 
-  <input type="email" placeholder="addresse@mail.com" id="sharingMail" name="sharingMail" [(ngModel)]="sharingUserEmail">
-  <button id="shareBtn" (click)="shareWithUser()">Partager</button>
+  <div id="taskSharedRow">
+    <input type="email" placeholder="addresse@mail.com" id="sharingMail" name="sharingMail" [(ngModel)]="sharingUserEmail">
+    <button id="shareBtn" (click)="shareWithUser()">Partager</button>
+  </div>
+
 
 </div>
 
