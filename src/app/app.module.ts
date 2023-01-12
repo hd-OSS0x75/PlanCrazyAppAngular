@@ -71,7 +71,7 @@ registerLocaleData(localeFr, 'fr-FR')
     FullCalendarModule,
     ToastrModule.forRoot({
       timeOut: 3000,
-      positionClass: 'toast-top-right',
+      positionClass: 'toast-bottom-right',
       preventDuplicates: true,
       autoDismiss: true,
       closeButton: true,
