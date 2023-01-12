@@ -1,6 +1,8 @@
+
 <div id="updateContainer">
 
   <h2>Modifier évènement</h2>
+
 
   <form [formGroup]="updateTaskForm" (ngSubmit)="onSubmit()">
     <input id="title" type="text" formControlName="title" placeholder="Titre" [(ngModel)]="currentTask.taskTitle"><br>

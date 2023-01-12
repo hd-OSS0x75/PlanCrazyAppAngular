@@ -52,12 +52,14 @@ input:focus {
 
 .btn-success {
   background-color: #90B77D;
+
   margin: calc(0.5rem + 0.5vw) 0;
   padding: calc(0.5rem + 0.5vw);
   border-radius: 3rem;
   border : none;
   font-size: calc(0.5rem + 0.5vw);
   box-shadow: 4px 4px 4px rgb(158, 149, 149);
+
 }
 
 a {
