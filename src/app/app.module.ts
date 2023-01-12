@@ -31,6 +31,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { UserTaskIsSharedWithComponent } from './components/calendar/utilities/user-task-is-shared-with/user-task-is-shared-with.component';
+import { UserSmthIsSharedWithComponent } from './components/calendar/utilities/user-smth-is-shared-with/user-smth-is-shared-with.component';
 registerLocaleData(localeFr, 'fr-FR')
 
 
@@ -54,7 +55,8 @@ registerLocaleData(localeFr, 'fr-FR')
     WeatherFiveDaysForecastComponent,
     HeaderComponent,
     FooterComponent,
-    UserTaskIsSharedWithComponent
+    UserTaskIsSharedWithComponent,
+    UserSmthIsSharedWithComponent
   ],
   imports: [
     BrowserModule,
