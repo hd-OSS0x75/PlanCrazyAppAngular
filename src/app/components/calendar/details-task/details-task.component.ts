@@ -74,7 +74,7 @@ export class DetailsTaskComponent implements OnInit{
     this.taskService.share(this.sharingUserEmail, this.route.snapshot.params['id'])//todo : meilleure méthode que snapshot?
       .subscribe({
         next: value => {
-          console.log(value);
+          this.sharingUserEmail = '';
           this.getSharedWithEmailList(this.route.snapshot.params['id']);
         },
         error: err => {

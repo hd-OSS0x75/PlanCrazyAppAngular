@@ -13,10 +13,12 @@ export class TaskService {
 
   constructor(private http: HttpClient) { }
 
-  //todo: replace any by task model interface
   getAll(): Observable<Task[]>{
-    this.http.get<any[]>(baseURL); // todo : clean ?
     return this.http.get<any[]>(baseURL);
+  }
+
+  getEmailsAllUserSharedWith(): Observable<string[]>{
+    return this.http.get<string[]>(`${baseURL}/share`);
   }
 
   get(id: any): Observable<any> {
@@ -47,5 +49,15 @@ export class TaskService {
 
   getAppUsersEmailWhomThisTaskIsSharedWith(taskId: string): Observable<string[]> {
     return this.http.get<string[]>(`${baseURL}/share/${taskId}`);
+  }
+
+  shareAllWithUser(appUserToShareEmail: String): Observable<any> {
+      const sharingRequest = {taskId: '', appUserToShareEmail};
+      return this.http.put(`${baseURL}/share/allTasks`, sharingRequest);
+  }
+
+  unshareAllWithUser(appUserToShareEmail: String): Observable<any> {
+    const sharingRequest = {taskId: '', appUserToShareEmail};
+    return this.http.request('delete', `${baseURL}/share/allTasks`, {body: sharingRequest});
   }
 }

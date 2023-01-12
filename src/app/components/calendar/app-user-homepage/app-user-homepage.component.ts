@@ -12,6 +12,8 @@ import {Router} from "@angular/router";
 export class AppUserHomepageComponent implements OnInit {
   taskList: any[] = [];//todo : replace any by task model
   chosenDate = new Date();
+  userSharedWithEmailList!: string[];
+  sharingUserEmail: String = '';
 
   constructor(private sessionStorageService: SessionStorageService,
               private appUserService: AppUserService,
@@ -20,6 +22,7 @@ export class AppUserHomepageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAppUserTasks();
+    this.getUserSharedWithEmailList();
   }
 
   private getAppUserTasks() {
@@ -29,7 +32,17 @@ export class AppUserHomepageComponent implements OnInit {
           this.taskList = value.filter(value1 => {
             return (new Date(value1.startingDate) <= new Date(this.chosenDate)) && (new Date(value1.endingDate) >= new Date(this.chosenDate))
           });
-          console.log(this.taskList);
+        },
+        error: err => {console.log(err);}
+      });
+
+  }
+
+  private getUserSharedWithEmailList() {
+    this.taskService.getEmailsAllUserSharedWith()
+      .subscribe({
+        next: value => {
+          this.userSharedWithEmailList = value;
         },
         error: err => {console.log(err);}
       });
@@ -37,7 +50,6 @@ export class AppUserHomepageComponent implements OnInit {
   }
 
   deleteTask($event: string) {
-    console.log($event);
     this.taskService.delete($event).subscribe({
       next: value => {
         this.getAppUserTasks();
@@ -49,9 +61,47 @@ export class AppUserHomepageComponent implements OnInit {
   }
 
   choseDate($event: string) {
-    console.log($event);
     this.chosenDate = <Date><unknown>$event; // todo : new Date($event)
     this.getAppUserTasks();
   }
 
+  shareAllWithUser() {
+    this.taskService.shareAllWithUser(this.sharingUserEmail)
+      .subscribe({
+        next: value => {
+          this.sharingUserEmail = '';
+          this.getUserSharedWithEmailList();
+        },
+        error: err => {
+          console.log(err);
+          // this.toastr.error("email non existant") } //todo : make it work
+        }
+      });
+  }
+
+  shareAllWithThisUser($event: string) {
+    this.taskService.shareAllWithUser($event)
+      .subscribe({
+        next: value => {
+          this.getUserSharedWithEmailList();
+        },
+        error: err => {
+          console.log(err);
+          // this.toastr.error("email non existant") } //todo : make it work
+        }
+      });
+  }
+
+  unshareAllWithThisUser($event: string) {
+    this.taskService.unshareAllWithUser($event)
+      .subscribe({
+        next: value => {
+          this.getUserSharedWithEmailList();
+        },
+        error: err => {
+          console.log(err);
+          // this.toastr.error("email non existant") } //todo : make it work
+        }
+      });
+  }
 }
