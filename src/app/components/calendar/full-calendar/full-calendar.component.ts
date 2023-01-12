@@ -16,7 +16,7 @@ import {Task} from 'src/app/models/task';
   styleUrls: ['./full-calendar.component.css']
 })
 export class FullCalendarComponent implements OnInit {
-  taskList?: any[];
+  taskList!: any[];
   task: any[] | undefined;
 
   @Output() choseThisDateEvent = new EventEmitter<string>();
@@ -80,8 +80,11 @@ export class FullCalendarComponent implements OnInit {
             return {
               id: value1['taskId'],
               title: value1['taskTitle'],
+              description: value1['description'],
+              location: value1['location'],
               start: (value1['startingDate'] + ' ' + value1['startingHour']),
               end: (value1['endingDate'] + ' ' + value1['endingHour']),
+              private: value1['private']
             };
           }
         );
@@ -156,26 +159,17 @@ export class FullCalendarComponent implements OnInit {
     this.choseThisDateEvent.emit(date);
   }
 
-  updateDateEvent(events: any){
-    console.log(events.event.id);
-    console.log(events.event.title);
-    console.log(events.event.start.toJSON());
-    console.log(events.event.start.toLocaleDateString());
-    console.log(events.event.start.toTimeString());
-    console.log(events.event.end);
-    let task: Task = {
+  updateDateEvent(events: any){let task: Task = {
       taskId: events.event.id,
       taskTitle: events.event.title,
-      description: events.event.description,
-      location: events.event.location,
-      startingDate: events.event.start.toLocaleDateString(),
-      startingHour: events.event.start.toTimeString(),
-      endingDate: events.event.end.toLocaleDateString(),
-      endingHour: events.event.end.toTimeString(),
-      private: events.event.private
+      description: this.taskList.filter(elem => elem.id == events.event.id)[0].description,
+      location: this.taskList.filter(elem => elem.id == events.event.id)[0].location,
+      startingDate: events.event.start.toJSON(),
+      startingHour: events.event.start.toTimeString().split(' ')[0],
+      endingDate: events.event.end.toJSON(),
+      endingHour: events.event.end.toTimeString().split(' ')[0],
+      private: this.taskList.filter(elem => elem.id == events.event.id)[0].private
     };
-
-    console.log(task);
     this.taskService.update(task).subscribe({
       next:()=>console.log("Mise à jour effectuée"),
       error:(err)=>console.log(err)
