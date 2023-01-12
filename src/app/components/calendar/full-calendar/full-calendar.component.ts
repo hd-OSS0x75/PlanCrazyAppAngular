@@ -53,6 +53,7 @@ export class FullCalendarComponent implements OnInit {
     //      // else{this.updateDateEvent(infos.event.id)}
     //     },
     eventDrop: this.updateDateEvent.bind(this),
+    eventResize: this.updateDateEvent.bind(this),
     nowIndicator: true,
     selectable: true,
     dateClick: this.handleDateSelect.bind(this),
