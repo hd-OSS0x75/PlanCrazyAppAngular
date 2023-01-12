@@ -1,14 +1,16 @@
-<form [formGroup]="signingInAppUserForm" (ngSubmit)="seConnecter()">
-  <input id="email" type="email" formControlName="email" placeholder="Entrer son email">
-  <p *ngIf="emailIsInvalid()" class="alert-danger">Rentrez un email valide.</p>
-  <p *ngIf="!emailIsInvalid()"></p>
-  <input id="password" type="password" formControlName="password" placeholder="Entrer son mot de passe">
-  <p *ngIf="passwordIsInvalid()" class="alert-danger">Le mot de passe doit être saisi.</p>
-  <p *ngIf="!passwordIsInvalid()"></p>
-  <button class="btn-success" type="submit" [disabled]="!signingInAppUserForm.valid">Se connecter</button>
-</form>
+<div id="formContainer">
+  <form [formGroup]="signingInAppUserForm" (ngSubmit)="seConnecter()">
+    <input id="email" type="email" formControlName="email" placeholder="Entrer son email">
+    <p *ngIf="emailIsInvalid()" class="alert-danger">Rentrez un email valide.</p>
+    <p *ngIf="!emailIsInvalid()"></p>
+    <input id="password" type="password" formControlName="password" placeholder="Entrer son mot de passe">
+    <p *ngIf="passwordIsInvalid()" class="alert-danger">Le mot de passe doit être saisi.</p>
+    <p *ngIf="!passwordIsInvalid()"></p>
+    <button class="btn-success" type="submit" [disabled]="!signingInAppUserForm.valid">Se connecter</button>
+  </form>
 
-<div class="inscription">
-  <a  routerLink="/signup">Vous n'avez pas de compte ? S'inscrire</a>
+  <div class="inscription">
+    <a  routerLink="/signup">Vous n'avez pas de compte ? S'inscrire</a>
+  </div>
 </div>
 

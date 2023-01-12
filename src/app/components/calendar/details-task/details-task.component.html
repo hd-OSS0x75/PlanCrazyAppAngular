@@ -1,22 +1,37 @@
-<a routerLink="/profile">{{nickname}}</a>
-<p></p>
-<a routerLink="/month">Retour</a>
-<p></p>
-
-
 <h2>Détail de l'évènement</h2>
-<h3>{{currentTask.title}}</h3>
-<p>Du {{currentTask.startingDate | date: "dd/MM/yyyy"}} - {{currentTask.startingHour}} au {{currentTask.endingDate  | date: "dd/MM/yyyy"}} - {{currentTask.endingHour}} </p>
-<p> Lieu : {{currentTask.location}} </p>
-<p>Propriétaire : {{currentTask.ownerEmail}}</p>
 
-<label for="sharingMail">Partager à : </label>
-<input type="email" placeholder="addresse@mail.com" id="sharingMail" name="sharingMail" [(ngModel)]="sharingUserEmail">
-<button (click)="shareWithUser()">Partager</button>
+<div id="card">
+  <h3>{{currentTask.title}}</h3>
+  <p>Du {{currentTask.startingDate | date: "dd/MM/yyyy"}} - {{currentTask.startingHour}} au {{currentTask.endingDate  | date: "dd/MM/yyyy"}} - {{currentTask.endingHour}} </p>
+  <p> Lieu : {{currentTask.location}} </p>
+  <p>Propriétaire : {{currentTask.ownerEmail}}</p>
+</div>
 
-<form [formGroup]="updateTaskForm">
-  <label class="notes" for="description">Notes</label>
-  <textarea  id="description" type="text" formControlName="description" rows="6" value="{{currentTask.description}}"></textarea><br>
-</form>
+<div id="formContainer">
 
-<a class="btn-success" routerLink="/task/update/{{currentTask.taskId}}">Modifier</a>
+  <form [formGroup]="updateTaskForm">
+    <label class="notes" for="description">Notes</label>
+    <textarea  id="description" type="text" formControlName="description" rows="6" value="{{currentTask.description}}"></textarea><br>
+  </form>
+
+  <label>Partage : </label>
+
+  <div *ngFor="let emailOfUserSharedWith of sharedWithEmailList">
+    <app-user-task-is-shared-with email="{{emailOfUserSharedWith}}"
+                                  (unshareWithThisUserEvent)="unshareWithThisUser($event)">
+    </app-user-task-is-shared-with>
+  </div>
+
+  <div id="taskSharedRow">
+    <input type="email" placeholder="adresse@email.com" id="sharingMail" name="sharingMail" [(ngModel)]="sharingUserEmail">
+    <button id="shareBtn" (click)="shareWithUser()">Partager</button>
+  </div>
+
+
+</div>
+
+<div id="btnContainer">
+  <a class="btn-success" routerLink="/task/update/{{currentTask.taskId}}">Modifier</a>
+  <a class="btn-back" routerLink="/month">Retour</a>
+</div>
+

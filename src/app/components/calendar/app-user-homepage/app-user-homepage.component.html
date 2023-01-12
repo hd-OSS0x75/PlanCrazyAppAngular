@@ -2,15 +2,30 @@
 
 <app-full-calendar (choseThisDateEvent)="choseDate($event)"></app-full-calendar>
 
-
+<h3>Liste des tâches du jour</h3>
 <ul>
   <li *ngFor="let task of taskList">
-    <app-task  taskId="{{task.taskId}}" taskTitle="{{task.taskTitle}}" startingHour="{{(task.startingDate | date: 'dd/MM/yy') + ': ' + task.startingHour}}"
+    <app-task  taskId="{{task.taskId}}" taskTitle="{{task.taskTitle}}" startingHour="{{(task.startingDate | date: 'dd/MM/yy') + ' - ' + task.startingHour}}"
               (deleteThisTaskEvent)="deleteTask($event)"></app-task>
   </li>
 </ul>
 
+<h3>Partage de mon calendrier</h3>
+<div id="sharingZone">
+
+  <div *ngFor="let emailOfUserSharedWith of userSharedWithEmailList">
+    <app-user-smth-is-shared-with email="{{emailOfUserSharedWith}}"
+                                  (unshareWithThisUserEvent)="unshareAllWithThisUser($event)"
+                                  (shareWithThisUserEvent)="shareAllWithThisUser($event)">
+    </app-user-smth-is-shared-with>
+  </div>
+  <div id="taskSharedRow">
+    <input type="email" placeholder="adresse@email.com" id="sharingMail" name="sharingMail" [(ngModel)]="sharingUserEmail">
+    <button id="shareBtn" (click)="shareAllWithUser()">Partager</button>
+    <div id="fakeBtn"></div>
+  </div>
+</div>
+
 <div class="btn">
-<button class="btn-success" routerLink="/month">Journée complète</button>
-<button class="btn-success" routerLink="/task/add">Nouvelle tâche</button>
+<button class="btn-success" routerLink="/task/add">Nouvel évènement</button>
 </div>

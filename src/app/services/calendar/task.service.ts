@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Task} from "../../models/task";
-import * as Stream from "stream";
 
 //Ici on a l'URL de notre backend créé avec Spring
 const baseURL = 'http://localhost:8080/api/task';
@@ -14,10 +13,12 @@ export class TaskService {
 
   constructor(private http: HttpClient) { }
 
-  //todo: replace any by task model interface
   getAll(): Observable<Task[]>{
-    this.http.get<any[]>(baseURL);
     return this.http.get<any[]>(baseURL);
+  }
+
+  getEmailsAllUserSharedWith(): Observable<string[]>{
+    return this.http.get<string[]>(`${baseURL}/share`);
   }
 
   get(id: any): Observable<any> {
@@ -41,4 +42,22 @@ export class TaskService {
     return this.http.put(`${baseURL}/share`, sharingRequest);
   }
 
+  unshare(appUserToShareEmail: any, taskId: any): Observable<any> {
+    const sharingRequest = {taskId, appUserToShareEmail};
+    return this.http.request('delete', `${baseURL}/share`, {body: sharingRequest});
+  }
+
+  getAppUsersEmailWhomThisTaskIsSharedWith(taskId: string): Observable<string[]> {
+    return this.http.get<string[]>(`${baseURL}/share/${taskId}`);
+  }
+
+  shareAllWithUser(appUserToShareEmail: String): Observable<any> {
+      const sharingRequest = {taskId: '', appUserToShareEmail};
+      return this.http.put(`${baseURL}/share/allTasks`, sharingRequest);
+  }
+
+  unshareAllWithUser(appUserToShareEmail: String): Observable<any> {
+    const sharingRequest = {taskId: '', appUserToShareEmail};
+    return this.http.request('delete', `${baseURL}/share/allTasks`, {body: sharingRequest});
+  }
 }

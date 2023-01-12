@@ -30,7 +30,7 @@ export class AuthService {
         map((jwtResponse: any) => {
           console.log(jwtResponse);
           this.sessionStorage.saveToken(jwtResponse.token);
-          this.sessionStorage.saveNickname(jwtResponse.nickname);
+          this.sessionStorage.saveEmail(jwtResponse.email);
           console.log(jwtResponse.userId);
           this.loggedIn.next(true);
           return true;

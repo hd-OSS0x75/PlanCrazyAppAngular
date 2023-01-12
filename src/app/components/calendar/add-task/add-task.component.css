@@ -14,8 +14,8 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: calc(7rem + 50vw);
-  margin: calc(1rem + 3vw) auto;
+  width: calc(7rem + 40vw);
+  margin: calc(1rem + 1vw) auto;
 }
 
 input{
@@ -25,12 +25,13 @@ input{
   width: 100%;
   border-color: #90B77D;
   font-size: calc(0.4rem + 0.4vw);
-  margin: calc(0.4rem + 0.3rem) 0;
+  margin: calc(0.3rem + 0.2rem) 0;
 }
 
-input, button, .notes {
-  font-family: "Berlin Sans FB", sans-serif;
+input:focus {
+  outline-color: #ccb4b4;
 }
+
 
 .notes {
   color: #837d7d;
@@ -42,11 +43,16 @@ input, button, .notes {
   background-color: #D9D9D9;
   border : none;
   margin-top: 10px;
+  padding: calc(0.6rem + 0.6vw);
+}
+
+#description:focus {
+  outline-color: #c4b8b8;
 }
 
 .btn-success {
   background-color: #90B77D;
-  margin: 40px 50px 0 50px;
+  margin: calc(0.5rem + 0.5vw) 0;
   padding: calc(0.5rem + 0.5vw);
   border-radius: 3rem;
   border : none;
@@ -54,19 +60,15 @@ input, button, .notes {
   box-shadow: 4px 4px 4px rgb(158, 149, 149);
 }
 
-textarea {
-  padding: 0 20px;
-}
-
 a {
   display: block;
   text-decoration: none;
   font-size: calc(0.5rem + 0.5vw);
-  background: rgb(161, 98, 98);
+  background: rgb(232, 137, 137);
   border-radius: 5rem;
   text-align: center;
   width: 15%;
-  margin: calc(1rem + 1vw) auto;
+  margin: calc(0.2rem + 0.5vw) auto;
   padding: calc(0.2rem + 0.2vw);
   color: black;
   box-shadow: 4px 4px 4px rgb(158, 149, 149);

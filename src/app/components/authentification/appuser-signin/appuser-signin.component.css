@@ -1,3 +1,7 @@
+#formContainer {
+  min-height: 50vh;
+}
+
 .alert-danger {
   color: #FF0000;
   font-size: 12px;

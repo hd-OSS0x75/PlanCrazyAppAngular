@@ -1,5 +1,6 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {WeatherDataService} from "../../../services/weather/weather-data.service";
+import {AppUserService} from "../../../services/app-user-authentification/app-user.service";
 
 @Component({
   selector: 'app-weather-landing-page',
@@ -10,7 +11,7 @@ export class WeatherLandingPageComponent{
 
   cityToUpdate!: string;
 
-  selectedCity = "miami";
+  selectedCity: string = "";
 
   dateOfToday = new Date();
 
@@ -50,11 +51,14 @@ export class WeatherLandingPageComponent{
 
   fiveDays: string[] = [];
 
-  constructor(private weatherDataService: WeatherDataService) { }
+  constructor(private weatherDataService: WeatherDataService, private appUserService: AppUserService) { }
 
   ngOnInit(): void {
-    this.getWeatherForNow(this.selectedCity);
-    this.getWeatherForecast(this.selectedCity);
+    this.getUserCity();
+    setTimeout(() => {
+      this.getWeatherForNow(this.selectedCity);
+      this.getWeatherForecast(this.selectedCity);
+    }, 200)
   }
 
   updateWithNewLocation(newLocation: string) {
@@ -79,9 +83,20 @@ export class WeatherLandingPageComponent{
         sunset: undefined
       }
     };
+    localStorage.setItem('selectedCity', newLocation);
     this.getWeatherForNow(newLocation);
     this.getWeatherForecast(newLocation);
     this.cityToUpdate = "";
+  }
+
+  getUserCity() {
+    if (localStorage.getItem('selectedCity')) {
+      // @ts-ignore
+      this.selectedCity = localStorage.getItem('selectedCity')
+    }
+    else {
+      this.selectedCity = "Paris";
+    }
   }
 
   getWeatherForNow(location: string) {

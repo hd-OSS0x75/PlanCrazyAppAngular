@@ -45,6 +45,8 @@
   <button class="btn-valider" type="submit" [disabled]="!allowSendingModification()" (click)="showFlash()">Valider les modifications</button>
 </form>
 
+<flash-messages class="flashMessage"></flash-messages>
+
 <div class="btn">
   <button class="btn-success" routerLink="/month">Retour</button>
   <button class="btn-success" (click)="changeModificationAbility()">Modifier</button>
