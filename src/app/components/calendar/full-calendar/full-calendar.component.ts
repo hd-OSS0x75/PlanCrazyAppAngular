@@ -67,7 +67,6 @@ export class FullCalendarComponent implements OnInit {
               private taskService: TaskService) {
   }
 
-
  ngOnInit(): void {
     this.taskService.getAll().subscribe({
       next: value => {
@@ -84,57 +83,12 @@ export class FullCalendarComponent implements OnInit {
             };
           }
         );
-      //  this.updateCalendar();
       },
       error: err => {
         console.log(err);
       }
     });
   }
-
-  // private updateCalendar() {
-  //   this.calendarOptions = {
-  //     locale: frLocale,
-  //     timeZone: 'UTC',
-  //     initialView: 'dayGridMonth',
-  //     views: {
-  //       dayGridMonth: {
-  //         titleFormat: { month: 'long', year: 'numeric'}
-  //       }
-  //     },
-  //     contentHeight: 500,
-  //     dayMaxEventRows: true,
-  //     plugins: [
-  //       interactionPlugin,
-  //       dayGridPlugin,
-  //       timeGridPlugin,
-  //       listPlugin,],
-  //     events: this.taskList,
-  //     headerToolbar: {
-  //       start:'title',
-  //       end: 'today prev, next',
-  //     },
-  //     footerToolbar:{
-  //       center : "dayGridMonth,timeGridWeek,timeGridDay"
-  //     },
-  //     editable: true, // permet de déplacer la réunion en drag and drop //todo: la MAJ ne se fait pas en BDD
-  //     // eventDrop: (infos) => {
-  //     //   if(!confirm("Etes vous sûr de vouloir déplacer l'évènements?")) {infos.revert();}
-  //     //      // else{this.updateDateEvent(infos.event.id)}
-  //     //     },
-  //     eventDrop: this.updateDateEvent.bind(this),
-  //     nowIndicator: true,
-  //     selectable: true,
-  //     dateClick: this.handleDateSelect.bind(this),
-  //     eventClick: this.handleEventClick.bind(this), //todo : make it work. What do we want from it ?
-  //     eventColor: "#90B77D",
-  //     eventTimeFormat: { // like '14:30:00'
-  //       hour: '2-digit',
-  //       minute: '2-digit',
-  //       meridiem: false
-  //     },
-  //   };
-  // }
 
 //AU CLIC SUR UNE DATE PERMET DE MODIFIER LA VALEUR DE LA DATE DANS LE TITRE ET FAIT APPARAITRE TACHES DU JOUR
   handleDateSelect(selectDateInfo: DateClickArg) {
