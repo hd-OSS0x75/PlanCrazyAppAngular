@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {SessionStorageService} from "../../../services/security/session-storage.service";
 import {AppUserService} from "../../../services/app-user-authentification/app-user.service";
 import {TaskService} from "../../../services/calendar/task.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-app-user-homepage',
@@ -14,7 +15,8 @@ export class AppUserHomepageComponent implements OnInit {
 
   constructor(private sessionStorageService: SessionStorageService,
               private appUserService: AppUserService,
-              private taskService: TaskService)  {   }
+              private taskService: TaskService,
+              private router: Router)  {   }
 
   ngOnInit(): void {
     this.getAppUserTasks();
@@ -37,7 +39,11 @@ export class AppUserHomepageComponent implements OnInit {
   deleteTask($event: string) {
     console.log($event);
     this.taskService.delete($event).subscribe({
-      next: value => this.getAppUserTasks(),
+      next: value => {
+        this.getAppUserTasks();
+        window.location.reload();
+        this.router.navigate(['/month'])
+      },
       error: err => console.log(err)
     });
   }

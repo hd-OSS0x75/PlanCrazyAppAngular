@@ -3,10 +3,9 @@
     <a routerLink="/task/details/{{taskId}}">
       <p>{{taskTitle}} - {{startingHour}}</p>
     </a>
-
   </div>
-  <!--    TODO/ A VOIR SI JE PEUX GERER LE DELETE AVEC NOUVEAU CALENDRIER-->
-  <button (click)="deleteThisTask()">Delete
+
+  <button (click)="deleteThisTask()">Supprimer
     <i class="fa-regular fa-trash-can"></i>
   </button>
 </div>

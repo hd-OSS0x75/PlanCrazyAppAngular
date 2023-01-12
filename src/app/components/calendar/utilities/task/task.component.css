@@ -29,3 +29,17 @@
 .delete img {
   width: calc(2rem + 1vw);
 }
+
+/*fa-trash-can {*/
+/*  color: blue;*/
+/*}*/
+
+button {
+  font-family: "Berlin Sans FB", sans-serif;
+  font-size: calc(0.5rem + 0.5vw);
+  background-color: rgb(232, 137, 137);
+  border-radius: 5rem;
+  padding: 20px 40px;
+  margin: 0 calc(1rem + 1vw);
+  border: none;
+}
