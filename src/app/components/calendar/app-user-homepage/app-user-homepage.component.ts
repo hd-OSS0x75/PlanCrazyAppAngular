@@ -12,6 +12,7 @@ export class AppUserHomepageComponent implements OnInit {
   taskList: any[] = [];//todo : replace any by task model
   chosenDate = new Date();
   userSharedWithEmailList!: string[];
+  sharingUserEmail: String = '';
 
   constructor(private sessionStorageService: SessionStorageService,
               private appUserService: AppUserService,
@@ -59,4 +60,17 @@ export class AppUserHomepageComponent implements OnInit {
     this.getAppUserTasks();
   }
 
+  shareAllWithUser() {
+    this.taskService.shareAllWithUser(this.sharingUserEmail)
+      .subscribe({
+        next: value => {
+          this.sharingUserEmail = '';
+          this.getUserSharedWithEmailList();
+        },
+        error: err => {
+          console.log(err);
+          // this.toastr.error("email non existant") } //todo : make it work
+        }
+      });
+  }
 }

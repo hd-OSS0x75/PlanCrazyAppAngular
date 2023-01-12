@@ -61,4 +61,9 @@ export class TaskService {
   getAppUsersEmailWhomThisTaskIsSharedWith(taskId: string): Observable<string[]> {
     return this.http.get<string[]>(`${baseURL}/share/${taskId}`);
   }
+
+  shareAllWithUser(appUserToShareEmail: String): Observable<any> {
+      const sharingRequest = {taskId: '', appUserToShareEmail};
+      return this.http.put(`${baseURL}/share/allTasks`, sharingRequest);
+  }
 }

@@ -9,6 +9,11 @@
   </li>
 </ul>
 
+<div id="taskSharedRow">
+  <input type="email" placeholder="adresse@email.com" id="sharingMail" name="sharingMail" [(ngModel)]="sharingUserEmail">
+  <button id="shareBtn" (click)="shareAllWithUser()">Partager</button>
+</div>
+
 <div class="btn">
 <button class="btn-success" routerLink="/task/add">Nouvel évènement</button>
 </div>
