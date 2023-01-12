@@ -9,6 +9,13 @@
   </li>
 </ul>
 
+<div *ngFor="let emailOfUserSharedWith of userSharedWithEmailList">
+  <app-user-smth-is-shared-with email="{{emailOfUserSharedWith}}"
+                                (unshareWithThisUserEvent)="unshareAllWithThisUser($event)"
+                                (shareWithThisUserEvent)="shareAllWithThisUser($event)">
+  </app-user-smth-is-shared-with>
+</div>
+
 <div id="taskSharedRow">
   <input type="email" placeholder="adresse@email.com" id="sharingMail" name="sharingMail" [(ngModel)]="sharingUserEmail">
   <button id="shareBtn" (click)="shareAllWithUser()">Partager</button>

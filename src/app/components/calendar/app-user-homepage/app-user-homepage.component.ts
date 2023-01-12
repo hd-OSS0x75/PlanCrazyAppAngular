@@ -73,4 +73,30 @@ export class AppUserHomepageComponent implements OnInit {
         }
       });
   }
+
+  shareAllWithThisUser($event: string) {
+    this.taskService.shareAllWithUser($event)
+      .subscribe({
+        next: value => {
+          this.getUserSharedWithEmailList();
+        },
+        error: err => {
+          console.log(err);
+          // this.toastr.error("email non existant") } //todo : make it work
+        }
+      });
+  }
+
+  unshareAllWithThisUser($event: string) {
+    this.taskService.unshareAllWithUser($event)
+      .subscribe({
+        next: value => {
+          this.getUserSharedWithEmailList();
+        },
+        error: err => {
+          console.log(err);
+          // this.toastr.error("email non existant") } //todo : make it work
+        }
+      });
+  }
 }
