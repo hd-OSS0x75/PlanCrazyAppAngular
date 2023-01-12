@@ -39,19 +39,14 @@ export class FullCalendarComponent implements OnInit {
       dayGridPlugin,
       timeGridPlugin,
       listPlugin,],
-    // events: this.taskList,
     headerToolbar: {
       start:'title',
-      end: 'today prev, next',
+      end: 'today prev next',
     },
     footerToolbar:{
       center : "dayGridMonth,timeGridWeek,timeGridDay"
     },
-    editable: true, // permet de déplacer la réunion en drag and drop //todo: la MAJ ne se fait pas en BDD
-    // eventDrop: (infos) => {
-    //   if(!confirm("Etes vous sûr de vouloir déplacer l'évènements?")) {infos.revert();}
-    //      // else{this.updateDateEvent(infos.event.id)}
-    //     },
+    editable: true,
     eventDrop: this.updateDateEvent.bind(this),
     eventResize: this.updateDateEvent.bind(this),
     nowIndicator: true,
