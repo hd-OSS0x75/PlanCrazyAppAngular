@@ -41,7 +41,6 @@ export class AppUserHomepageComponent implements OnInit {
       .subscribe({
         next: value => {
           this.userSharedWithEmailList = value;
-          console.log(this.userSharedWithEmailList);
         },
         error: err => {console.log(err);}
       });
