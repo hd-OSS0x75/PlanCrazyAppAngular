@@ -31,7 +31,8 @@ textarea {
 .btn-success {
   background-color: #90B77D;
   border-radius: 20px;
-  padding: 0 40px;
-  margin:  0 10px;
+  padding: calc(0.3rem + 0.3vw);
+  width: 20%;
+  margin-bottom: calc(1rem + 2vw);
   border: none;
 }
