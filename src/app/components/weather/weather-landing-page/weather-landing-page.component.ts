@@ -90,20 +90,13 @@ export class WeatherLandingPageComponent{
   }
 
   getUserCity() {
-    this.appUserService.get().subscribe({
-      next: value => {
-        if(localStorage.getItem('selectedCity')) {
-          // @ts-ignore
-          this.selectedCity = localStorage.getItem('selectedCity');
-          return
-        }
-        this.selectedCity = value.city;
-        localStorage.setItem('selectedCity', this.selectedCity);
-    },
-      error: err => {
-        console.log(err);
+    if (localStorage.getItem('selectedCity')) {
+      // @ts-ignore
+      this.selectedCity = localStorage.getItem('selectedCity')
     }
-    });
+    else {
+      this.selectedCity = "Paris";
+    }
   }
 
   getWeatherForNow(location: string) {

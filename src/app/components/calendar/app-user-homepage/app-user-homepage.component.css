@@ -5,6 +5,12 @@ h1 {
   text-shadow: #bbb9b9 1px 2px;
 }
 
+h3 {
+  text-align: center;
+  font-weight: bold;
+  margin: calc(0.8rem + 0.8vw);
+}
+
 .date {
   text-align: center;
   font-weight: bold;
@@ -16,9 +22,68 @@ li{
   list-style-type: none;
 }
 
+ul{
+  padding: 0;
+}
+
 .btn {
   text-align: center;
   margin: calc(0.5rem + 0.5vw);
+}
+
+
+#sharingZone {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: calc(1rem + 1vw);
+  border: 1px solid #e0c6c6;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  width: 95%;
+  border-radius: 2rem;
+  margin: 10px auto 0 auto;
+}
+
+#taskSharedRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: calc(7rem + 40vw);
+  gap: 10px;
+}
+
+input {
+  display: block;
+  height: 50px;
+  flex: 5;
+  border-radius: 10px;
+  margin: calc(0.3rem + 0.3vw) auto;
+  box-shadow: 5px 5px 5px #dccaca;
+  padding: calc(0.5rem + 0.5vw);
+  border: 1px solid #d5c7c7;
+  font-size: calc(0.7rem + 0.3vw);
+}
+
+#shareBtn {
+  display: block;
+  flex: 1;
+  height: 50px;
+  margin: calc(0.3rem + 0.3vw) auto;
+  padding: calc(0.5rem + 0.5vw);
+  box-shadow: 5px 5px 5px #dccaca;
+  border: 1px solid #797070;
+  border-radius: 10px;
+  background-color: #90B77D;
+}
+
+#fakeBtn {
+  display: block;
+  flex: 1;
+  height: 50px;
+  margin: calc(0.3rem + 0.3vw) auto;
+  padding: calc(0.5rem + 0.5vw);
 }
 
 .btn-success {

@@ -36,6 +36,7 @@ export class AppuserSigninComponent {
       this.authService.login(dataForm.email, dataForm.password).subscribe(
         {
           next: value => {
+            this.saveCityLocalStorage();
             this.router.navigate(['/month']);
             },
           error: err => {
@@ -67,5 +68,13 @@ export class AppuserSigninComponent {
         },
         error: err => {console.log(err);}
       })
+  }
+
+  private saveCityLocalStorage() {
+    this.appUserService.get().subscribe( {
+      next: value => localStorage.setItem('selectedCity', value.city),
+      error: err => {console.log(err);}
+    })
+
   }
 }
