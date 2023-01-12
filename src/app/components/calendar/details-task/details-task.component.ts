@@ -79,7 +79,7 @@ export class DetailsTaskComponent implements OnInit{
         },
         error: err => {
           console.log(err);
-          this.toastr.error("email non existant") }
+          this.toastr.error("email non existant"); }
       });
   }
 
@@ -89,7 +89,9 @@ export class DetailsTaskComponent implements OnInit{
         console.log(value);
         this.getSharedWithEmailList(this.route.snapshot.params['id']);
       },
-      error: err => console.log(err)
+      error: err => {
+        console.log(err);
+        this.toastr.error("vous n'êtes pas propriétaire du partage, vous pouvez uniquement supprimer la tâche"); }
     })
   }
 

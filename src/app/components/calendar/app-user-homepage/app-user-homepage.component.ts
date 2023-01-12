@@ -3,6 +3,7 @@ import {SessionStorageService} from "../../../services/security/session-storage.
 import {AppUserService} from "../../../services/app-user-authentification/app-user.service";
 import {TaskService} from "../../../services/calendar/task.service";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-app-user-homepage',
@@ -18,7 +19,8 @@ export class AppUserHomepageComponent implements OnInit {
   constructor(private sessionStorageService: SessionStorageService,
               private appUserService: AppUserService,
               private taskService: TaskService,
-              private router: Router)  {   }
+              private router: Router,
+              private toastr: ToastrService)  {   }
 
   ngOnInit(): void {
     this.getAppUserTasks();
@@ -30,7 +32,7 @@ export class AppUserHomepageComponent implements OnInit {
       .subscribe({
         next: value => {
           this.taskList = value.filter(value1 => {
-            return (new Date(value1.startingDate) <= new Date(this.chosenDate)) && (new Date(value1.endingDate) >= new Date(this.chosenDate))
+            return (new Date(value1.startingDate) <= new Date(this.chosenDate)) && (new Date(value1.endingDate) >= new Date(this.chosenDate));
           });
         },
         error: err => {console.log(err);}
@@ -54,7 +56,7 @@ export class AppUserHomepageComponent implements OnInit {
       next: value => {
         this.getAppUserTasks();
         window.location.reload();
-        this.router.navigate(['/month'])
+        this.router.navigate(['/month']);
       },
       error: err => console.log(err)
     });
@@ -74,7 +76,7 @@ export class AppUserHomepageComponent implements OnInit {
         },
         error: err => {
           console.log(err);
-          // this.toastr.error("email non existant") } //todo : make it work
+          this.toastr.error("email non existant");
         }
       });
   }
@@ -87,7 +89,7 @@ export class AppUserHomepageComponent implements OnInit {
         },
         error: err => {
           console.log(err);
-          // this.toastr.error("email non existant") } //todo : make it work
+          this.toastr.error("calendrier déjà partagé.");
         }
       });
   }
@@ -100,7 +102,7 @@ export class AppUserHomepageComponent implements OnInit {
         },
         error: err => {
           console.log(err);
-          // this.toastr.error("email non existant") } //todo : make it work
+          this.toastr.error("erreur interne du serveur");
         }
       });
   }
