@@ -31,14 +31,6 @@ ul{
   margin: calc(0.5rem + 0.5vw);
 }
 
-.btn-success {
-  background-color: #90B77D;
-  border-radius: 3rem;
-  margin: 20px calc(0.5rem + 0.3vw);
-  padding: calc(0.6rem + 0.6vw);
-  border: none;
-  font-size: calc(0.6rem + 0.6vw);
-}
 
 #sharingZone {
   display: flex;
@@ -92,5 +84,13 @@ input {
   height: 50px;
   margin: calc(0.3rem + 0.3vw) auto;
   padding: calc(0.5rem + 0.5vw);
+}
 
+.btn-success {
+  background-color: #90B77D;
+  border-radius: 3rem;
+  margin: 20px calc(0.5rem + 0.3vw);
+  padding: calc(0.6rem + 0.6vw);
+  border: none;
+  font-size: calc(0.6rem + 0.6vw);
 }

@@ -1,11 +1,12 @@
 <div id="container">
+  <div class="tasksList">
   <div class="details">
     <a routerLink="/task/details/{{taskId}}">
-      <p>{{taskTitle}} - {{startingHour}}</p>
+      <p>{{taskTitle}} : {{startingHour}}</p>
     </a>
   </div>
-
   <button (click)="deleteThisTask()">Supprimer
     <i class="fa-regular fa-trash-can"></i>
   </button>
+  </div>
 </div>
