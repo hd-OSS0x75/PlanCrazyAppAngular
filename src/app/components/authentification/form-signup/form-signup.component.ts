@@ -72,7 +72,6 @@ export class FormSignupComponent implements OnInit {
 //todo: methode utilitaire à sortir du composant
   //Pour les champs obligatoires (pseudo, tel, email, password)
   private invalidMandatoryField(field: string): boolean {
- //pour vérifier que le champ est ok et aussi pour être sûr que l'utilisateur a modifié le champs ou que l'utilisateur a touché au champs
     return this.signupForm.controls[field].invalid && (this.signupForm.controls[field].dirty || this.signupForm.controls[field].touched);
   }
 

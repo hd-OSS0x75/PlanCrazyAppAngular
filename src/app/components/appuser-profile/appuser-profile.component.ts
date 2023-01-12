@@ -4,6 +4,7 @@ import {AppUserService} from "../../services/app-user-authentification/app-user.
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AppUser} from "../../models/app-user";
 import {FlashMessagesService} from "flash-messages-angular";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-appuser-profile',
@@ -44,7 +45,8 @@ export class AppuserProfileComponent implements OnInit {
 
   constructor(private sessionStorageService: SessionStorageService,
               private appUserService: AppUserService,
-              private flashMessage: FlashMessagesService) {
+              private flashMessage: FlashMessagesService,
+              private toastr: ToastrService) {
   }
 
   //BLOC : fonctions à l'initialisation
@@ -173,10 +175,13 @@ export class AppuserProfileComponent implements OnInit {
       email: this.currentUserProfile['email'],
       password: this.currentUserProfile['password']
     };
-
-    console.log(modifiedAppUser);//todo : test this functionnality
+    console.log(modifiedAppUser);
     this.appUserService.updateAppUser(modifiedAppUser).subscribe({
-      next: value => {console.log(value);},
+      next: value => {
+        localStorage.setItem('selectedCity', modifiedAppUser.city);
+        console.log(value);
+        console.log(modifiedAppUser.city);
+        },
       error: err => {console.log(err);}
     });
   }
@@ -188,6 +193,7 @@ export class AppuserProfileComponent implements OnInit {
   showFlash(){
     this.toDisplayModifier = !this.toDisplayModifier;
     this.toDisplayValider = !this.toDisplayValider;
-    this.flashMessage.show('Modifications prises en compte');
+    this.toastr.success("Modifications prises en compte");
+    //this.flashMessage.show('Modifications prises en compte');
   }
 }
