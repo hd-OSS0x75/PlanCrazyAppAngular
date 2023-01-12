@@ -14,10 +14,12 @@ export class TaskService {
 
   constructor(private http: HttpClient) { }
 
-  //todo: replace any by task model interface
   getAll(): Observable<Task[]>{
-    this.http.get<any[]>(baseURL); // todo : clean ?
     return this.http.get<any[]>(baseURL);
+  }
+
+  getEmailsAllUserSharedWith(): Observable<string[]>{
+    return this.http.get<string[]>(`${baseURL}/share`);
   }
 
   get(id: any): Observable<any> {
